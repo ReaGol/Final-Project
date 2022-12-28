@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 
-mongoose.connect("mongodb://127.0.0.1:27017/FinalProject", {
-  useNewUrlParser: true,
-});
+
+export const connectDB = (url) => {
+  return mongoose.connect(url);
+};
+
 mongoose.set("strictQuery", true);
