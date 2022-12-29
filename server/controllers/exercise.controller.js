@@ -1,4 +1,4 @@
-import { Exercise } from "../models/exercise.model.js";
+import { Exercise } from "../models/exercise.model.js"
 
 export const getExercises = async (req, res) => {
   const exercises = await Exercise.find({});
