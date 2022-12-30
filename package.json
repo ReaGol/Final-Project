@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node server/index.js",
-    "dev": "nodemon server/index.js"
+    "dev": "nodemon server/index.js",
+    "client": "npm start --prefix client"
   },
   "author": "Reut",
   "license": "ISC",
