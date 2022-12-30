@@ -1,0 +1,29 @@
+.form-container {
+    width: 500px;
+    height: 350px;
+    margin: 100px auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: lightgrey;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    align-items: center;
+}
+
+
+.input-container{
+    padding: 10px;
+}
+
+.btn {
+  padding: 0 20px;
+  background-color: dodgerblue;
+  color: azure;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  margin: 5px;
+  margin-left: 10px;
+}

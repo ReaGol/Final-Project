@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import validator from "validator";
 
 export const User = mongoose.model("User", {
-  name: {
+  firstName: {
     type: String,
     required: true,
     trim: true,

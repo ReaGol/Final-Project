@@ -1,0 +1,38 @@
+.btn {
+ 
+  background-color: dodgerblue;
+  color: azure;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  margin: 5px;
+  margin-left: 10px;
+  margin-top: 10px;
+  padding: 4px 8px;
+}
+
+.btn-delete {
+ 
+  background-color: red;
+  color: azure;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  margin: 5px;
+  margin-left: 10px;
+   padding: 2px 8px;
+   font-weight: 500;
+}
+
+th {
+  
+    padding: 10px;
+}
+
+tbody {
+    margin-left: 10px;
+    text-align: center;
+}
+
