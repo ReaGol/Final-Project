@@ -98,6 +98,7 @@ export const editExercise = async (req, res) => {
     "sets",
     "notes",
     "duration",
+    "image"
   ];
   const isValidOperation = updates.every((update) =>
     allowedUpdates.includes(update)

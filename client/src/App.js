@@ -2,35 +2,93 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import UserList from "./pages/users/UserList";
-import AddUser from "./pages/users/AddUser";
 import Dashboard from "./components/dashbord/Dashbord";
-
+import ExerciseList from "./pages/exercises/ExerciseList.js";
+import AddUser from "./pages/users/AddUser";
+import UserList from "./pages/users/UserList";
 
 function App() {
-    const [data, setData] = useState({
-      usersData: [],
-      exercisesData: [],
-    });
+  const [exercises, setExercises] = useState([]);
+  const [users, setUsers] = useState([]);
+
   useEffect(() => {
-    async function getUsers() {
-      const data = await axios.get("http://localhost:8000/users");
-      console.log(data);
+    async function fetchData() {
+      const userData = await axios.get("http://localhost:8000/users");
+      setUsers((prevUsers) => userData.data);
+      
+
+      const exerciseData = await axios.get("http://localhost:8000/exercises");
+      setExercises((prevExercises) => exerciseData.data);
+         console.log(exerciseData.data);
+         console.log(userData.data);
     }
-    getUsers()
+ 
+    fetchData();
   }, []);
 
   return (
-    <div className='App'>
+    <div className='app'>
       <Routes>
         <Route path='/' element={<Dashboard />} />
         <Route path='/users' element={<UserList />} />
         <Route path='/addUser' element={<AddUser />} />
-        {/* <Route path='/exercises' element={<ExercisesList />} />
-        <Route path='/addExercise' element={<AddExercise />} /> */}
+        <Route
+          path='/exercises'
+          element={<ExerciseList exercises={exercises} />}
+        />
+        {/* <Route path='/addExercise' element={<AddExercise />} /> */}
       </Routes>
     </div>
   );
 }
 
 export default App;
+
+// import axios from "axios";
+// import { useEffect, useState } from "react";
+// import { Route, Routes } from "react-router-dom";
+// import "./App.css";
+// import UserList from "./pages/users/UserList";
+// import AddUser from "./pages/users/AddUser";
+// import Dashboard from "./components/dashbord/Dashbord";
+// import ExerciseList from "./pages/exercises/ExerciseList.js";
+
+// function App() {
+// const [exercises, setExercises] = useState([])
+// const [users, setUsers] = useState([])
+
+//   useEffect(() => {
+//     async function getUsers() {
+//       const userData = await axios.get("http://localhost:8000/users");
+//       setUsers(userData.data);
+//       console.log(userData.data);
+//     }
+
+//     async function getExerciseList() {
+//       const exerciseData = await axios.get("http://localhost:8000/exercises");
+//       setExercises(exerciseData.data);
+//       console.log(exerciseData.data);
+//     }
+//     getUsers();
+//     getExerciseList();
+//   }, []);
+
+//   return (
+//     <div className='App'>
+//       <Routes>
+//         <Route path='/' element={<Dashboard />} />
+//         <Route path='/users' element={<UserList />} />
+//         <Route path='/addUser' element={<AddUser />} />
+//         <Route path='/exercises' element={<ExerciseList />} />
+//         {/* <Route path='/addExercise' element={<AddExercise />} /> */}
+//       </Routes>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+// const [data, setData] = useState({
+//   usersData: [],
+//   exercisesData: [],
+// });

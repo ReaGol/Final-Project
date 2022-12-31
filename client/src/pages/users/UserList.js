@@ -26,7 +26,7 @@ const UserList = () => {
 
   return (
     <div>
-      <div>
+      <div className="container">
         <Link to='/addUser' className='btn'>
           Add New
         </Link>

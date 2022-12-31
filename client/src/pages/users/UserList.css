@@ -36,3 +36,8 @@ tbody {
     text-align: center;
 }
 
+table {
+  border: 2px salmon solid;
+  border-radius: 10px;
+  padding: 20px;
+}

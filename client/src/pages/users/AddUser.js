@@ -19,9 +19,7 @@ function AddUser() {
     e.prevent.default();
     try {
       
-      await axios.post("https://final-project-kye7.onrender.com/users", 
-       user
-      );
+      await axios.post("https://final-project-kye7.onrender.com/users", user);
       navigate("/users");
     } catch (error) {
       console.log(error);

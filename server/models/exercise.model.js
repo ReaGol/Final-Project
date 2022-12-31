@@ -37,4 +37,8 @@ export const Exercise = mongoose.model("Exercise", {
     type: String,
     required: true,
   },
+  image: {
+    type: String,
+   
+  },
 });
