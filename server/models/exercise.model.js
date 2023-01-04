@@ -3,24 +3,24 @@ import mongoose from "mongoose";
 export const Exercise = mongoose.model("Exercise", {
   name: {
     type: String,
-    required: true,
+    // required: true,
     trim: true,
   },
 
   description: {
     type: String,
-    required: true,
+    // required: true,
     trim: true,
   },
 
   reps: {
     type: Number,
-    required: true,
+    // required: true,
     default: 0,
   },
   sets: {
     type: Number,
-    required: true,
+    // required: true,
     default: 0,
   },
 
@@ -30,12 +30,12 @@ export const Exercise = mongoose.model("Exercise", {
   completed: {
     type: Boolean,
     default: false,
-    required: true,
+    // required: true,
   },
 
   notes: {
     type: String,
-    required: true,
+    // required: true,
   },
   image: {
     type: String,

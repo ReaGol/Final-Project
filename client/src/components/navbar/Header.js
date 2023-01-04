@@ -16,9 +16,12 @@ function Header() {
           <li>
             <Link to='/about'>About</Link>
           </li>
-          {/* <li>
-            <Link to='/addUser'>Create New User</Link>
-          </li> */}
+          <li>
+            <Link to='/users/login' >Login</Link>
+          </li>
+          <li>
+            <Link to='/users/new'>Register</Link>
+          </li>
         </ul>
       </nav>
     </header>

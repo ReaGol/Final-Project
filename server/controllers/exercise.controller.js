@@ -1,6 +1,7 @@
 import { Exercise } from "../models/exercise.model.js";
 import  Validator  from "mongoose";
 
+
 //get all exercises
 
 export const getExercises = async (req, res) => {
@@ -12,16 +13,17 @@ export const getExercises = async (req, res) => {
   }
 };
 
-//
-// {
-//   Exercise.find({})
-//     .then((exercises) => {
-//       res.send(exercises);
-//     })
-//     .catch((error) => {
-//       res.status(500).send();
-//     });
-// }
+//---------------------create route later!!------------------------------//
+
+// export const getUserExercises = async (req, res) => {
+//  try {
+//    await req.user.populate("exercises");
+//    res.send(req.user.exercises);
+//  } catch (error) {
+//    res.status(500).send();
+//  }
+// };
+
 
 //----------------------------------------------------//
 
@@ -40,49 +42,24 @@ export const getExercise = async (req, res) => {
   }
 };
 
-//
-// {
-//   const _id = req.params.id;
 
-//   Exercise.findById(_id)
-//     .then((exercise) => {
-//       if (!exercise) {
-//         return res.status(404).send();
-//       }
-//       res.send(exercise);
-//     })
-//     .catch((error) => {
-//       res.status(500).send();
-//     });
-// }
 
 //---------------------------------------------------------//
 
 //create new exercise
 
-export const createExercise = async (req, res) => 
-
-// {
-//   try {
-//     const exercise = await exercise.create(req.body);
-//     res.status(200).send(exercise);
-//   } catch (error) {
-//     throw error;
-//   }
-// };
-
-//
-{
-  const exercise = new Exercise(req.body);
-
-  exercise
-    .save()
-    .then(() => {
-      res.send(exercise);
-    })
-    .catch((error) => {
-      res.status(400).send(error);
-    });
+export const createExercise = async (req, res) => {
+  const exercise = new Exercise({
+    ...req.body,
+    owner: req.user._id,
+  });
+  try {
+    await exercise.save();
+    res.status(201).send(exercise);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+ 
 }
 
 //------------------------------------------------------//
@@ -113,6 +90,9 @@ export const editExercise = async (req, res) => {
       runValidators: true,
     });
 
+    updates.forEach((update) => (exercise[update] = req.body[update]));
+    await exercise.save();
+
     if (!exercise) {
       return res.status(404).send();
     }
@@ -123,19 +103,6 @@ export const editExercise = async (req, res) => {
   }
 };
 
-//
-// {
-//   const exercise = await exercise.findById(req.params.id);
-
-//   if (!exercise) {
-//     res.status(400);
-//     throw new Error("Exercise not found");
-//   }
-//   const updatedExercise = await exercise.findByIdAndUpdate(req.params.id, req.body, {
-//     new: true,
-//   });
-//   res.status(200).json(updatedExercise);
-// };
 
 //--------------------------------------------------------------//
 
@@ -153,9 +120,5 @@ export const deleteExercise = async (req, res) => {
   }
 };
 
-//
-// {
-//   const exercise = await exercise.deleteOne(req.params.id);
-//   res.status(200).json({ message: `Deleted exercise ${req.params.id}` });
-// };
+
 //

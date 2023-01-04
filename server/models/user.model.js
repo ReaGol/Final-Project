@@ -22,7 +22,7 @@ export const User = mongoose.model("User", {
     type: String,
     required: true,
     trim: true,
-    minlength: 7,
+    minlength: 6,
     validate(value) {
       if (value.toLowerCase().includes("password")) {
         throw new Error('Password cannot contain the word "password"');
@@ -41,14 +41,14 @@ export const User = mongoose.model("User", {
 
   diagnosis: {
     type: String,
-    required: true,
-    minlength: 5,
+    // required: true,
+    // minlength: 5,
   },
 
   plan: {
     type: String,
-    required: true,
-    minlength: 5,
+    // required: true,
+    // minlength: 5,
   },
 
   perform: {

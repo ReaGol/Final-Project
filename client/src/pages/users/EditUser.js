@@ -22,6 +22,7 @@ const EditUser = () => {
   const getUserById = async () => {
     const response = await axios.get(`http://localhost:8000/users/${id}`);
     setUser(response.data.user);
+    console.log('id', id);
   };
 
   const updateUser = async (e) => {
@@ -48,7 +49,7 @@ const EditUser = () => {
           <br />
           <input
             value={firstName}
-            onChange={(e) => setUser(e.target.value)}
+            onChange={(e) => setUser({...user, firstName: e.target.value})}
             type='text'
             placeholder='First Name'
           />
@@ -58,7 +59,7 @@ const EditUser = () => {
           <br />
           <input
             value={email}
-            onChange={(e) => setUser(e.target.value)}
+            onChange={(e) => setUser({...user, email: e.target.value})}
             type='text'
             placeholder='email'
           />
@@ -68,7 +69,7 @@ const EditUser = () => {
           <br />
           <input
             value={password}
-            onChange={(e) => setUser(e.target.value)}
+            onChange={(e) => setUser({...user, password: e.target.value})}
             type='text'
             placeholder='password'
           />
@@ -78,7 +79,7 @@ const EditUser = () => {
           <br />
           <input
             value={diagnosis}
-            onChange={(e) => setUser(e.target.value)}
+            onChange={(e) => setUser({...user, diagnosis: e.target.value})}
             type='text'
             placeholder='diagnosis'
           />
@@ -88,7 +89,7 @@ const EditUser = () => {
           <br />
           <input
             value={plan}
-            onChange={(e) => setUser(e.target.value)}
+            onChange={(e) => setUser({...user, plan: e.target.value})}
             type='text'
             placeholder='plan'
           />

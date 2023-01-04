@@ -6,6 +6,8 @@ import Dashboard from "./components/dashbord/Dashbord";
 import ExerciseList from "./pages/exercises/ExerciseList.js";
 import AddUser from "./pages/users/AddUser";
 import UserList from "./pages/users/UserList";
+import Register from './pages/users/Register.js'
+import Login from "./pages/users/Login.js";
 
 function App() {
   const [exercises, setExercises] = useState([]);
@@ -32,6 +34,8 @@ function App() {
         <Route path='/' element={<Dashboard />} />
         <Route path='/users' element={<UserList />} />
         <Route path='/addUser' element={<AddUser />} />
+        <Route path='/users/login' element={<Login />} />
+        <Route path='/users/new' element={<Register />} />
         <Route
           path='/exercises'
           element={<ExerciseList exercises={exercises} />}

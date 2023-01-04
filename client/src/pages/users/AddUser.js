@@ -16,10 +16,11 @@ function AddUser() {
   const navigate = useNavigate();
 
   const saveUser = async (e) => {
-    e.prevent.default();
+    console.log(e)
+    e.preventDefault();
     try {
-      
-      await axios.post("https://final-project-kye7.onrender.com/users", user);
+      console.log(`saving user ${JSON.stringify(user)}`)
+      await axios.post("http://localhost:8000/users", user);
       navigate("/users");
     } catch (error) {
       console.log(error);
@@ -32,8 +33,7 @@ function AddUser() {
           <label htmlFor=''>Enter First Name</label>
           <br />
           <input
-            value={user.firstName}
-            onChange={(e) => setUser(e.target.value)}
+            onChange={(e) => setUser({...user, firstName:e.target.value})}
             type='text'
             placeholder='First Name'
           />
@@ -42,8 +42,8 @@ function AddUser() {
           <label htmlFor=''>Enter Email</label>
           <br />
           <input
-            value={user.email}
-            onChange={(e) => setUser(e.target.value)}
+            // value={user.email}
+            onChange={(e) => setUser({...user, email: e.target.value})}
             type='text'
             placeholder='email'
           />
@@ -52,8 +52,8 @@ function AddUser() {
           <label htmlFor=''>Enter Password</label>
           <br />
           <input
-            value={user.password}
-            onChange={(e) => setUser(e.target.value)}
+            // value={user.password}
+            onChange={(e) => setUser({...user, password: e.target.value})}
             type='text'
             placeholder='password'
           />
@@ -63,7 +63,7 @@ function AddUser() {
           <br />
           <input
             value={user.diagnosis}
-            onChange={(e) => setUser(e.target.value)}
+            onChange={(e) => setUser({...user, diagnosis: e.target.value})}
             type='text'
             placeholder='diagnosis'
           />
@@ -73,7 +73,7 @@ function AddUser() {
           <br />
           <input
             value={user.plan}
-            onChange={(e) => setUser(e.target.value)}
+            onChange={(e) => setUser({...user, plan: e.target.value})}
             type='text'
             placeholder='plan'
           />
