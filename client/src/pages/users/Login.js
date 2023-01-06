@@ -30,24 +30,28 @@ export default function Login() {
     }
   }
   return (
-    <div className='LoginPage'>
-      <div className='LoginDiv'>
+    <div className='form-container'>
+      <div>
         <h3>Login</h3>
         <form onSubmit={loginUser}>
-          <label htmlFor='email'>email</label>
-          <input
-            type='email'
-            name='email'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          ></input>
-          <label htmlFor='password'>password</label>
-          <input
-            type='password'
-            name='password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          ></input>
+          <div className='input-container'>
+            <label htmlFor='email'>email</label>
+            <input
+              type='email'
+              name='email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            ></input>
+          </div>
+          <div className='input-container'>
+            <label htmlFor='password'>password</label>
+            <input
+              type='password'
+              name='password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            ></input>
+          </div>
           <button type='submit'>Login</button>
         </form>
       </div>

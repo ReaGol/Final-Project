@@ -22,6 +22,6 @@ router.get("/users/:id", auth, getUser);
 
 router.patch("/users/:id", auth, editUser);
 
-router.delete("/users/:id", auth, deleteUser);
+router.delete("/users/:id", deleteUser);
 
 

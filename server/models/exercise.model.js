@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 export const Exercise = mongoose.model("Exercise", {
-  name: {
+  exerciseName: {
     type: String,
     // required: true,
     trim: true,
@@ -39,6 +39,10 @@ export const Exercise = mongoose.model("Exercise", {
   },
   image: {
     type: String,
-   
+  },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "User",
   },
 });
