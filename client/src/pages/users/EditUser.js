@@ -21,20 +21,14 @@ const EditUser = () => {
 
   const getUserById = async () => {
     const response = await axios.get(`http://localhost:8000/users/${id}`);
-    setUser(response.data.user);
+    setUser(response.data);
     console.log('id', id);
   };
 
   const updateUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`http://localhost:8000/edit/${id}`, {
-        firstName,
-        email,
-        password,
-        diagnosis,
-        plan,
-      });
+      await axios.patch(`http://localhost:8000/users/edit/${id}`, {firstName: user.firstName, email: user.email, diagnosis: user.diagnosis, plan: user.plan});
       navigate("/users");
     } catch (error) {
       console.log(error);
@@ -48,7 +42,7 @@ const EditUser = () => {
           <label htmlFor=''>Enter First Name</label>
           <br />
           <input
-            value={firstName}
+            value={user.firstName}
             onChange={(e) => setUser({...user, firstName: e.target.value})}
             type='text'
             placeholder='First Name'
@@ -58,27 +52,27 @@ const EditUser = () => {
           <label htmlFor=''>Enter Email</label>
           <br />
           <input
-            value={email}
+            value={user.email}
             onChange={(e) => setUser({...user, email: e.target.value})}
             type='text'
             placeholder='email'
           />
         </div>
-        <div className='input-container'>
+        {/* <div className='input-container'>
           <label htmlFor=''>Enter Password</label>
           <br />
           <input
-            value={password}
+            value={user.password}
             onChange={(e) => setUser({...user, password: e.target.value})}
             type='text'
             placeholder='password'
           />
-        </div>
+        </div> */}
         <div className='input-container'>
           <label htmlFor=''>Enter Diagnosis</label>
           <br />
           <input
-            value={diagnosis}
+            value={user.diagnosis}
             onChange={(e) => setUser({...user, diagnosis: e.target.value})}
             type='text'
             placeholder='diagnosis'
@@ -88,14 +82,14 @@ const EditUser = () => {
           <label htmlFor=''>Enter Treatment Plan</label>
           <br />
           <input
-            value={plan}
+            value={user.plan}
             onChange={(e) => setUser({...user, plan: e.target.value})}
             type='text'
             placeholder='plan'
           />
         </div>
         <div>
-          <input className='btn' type='submit' value='Create' />
+          <input className='btn' type='submit' value='Save Changes' />
         </div>
       </form>
     </div>

@@ -20,13 +20,14 @@ export default function Register() {
         firstName: name,
         email,
         password,
-      }); 
+      });
       const data = response.data;
       const token = data.token;
       Cookies.set("jwt", token, { expires: 7 });
-      localStorage.setItem("userName", JSON.stringify(data.user.name));
+      localStorage.setItem("firstName", JSON.stringify(data.user.name));
       const jwt = Cookies.get("jwt");
-      console.log(jwt);
+      // console.log(jwt);
+
       // if (data) {
       //   var body = JSON.stringify({
       //     name: "",
@@ -35,26 +36,40 @@ export default function Register() {
       //     sets: "",
       //     image: "",
       //   });
+      const exercisesOptions = {
+        method: "POST",
+        url: `${apiUrl}exercises`,
+        headers: {
+          Authorization: `Bearer ${jwt}`,
+        },
+      };
+      // var config = {
+      //   method: "post",
+      //   url: `${apiUrl}/exercises`,
+      // headers: {
+      //   Authorization: `Bearer ${jwt}`,
+      //   "Content-Type": "application/json",
+      // },
+      //   data: body,
+      // };
 
-      //   var config = {
-      //     method: "post",
-      //     url: `${apiUrl}/exercises`,
-      //     headers: {
-      //       Authorization: `Bearer ${jwt}`,
-      //       "Content-Type": "application/json",
-      //     },
-      //     data: body,
-      //   };
+      axios(exercisesOptions)
+        .then(function (response) {
+          console.log(JSON.stringify(response.data._id));
+          localStorage.setItem("_id", JSON.stringify(response.data._id));
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      // axios(config)
+      //   .then(function (response) {
+      //     console.log(JSON.stringify(response.data._id));
+      //     localStorage.setItem("_id", JSON.stringify(response.data._id));
+      //   })
+      //   .catch(function (error) {
+      //     console.log(error);
+      //   });
 
-      //   axios(config)
-      //     .then(function (response) {
-      //       console.log(JSON.stringify(response.data._id));
-      //       localStorage.setItem("_id", JSON.stringify(response.data._id));
-      //     })
-      //     .catch(function (error) {
-      //       console.log(error);
-      //     });
-        
       // }
       navigate("/users");
     } catch (error) {

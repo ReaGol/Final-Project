@@ -5,9 +5,12 @@ import "./App.css";
 import Dashboard from "./components/dashbord/Dashbord";
 import ExerciseList from "./pages/exercises/ExerciseList.js";
 import AddUser from "./pages/users/AddUser";
+import AddExercise from "./pages/exercises/AddExercise";
 import UserList from "./pages/users/UserList";
 import Register from './pages/users/Register.js'
 import Login from "./pages/users/Login.js";
+import EditUser from "./pages/users/EditUser";
+import AddExercisePerClient from "./pages/exercises/AddExercisePerClient";
 
 function App() {
   const [exercises, setExercises] = useState([]);
@@ -36,11 +39,16 @@ function App() {
         <Route path='/addUser' element={<AddUser />} />
         <Route path='/users/login' element={<Login />} />
         <Route path='/users/new' element={<Register />} />
+        <Route path='/users/edit/:id' element={<EditUser />} />
         <Route
           path='/exercises'
           element={<ExerciseList exercises={exercises} />}
         />
-        {/* <Route path='/addExercise' element={<AddExercise />} /> */}
+        <Route
+          path='/users/:id/exercises'
+          element={<AddExercisePerClient exercises={exercises} users={users} />}
+        />
+        <Route path='/addexercise' element={<AddExercise />} />
       </Routes>
     </div>
   );

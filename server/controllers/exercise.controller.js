@@ -1,4 +1,5 @@
 import { Exercise } from "../models/exercise.model.js";
+import { User } from "../models/user.model.js";
 import  Validator  from "mongoose";
 
 
@@ -49,6 +50,7 @@ export const getExercise = async (req, res) => {
 //create new exercise
 
 export const createExercise = async (req, res) => {
+  // const user = new User(req.body);
   const exercise = new Exercise({
     ...req.body,
     owner: req.user._id,

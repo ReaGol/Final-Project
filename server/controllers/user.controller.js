@@ -94,7 +94,7 @@ export const LogoutAllUsers = async (req, res) => {
 //edit a user as admin
 export const editUser = async (req, res) => {
  const updates = Object.keys(req.body);
- const allowedUpdates = ["name", "email", "password", "age"];
+ const allowedUpdates = ["firstName", "email", "diagnosis", "plan", "age"];
  const isValidOperation = updates.every((update) =>
    allowedUpdates.includes(update)
  );
