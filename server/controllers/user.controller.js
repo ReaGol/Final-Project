@@ -1,6 +1,5 @@
 import { User } from "../models/user.model.js";
 
-
 //get all users
 export const getUsers = async (req, res) => {
   const users = await User.find({});
@@ -30,7 +29,6 @@ export const getUser = async (req, res) => {
 //---------------get user with auth-------------------------
 export const getProfile = async (req, res) => {
   res.send(req.user);
-  
 };
 
 //---------------------------------------------------//
@@ -58,7 +56,6 @@ export const userLogin = async (req, res) => {
     );
     const token = await user.generateAuthToken();
     res.send({ user, token });
-   
   } catch (error) {
     res.status(400).send();
   }
@@ -81,7 +78,7 @@ export const userLogout = async (req, res) => {
 //------------------Logout all users---------------------
 export const LogoutAllUsers = async (req, res) => {
   try {
-    req.user.tokens = []
+    req.user.tokens = [];
     await req.user.save();
 
     res.send();
@@ -93,43 +90,47 @@ export const LogoutAllUsers = async (req, res) => {
 //--------------------------------------------------//
 //edit a user as admin
 export const editUser = async (req, res) => {
- const updates = Object.keys(req.body);
- const allowedUpdates = ["firstName", "email", "diagnosis", "plan", "age"];
- const isValidOperation = updates.every((update) =>
-   allowedUpdates.includes(update)
- );
+  const updates = Object.keys(req.body);
+  const allowedUpdates = [
+    "firstName",
+    "email",
+    "diagnosis",
+    "plan",
+    "age",
+    "exerciseArray",
+  ];
+  const isValidOperation = updates.every((update) =>
+    allowedUpdates.includes(update)
+  );
 
- if (!isValidOperation) {
-   return res.status(400).send({ error: "Invalid Update" });
- }
- try {
-  
-   const user = await User.findById(req.params.id);
+  if (!isValidOperation) {
+    return res.status(400).send({ error: "Invalid Update" });
+  }
+  try {
+    const user = await User.findById(req.params.id);
 
-   updates.forEach((update) => (user[update] = req.body[update]));
+    updates.forEach((update) => (user[update] = req.body[update]));
+console.log(user);
+    await user.save();
 
-   await user.save();
+    if (!user) {
+      return res.status(404).send();
+    }
 
-   if (!user) {
-     return res.status(404).send();
-   }
-
-   res.send(user);
- } catch (error) {
-   res.status(400).send(error);
- }
+    res.send(user);
+  } catch (error) {
+    res.status(400).send(error);
+  }
 };
-
 
 //----------------------------------------------------------------------------//
 
 //--------------edit user as user--------------------
 
-export const editProfile = async (req, res)=> {
+export const editProfile = async (req, res) => {
   try {
- 
     const updates = Object.keys(req.body);
-    const allowedUpdates = ["name", "email", "password", "age"];
+    const allowedUpdates = ["name", "email", "password", "age", "exercises"];
     const isValidOperation = updates.every((update) =>
       allowedUpdates.includes(update)
     );
@@ -138,14 +139,13 @@ export const editProfile = async (req, res)=> {
       return res.status(500).send({ error: "Invalid Update" });
     }
 
-      updates.forEach((update) => req.user[update] = req.body[update])
-      await req.user.save()
-      res.send(req.user)
-    } catch (error) {
-      res.status(401).send(error)      
-    }
-
-}
+    updates.forEach((update) => (req.user[update] = req.body[update]));
+    await req.user.save();
+    res.send(req.user);
+  } catch (error) {
+    res.status(401).send(error);
+  }
+};
 //delete a user
 export const deleteUser = async (req, res) => {
   try {

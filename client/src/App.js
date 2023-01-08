@@ -11,6 +11,9 @@ import Register from './pages/users/Register.js'
 import Login from "./pages/users/Login.js";
 import EditUser from "./pages/users/EditUser";
 import AddExercisePerClient from "./pages/exercises/AddExercisePerClient";
+import Homepage from "./pages/homepage/Homepage";
+import ExerciseChart from "./pages/ExerciseChart";
+import UserExercises from "./pages/users/UserExercises";
 
 function App() {
   const [exercises, setExercises] = useState([]);
@@ -35,17 +38,23 @@ function App() {
     <div className='app'>
       <Routes>
         <Route path='/' element={<Dashboard />} />
+        <Route path='/homepage' element={<Homepage />} />
         <Route path='/users' element={<UserList />} />
         <Route path='/addUser' element={<AddUser />} />
         <Route path='/users/login' element={<Login />} />
         <Route path='/users/new' element={<Register />} />
         <Route path='/users/edit/:id' element={<EditUser />} />
+        <Route path='/users/:id' element={<UserExercises />} />
+        <Route
+          path='/userexercises'
+          element={<UserExercises exercises={exercises} />}
+        />
         <Route
           path='/exercises'
           element={<ExerciseList exercises={exercises} />}
         />
         <Route
-          path='/users/:id/exercises'
+          path='/users/edit/:id/exercises'
           element={<AddExercisePerClient exercises={exercises} users={users} />}
         />
         <Route path='/addexercise' element={<AddExercise />} />

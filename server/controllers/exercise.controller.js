@@ -53,7 +53,7 @@ export const createExercise = async (req, res) => {
   // const user = new User(req.body);
   const exercise = new Exercise({
     ...req.body,
-    owner: req.user._id,
+    owner: req.body._id,
   });
   try {
     await exercise.save();

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./UserList.css";
 
 const EditUser = () => {
@@ -43,7 +44,7 @@ const EditUser = () => {
           <br />
           <input
             value={user.firstName}
-            onChange={(e) => setUser({...user, firstName: e.target.value})}
+            onChange={(e) => setUser({ ...user, firstName: e.target.value })}
             type='text'
             placeholder='First Name'
           />
@@ -53,7 +54,7 @@ const EditUser = () => {
           <br />
           <input
             value={user.email}
-            onChange={(e) => setUser({...user, email: e.target.value})}
+            onChange={(e) => setUser({ ...user, email: e.target.value })}
             type='text'
             placeholder='email'
           />
@@ -73,7 +74,7 @@ const EditUser = () => {
           <br />
           <input
             value={user.diagnosis}
-            onChange={(e) => setUser({...user, diagnosis: e.target.value})}
+            onChange={(e) => setUser({ ...user, diagnosis: e.target.value })}
             type='text'
             placeholder='diagnosis'
           />
@@ -83,10 +84,15 @@ const EditUser = () => {
           <br />
           <input
             value={user.plan}
-            onChange={(e) => setUser({...user, plan: e.target.value})}
+            onChange={(e) => setUser({ ...user, plan: e.target.value })}
             type='text'
             placeholder='plan'
           />
+        </div>
+        <div>
+          <Link to={`/users/edit/${id}/exercises`} id={id} className='link-btn'>
+            Add Exercises To Client
+          </Link>
         </div>
         <div>
           <input className='btn' type='submit' value='Save Changes' />

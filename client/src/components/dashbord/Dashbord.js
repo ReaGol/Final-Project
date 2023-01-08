@@ -16,6 +16,7 @@ function Dashboard() {
         <div onClick={() => navigate("/adduser")}>Add User</div>
         <div onClick={() => navigate("/exercises")}>Exercises</div>
         <div onClick={() => navigate("/addexercise")}>Add Exercise</div>
+        <div onClick={() => navigate("/userexercises")}>User Exercises</div>
       </div>
     </>
   );
