@@ -18,11 +18,28 @@ body {
 }
 
 .wrapper {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 16rem));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+  align-content: center;
+   margin: 5%;
+  /* grid-template-columns: repeat(auto-fit, minmax(12rem, 16rem)); */
   gap: 2rem;
   justify-content: center;
-  margin: 2rem;
+  
+} 
+
+.exercises-container{
+    display: flex;
+    flex-wrap: wrap;
+   
+}
+
+.btn-save > button {
+    display: block;
+    /* margin: auto; */
+    padding: 1rem;
 }
 
 /* .exercise-card{

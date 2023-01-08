@@ -9,13 +9,13 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.wrapper {
+/* .wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(12rem, 16rem));
   gap: 2rem;
   justify-content: center;
   margin: 2rem;
-}
+} */
 
 /* .exercise-card{
     display: grid;
@@ -60,6 +60,7 @@ body {
   background: transparent;
   color: palevioletred;
   border-radius: 1rem;
+  line-height: normal;
   transition: background 200ms ease-in, color 200ms ease-in;
 }
 

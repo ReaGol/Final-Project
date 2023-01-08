@@ -80,11 +80,11 @@ import jwt from "jsonwebtoken";
  });
 
 
-userSchema.virtual("exercises", {
-  ref: "Exercise",
-  localField: "_id",
-  foreignField: "owner",
-});
+// userSchema.virtual("exercises", {
+//   ref: "Exercise",
+//   localField: "_id",
+//   foreignField: "owner",
+// });
 
 userSchema.methods.toJSON = function () {
   const user = this;

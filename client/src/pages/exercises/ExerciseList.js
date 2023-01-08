@@ -20,6 +20,7 @@ function ExerciseList({ exercises }) {
           image={exercise.image}
         />
       ))}
+     
     </div>
   );
 }

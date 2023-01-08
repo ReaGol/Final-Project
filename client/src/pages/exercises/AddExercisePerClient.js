@@ -58,7 +58,7 @@ function AddExercisePerClient({ exercises, users }) {
   };
   return (
     //show all exercises
-    <div>
+    <div className='exercises-container'>
       {exercises.map((exercise) => (
         <div className='wrapper'>
           <ExerciseCard
@@ -72,14 +72,19 @@ function AddExercisePerClient({ exercises, users }) {
             //handleCheckboxChange={handleCheckboxChange}
             //selectedExercises={selectedExercises}
           />
-          <button className="card-btn" onClick={() => handleCheckboxChange(exercise._id)}>
+          <button
+            className='card-btn'
+            onClick={() => handleCheckboxChange(exercise._id)}
+          >
             {!selectedExercises.includes(exercise._id)
               ? `add to list`
               : `remove from list`}
           </button>
         </div>
       ))}
-      <button onClick={handleSave}>Save</button>
+      <div className='btn-save'>
+        <button onClick={handleSave}>Save</button>
+      </div>
     </div>
   );
 }

@@ -53,7 +53,7 @@ export const createExercise = async (req, res) => {
   // const user = new User(req.body);
   const exercise = new Exercise({
     ...req.body,
-    owner: req.body._id,
+    // owner: req.body._id,
   });
   try {
     await exercise.save();
@@ -77,7 +77,7 @@ export const editExercise = async (req, res) => {
     "sets",
     "notes",
     "duration",
-    "image"
+    "image",
   ];
   const isValidOperation = updates.every((update) =>
     allowedUpdates.includes(update)

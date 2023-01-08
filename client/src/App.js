@@ -23,6 +23,7 @@ function App() {
     async function fetchData() {
       const userData = await axios.get("http://localhost:8000/users");
       setUsers((prevUsers) => userData.data);
+      console.log(userData);
       
 
       const exerciseData = await axios.get("http://localhost:8000/exercises");
@@ -44,10 +45,13 @@ function App() {
         <Route path='/users/login' element={<Login />} />
         <Route path='/users/new' element={<Register />} />
         <Route path='/users/edit/:id' element={<EditUser />} />
-        <Route path='/users/:id' element={<UserExercises />} />
+        <Route
+          path='/users/:id'
+          element={<UserExercises exercises={exercises} users={users} />}
+        />
         <Route
           path='/userexercises'
-          element={<UserExercises exercises={exercises} />}
+          element={<UserExercises exercises={exercises} users={users} />}
         />
         <Route
           path='/exercises'

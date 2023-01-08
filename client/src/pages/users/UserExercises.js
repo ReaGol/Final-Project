@@ -11,12 +11,17 @@ const [repsCompleted, setRepsCompleted] = useState([]);
 const [setsCompletedInput, setSetsCompletedInput] = useState(0);
 const [repsCompletedInput, setRepsCompletedInput] = useState(0);
 const { userId } = useParams();
-console.log(exercises);
+console.log(users);
+console.log(userId);
 
 useEffect(() => {
-const currentUser = users.find((user) => user._id === userId);
-setCompletedExercises(currentUser.exercises);
-console.log(users);
+  const areExercisesCompleted = async () => {
+    console.log(users);
+    const currentUser = await users.find((user) => user._id === userId);
+    setCompletedExercises(currentUser.exercises);
+    
+  }
+  areExercisesCompleted()
 }, [userId, users]);
 
 const handleCheckboxChange = (e) => {
@@ -78,7 +83,7 @@ console.log(error);
         onChange={(e) => setRepsCompletedInput(e.target.value)}
       />
       <button onClick={handleSave}>Save</button>
-      <ExerciseChart exercises={exercises} userId={userId} />
+      {/* <ExerciseChart exercises={exercises} userId={userId} /> */}
     </div>
   );
 }
