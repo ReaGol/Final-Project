@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ExerciseChart from "../ExerciseChart";
+import { Link } from "react-router-dom";
+import './UserExercise.css'
 
 function UserExercises({ exercises, users }) {
 const [completedExercises, setCompletedExercises] = useState([]);
@@ -55,7 +57,7 @@ console.log(error);
 };
 
   return (
-    <div>
+    <div className='container'>
       <h3>Your Exercises</h3>
       <form>
         {exercises.map((exercise) => (
@@ -72,17 +74,25 @@ console.log(error);
           </div>
         ))}
       </form>
+      <br />
+      <label htmlFor=''>Sets</label>
       <input
         type='number'
+        name='sets'
         value={setsCompletedInput}
         onChange={(e) => setSetsCompletedInput(e.target.value)}
       />
+      <label htmlFor=''>Reps</label>
       <input
         type='number'
+        name='reps'
         value={repsCompletedInput}
         onChange={(e) => setRepsCompletedInput(e.target.value)}
       />
       <button onClick={handleSave}>Save</button>
+      <Link to='/'>
+        <button>Back</button>
+      </Link>
       {/* <ExerciseChart exercises={exercises} userId={userId} /> */}
     </div>
   );

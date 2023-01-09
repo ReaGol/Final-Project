@@ -26,7 +26,7 @@ const UserList = () => {
 
   return (
     <div>
-      <div className="container">
+      <div className='container'>
         <Link to='/addUser' className='btn'>
           Add New
         </Link>
@@ -62,6 +62,9 @@ const UserList = () => {
             ))}
           </tbody>
         </table>
+        <Link to='/' className='btn'>
+          Back
+        </Link>
       </div>
     </div>
   );

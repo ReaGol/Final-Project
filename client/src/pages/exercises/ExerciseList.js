@@ -1,6 +1,6 @@
 import React from "react";
 import ExerciseCard from "../../components/ExerciseCard.js";
-import '../../components/ExerciseCard.css'
+import './ExerciseList.css'
 
 function ExerciseList({ exercises }) {
 
@@ -9,7 +9,7 @@ function ExerciseList({ exercises }) {
   }
 
   return (
-    <div className='card'>
+    <div className='wrapper'>
       {exercises.map((exercise) => (
         <ExerciseCard
           key={exercise.id}

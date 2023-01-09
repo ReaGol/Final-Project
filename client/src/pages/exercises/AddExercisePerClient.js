@@ -13,9 +13,12 @@ function AddExercisePerClient({ exercises, users }) {
   //take user id from params - filter users to get user and exercises
   useEffect(() => {
     console.log(id, users)
-    const currentUser = users.find((user) => user._id === id);
-    console.log(currentUser);
-    setSelectedExercises(currentUser.exerciseArray.map(e => e.exercise));
+    
+  setTimeout(() => {
+      const currentUser = users.find((user) => user._id === id);
+      console.log(currentUser);
+      setSelectedExercises(currentUser.exerciseArray.map(e => e.exercise));
+  }, 2000);
   }, [id, users]);
 
   const handleCheckboxChange = (exerciseId) => {

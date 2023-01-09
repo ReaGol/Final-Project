@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import './homepage.css'
 import { FaChartLine, FaCheckSquare, FaEnvelope } from "react-icons/fa";
 
@@ -8,7 +9,9 @@ function Homepage() {
     return (
       <div className='HomePage'>
         <div className='image-bg'>
-          <h1>PhysioTrack</h1>
+          <Link to='/'>
+            <h1>PhysioTrack</h1>
+          </Link>
           <p>
             Welcome physios!
             <br />
