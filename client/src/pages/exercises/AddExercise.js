@@ -1,6 +1,7 @@
 import axios from "axios";
 import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import './exercises.css'
 
 function AddExercise() {
@@ -105,6 +106,9 @@ function AddExercise() {
          <div>
            <input className='btn' type='submit' value='Create' />
          </div>
+         {/* <Link to='/' className='btn'>
+           Back
+         </Link> */}
        </form>
      </div>
    );

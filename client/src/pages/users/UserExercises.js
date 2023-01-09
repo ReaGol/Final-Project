@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ExerciseChart from "../ExerciseChart";
+// import ExerciseChart from "../ExerciseChart";
 import { Link } from "react-router-dom";
 import './UserExercise.css'
 
@@ -12,19 +12,20 @@ const [setsCompleted, setSetsCompleted] = useState([]);
 const [repsCompleted, setRepsCompleted] = useState([]);
 const [setsCompletedInput, setSetsCompletedInput] = useState(0);
 const [repsCompletedInput, setRepsCompletedInput] = useState(0);
-const { userId } = useParams();
+const { id } = useParams();
 console.log(users);
-console.log(userId);
+console.log(id);
 
 useEffect(() => {
   const areExercisesCompleted = async () => {
     console.log(users);
-    const currentUser = await users.find((user) => user._id === userId);
-    setCompletedExercises(currentUser.exercises);
+    const currentUser = await users.find((user) => user._id === id);
+    setCompletedExercises(currentUser.exerciseArray);
+    console.log(currentUser);
     
   }
   areExercisesCompleted()
-}, [userId, users]);
+}, [id, users]);
 
 const handleCheckboxChange = (e) => {
 const checkedExerciseId = e.target.value;
@@ -42,9 +43,9 @@ setCompletedExercises([...completedExercises, checkedExerciseId]);
 const handleSave = async () => {
 try {
 const response = await axios.patch(
-`http://localhost:8000/users/${userId}`,
+`http://localhost:8000/users/${id}`,
 {
-exercises: completedExercises,
+exerciseArray : completedExercises,
 daysTrained: [...daysTrained, new Date()],
 setsCompleted: [...setsCompleted, setsCompletedInput],
 repsCompleted: [...repsCompleted, repsCompletedInput],
@@ -60,7 +61,7 @@ console.log(error);
     <div className='container'>
       <h3>Your Exercises</h3>
       <form>
-        {exercises.map((exercise) => (
+        {completedExercises.map((exercise) => (
           <div key={exercise._id}>
             <label htmlFor={exercise._id}>
               <input
@@ -69,7 +70,7 @@ console.log(error);
                 onChange={handleCheckboxChange}
                 checked={completedExercises.includes(exercise._id)}
               />
-              {exercise.name}
+              {exercises.find(e => e._id === exercise.exercise).name}
             </label>
           </div>
         ))}
@@ -93,7 +94,7 @@ console.log(error);
       <Link to='/'>
         <button>Back</button>
       </Link>
-      {/* <ExerciseChart exercises={exercises} userId={userId} /> */}
+      {/* <ExerciseChart exercises={exercises} id={id} /> */}
     </div>
   );
 }

@@ -49,10 +49,10 @@ function App() {
           path='/users/:id'
           element={<UserExercises exercises={exercises} users={users} />}
         />
-        <Route
+        {/* <Route
           path='/userexercises'
           element={<UserExercises exercises={exercises} users={users} />}
-        />
+        /> */}
         <Route
           path='/exercises'
           element={<ExerciseList exercises={exercises} />}

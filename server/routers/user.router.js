@@ -12,6 +12,8 @@ router.get("/users/me", auth, getProfile);
 
 router.patch("/user/me", auth, editProfile)
 
+router.patch("/users/:id", editProfile);
+
 router.post("/users/logout", auth, userLogout)
 
 router.post("/users/logoutAll", auth, LogoutAllUsers)

@@ -22,21 +22,8 @@ function AddExercisePerClient({ exercises, users }) {
   }, [id, users]);
 
   const handleCheckboxChange = (exerciseId) => {
-    //checkboxes for each exercise (check if already checked)
-    //filter checked exercises
-    // const checkedExerciseId = e.target.value;
-    // if (selectedExercises.includes(checkedExerciseId)) {
-    //   setSelectedExercises(
-    //     selectedExercises.filter(
-    //       (exerciseId) => exerciseId !== checkedExerciseId
-    //     )
-    //   );
-    // } else {
-    //   setSelectedExercises([...selectedExercises, checkedExerciseId]);
-    // }
-
     if (selectedExercises.includes(exerciseId)){
-      setSelectedExercises(selectedExercises.filter(e => e._id !== exerciseId))
+      setSelectedExercises(selectedExercises.filter(id => id !== exerciseId))
     } else {
       setSelectedExercises([...selectedExercises, exerciseId])
     }

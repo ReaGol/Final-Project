@@ -73,11 +73,21 @@ import jwt from "jsonwebtoken";
    exerciseArray: [
      {
        exercise: {
-         type: String
+         type: String,
+       },
+       sets: {
+         type: Number,
+       },
+       reps: {
+         type: Number,
+       },
+       streak: {
+         type: Number,
        },
      },
    ],
  });
+
 
 
 // userSchema.virtual("exercises", {
