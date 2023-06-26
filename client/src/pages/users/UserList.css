@@ -1,5 +1,4 @@
 .btn {
- 
   background-color: dodgerblue;
   color: azure;
   border: none;
@@ -13,7 +12,6 @@
 }
 
 .btn-delete {
- 
   background-color: red;
   color: azure;
   border: none;
@@ -22,22 +20,27 @@
   transition: all 0.3s ease 0s;
   margin: 5px;
   margin-left: 10px;
-   padding: 2px 8px;
-   font-weight: 500;
+  padding: 2px 8px;
+  font-weight: 500;
 }
 
-th {
-  
-    padding: 10px;
+td {
+ padding: 1% 0;
+ width: 15%;
+}
+
+thead {
+  text-align: left;
 }
 
 tbody {
-    margin-left: 10px;
-    text-align: center;
+  margin-left: 10px;
+  text-align: left;
 }
 
 table {
-  border: 2px salmon solid;
+  width: 70%;
+  border: 2px #ad95ef solid;
   border-radius: 10px;
   padding: 20px;
 }

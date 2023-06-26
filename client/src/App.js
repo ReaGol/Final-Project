@@ -22,6 +22,7 @@ function App() {
   useEffect(() => {
     async function fetchData() {
       const userData = await axios.get("http://localhost:8000/users");
+      
       setUsers((prevUsers) => userData.data);
       console.log(userData);
       

@@ -28,7 +28,7 @@ const UserList = () => {
     <div>
       <div className='container'>
         <Link to='/addUser' className='btn'>
-          Add New
+          <i class='fa-solid fa-folder-plus'></i>
         </Link>
         <table>
           <thead>
@@ -49,13 +49,13 @@ const UserList = () => {
 
                 <td>
                   <Link to={`edit/${user._id}`} className='btn'>
-                    Edit
+                    <i class='fa-regular fa-pen-to-square'></i>
                   </Link>
                   <button
                     onClick={() => deleteUser(user._id)}
                     className='btn-delete'
                   >
-                    Delete
+                    <i class='fa-regular fa-trash-can'></i>
                   </button>
                 </td>
               </tr>
@@ -63,7 +63,7 @@ const UserList = () => {
           </tbody>
         </table>
         <Link to='/' className='btn'>
-          Back
+          <i class='fa-solid fa-arrow-left-long'></i>
         </Link>
       </div>
     </div>
