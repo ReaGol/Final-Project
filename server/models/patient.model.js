@@ -3,7 +3,7 @@ import validator from "validator";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
- const userSchema = new mongoose.Schema({
+ const patientSchema = new mongoose.Schema({
    firstName: {
      type: String,
      required: true,
@@ -84,67 +84,70 @@ import jwt from "jsonwebtoken";
        streak: {
          type: Number,
        },
+       note: {
+         type: String,
+       },
      },
    ],
  });
 
 
 
-// userSchema.virtual("exercises", {
+// patientSchema.virtual("exercises", {
 //   ref: "Exercise",
 //   localField: "_id",
 //   foreignField: "owner",
 // });
 
-userSchema.methods.toJSON = function () {
-  const user = this;
-  const userObject = user.toObject();
+patientSchema.methods.toJSON = function () {
+  const patient = this;
+  const patientObject = patient.toObject();
 
-  delete userObject.password;
-  delete userObject.tokens;
+  delete patientObject.password;
+  delete patientObject.tokens;
 
-  return userObject;
+  return patientObject;
 };
 
-userSchema.methods.generateAuthToken = async function () {
-  const user = this;
+patientSchema.methods.generateAuthToken = async function () {
+  const patient = this;
   const token = jwt.sign(
-    { _id: user._id.toString() },
+    { _id: patient._id.toString() },
     "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY3MjY3NTAzMywiaWF0IjoxNjcyNjc1MDMzfQ.3P-xAYZfN7VaWQA3dPzJRqHMrfvstr67k5R8U3gCJJM"
   );
 
-  user.tokens = user.tokens.concat({ token });
-  await user.save();
+  patient.tokens = patient.tokens.concat({ token });
+  await patient.save();
 
   return token;
 };
 
-userSchema.statics.findByCredentials = async (email, password) => {
-  const user = await User.findOne({ email });
+patientSchema.statics.findByCredentials = async (email, password) => {
+  const patient = await patient.findOne({ email });
 
-  if (!user) {
+  if (!patient) {
     throw new Error("Unable to login");
   }
 
-  const isMatch = await bcrypt.compare(password, user.password);
+  const isMatch = await bcrypt.compare(password, patient.password);
 
   if (!isMatch) {
     throw new Error("Unable to login");
   }
 
-  return user;
+  return patient;
 };
 
 // Hash the plain text password before saving
-userSchema.pre("save", async function (next) {
-  const user = this;
+patientSchema.pre("save", async function (next) {
+  const patient = this;
 
-  if (user.isModified("password")) {
-    user.password = await bcrypt.hash(user.password, 8);
+  if (patient.isModified("password")) {
+    patient.password = await bcrypt.hash(patient.password, 8);
   }
 
   next();
 });
 
 
- export const User = mongoose.model("User", userSchema);
+ export const Patient = mongoose.model("patient", patientSchema);

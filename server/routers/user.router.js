@@ -1,29 +1,29 @@
 import express from "express";
 import { auth } from "../middleware/auth.js";
-import { createUser, deleteUser, editProfile, editUser, getProfile, getUser, getUsers, LogoutAllUsers, userLogin, userLogout } from "../controllers/user.controller.js";
+import { createPatient, deletePatient, editProfile, editPatient, getProfile, getPatient, getPatients, LogoutAllPatients, patientLogin, patientLogout } from "../controllers/patient.controller.js";
 
 export const router = new express.Router();
 
-router.post("/users/new", createUser);
+router.post("/patients/new", createPatient);
 
-router.post("/users/login", userLogin)
+router.post("/patients/login", patientLogin)
 
-router.get("/users/me", auth, getProfile);
+router.get("/patients/me", auth, getProfile);
 
-router.patch("/user/me", auth, editProfile)
+router.patch("/patient/me", auth, editProfile)
 
-router.patch("/users/:id", editProfile);
+router.patch("/patients/:id", editProfile);
 
-router.post("/users/logout", auth, userLogout)
+router.post("/patients/logout", auth, patientLogout)
 
-router.post("/users/logoutAll", auth, LogoutAllUsers)
+router.post("/patients/logoutAll", auth, LogoutAllPatients)
 
-router.get("/users", getUsers);
+router.get("/patients", getPatients);
 
-router.get("/users/:id", getUser);
+router.get("/patients/:id", getPatient);
 
-router.patch("/users/edit/:id", editUser);
+router.patch("/patients/edit/:id", editPatient);
 
-router.delete("/users/:id", deleteUser);
+router.delete("/patients/:id", deletePatient);
 
 

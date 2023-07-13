@@ -1,5 +1,5 @@
 import { Exercise } from "../models/exercise.model.js";
-import { User } from "../models/user.model.js";
+import { Patient } from "../models/patient.model.js";
 import  Validator  from "mongoose";
 
 
