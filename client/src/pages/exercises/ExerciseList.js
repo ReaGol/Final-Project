@@ -1,5 +1,5 @@
 import React from "react";
-import ExerciseCard from "../../components/ExerciseCard.js";
+import ExerciseCard from "./ExerciseCard";
 import './ExerciseList.css'
 
 function ExerciseList({ exercises }) {
@@ -7,12 +7,11 @@ function ExerciseList({ exercises }) {
   if (!exercises) {
     return <p>No exercises to display</p>;
   }
-
   return (
     <div className='wrapper2'>
-      {exercises.map((exercise) => (
+      {exercises?.map((exercise) => (
         <ExerciseCard
-          key={exercise.id}
+          id={exercise._id}
           name={exercise.name}
           description={exercise.description}
           sets={exercise.sets}

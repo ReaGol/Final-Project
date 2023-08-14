@@ -1,6 +1,8 @@
-import React from "react";
+import React from 'react'
 import './ExerciseCard.css'
-function ExerciseCard({ name, description, sets, reps, image }) {
+
+function ExerciseDetails({ name, description, sets, reps, image }) {
+
   return (
     <div className='card'>
       <h2 className='card-title'>{name}</h2>
@@ -11,5 +13,5 @@ function ExerciseCard({ name, description, sets, reps, image }) {
     </div>
   );
 }
-
-export default ExerciseCard;
+//TODO: option to add video
+export default ExerciseDetails

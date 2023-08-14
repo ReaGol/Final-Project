@@ -40,9 +40,10 @@ export const Exercise = mongoose.model("Exercise", {
   image: {
     type: String,
   },
-  // owner: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   required: true,
-  //   ref: "User",
-  // },
+  
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "Therapist",
+  },
 });

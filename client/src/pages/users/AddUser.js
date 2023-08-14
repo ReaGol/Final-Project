@@ -20,7 +20,7 @@ function AddUser() {
     e.preventDefault();
     try {
       console.log(`saving user ${JSON.stringify(user)}`)
-      await axios.post("http://localhost:8000/users", user);
+      await axios.post("http://localhost:8000/therapist/patients/new", user);
       navigate("/users");
     } catch (error) {
       console.log(error);

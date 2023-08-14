@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import './addExPerClient.css'
 
-import ExerciseCard from "../../components/ExerciseCard";
+import ExerciseCard from "../exercises/ExerciseCard.js";
 
 function AddExercisePerClient({ exercises, users }) {
   const navigate = useNavigate();

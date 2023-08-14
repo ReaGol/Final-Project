@@ -12,8 +12,9 @@ import Login from "./pages/users/Login.js";
 import EditUser from "./pages/users/EditUser";
 import AddExercisePerClient from "./pages/exercises/AddExercisePerClient";
 import Homepage from "./pages/homepage/Homepage";
-import ExerciseChart from "./pages/ExerciseChart";
+//import ExerciseChart from "./pages/ExerciseChart";
 import UserExercises from "./pages/users/UserExercises";
+import ExerciseDetails from "./pages/exercises/ExerciseDetails";
 
 function App() {
   const [exercises, setExercises] = useState([]);
@@ -21,16 +22,23 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      const userData = await axios.get("http://localhost:8000/users");
+      try {
+        const userData = await axios.get(
+          "http://localhost:8000/therapist/patients"
+        );
+        
+        setUsers((prevUsers) => userData.data);
+        console.log(userData);
+      } catch (error) {
+        console.log(error);
+      }
       
-      setUsers((prevUsers) => userData.data);
-      console.log(userData);
       
 
       const exerciseData = await axios.get("http://localhost:8000/exercises");
       setExercises((prevExercises) => exerciseData.data);
-         console.log(exerciseData.data);
-         console.log(userData.data);
+         //console.log(exerciseData.data);
+         //console.log(userData.data);
     }
  
     fetchData();
@@ -46,6 +54,7 @@ function App() {
         <Route path='/users/login' element={<Login />} />
         <Route path='/users/new' element={<Register />} />
         <Route path='/users/edit/:id' element={<EditUser />} />
+        <Route path='/exercises/exercise/:id' element={<ExerciseDetails />} />
         <Route
           path='/users/:id'
           element={<UserExercises exercises={exercises} users={users} />}

@@ -11,8 +11,12 @@ const UserList = () => {
   }, []);
 
   const getUsers = async () => {
-    const response = await axios.get("http://localhost:8000/users");
-    setUser(response.data);
+    try {
+      const response = await axios.get("http://localhost:8000/therapist/patients");
+      setUser(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const deleteUser = async (id) => {

@@ -93,11 +93,7 @@ import jwt from "jsonwebtoken";
 
 
 
-// patientSchema.virtual("exercises", {
-//   ref: "Exercise",
-//   localField: "_id",
-//   foreignField: "owner",
-// });
+
 
 patientSchema.methods.toJSON = function () {
   const patient = this;

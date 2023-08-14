@@ -50,4 +50,10 @@ const therapistSchema = new mongoose.Schema({
   ],
 });
 
+patientSchema.virtual("exercises", {
+  ref: "Exercise",
+  localField: "_id",
+  foreignField: "owner",
+});
+
 export const Therapist = mongoose.model("therapist", therapistSchema)
