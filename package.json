@@ -23,6 +23,7 @@
     "mongoose": "^6.8.1",
     "react-chartjs-2": "^5.1.0",
     "react-icons": "^4.7.1",
+    "react-modal": "^3.16.1",
     "validator": "^13.7.0"
   },
   "devDependencies": {

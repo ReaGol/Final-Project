@@ -1,9 +1,17 @@
-import React from "react";
-import { Link } from "react-router-dom"; 
-//import '../exercises/ExerciseCard.css'
+import React, { useState } from "react";
+import ExerciseModal from "./ExerciseDetails.js";
 
-function ExerciseCard({ name, description, sets, reps, image, id}) {
-  
+function ExerciseCard({ name, description, sets, reps, image, id }) {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
   return (
     <div className='card'>
       <h2 className='card-title'>{name}</h2>
@@ -12,9 +20,19 @@ function ExerciseCard({ name, description, sets, reps, image, id}) {
       <p>Reps: {reps}</p>
       {image && <img src={image} alt={name} className='card__img' />}
 
-      <Link to={`exercise/${id}`}>
-        <button>Exercise Details</button>
-      </Link>
+      <button onClick={openModal}>Exercise Details</button>
+
+      <ExerciseModal
+        isOpen={modalIsOpen}
+        exercise={{
+          name,
+          description,
+          sets,
+          reps,
+          image,
+        }}
+        onRequestClose={closeModal}
+      />
     </div>
   );
 }

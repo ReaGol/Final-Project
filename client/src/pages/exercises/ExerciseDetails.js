@@ -1,17 +1,28 @@
-import React from 'react'
-import './ExerciseCard.css'
+import React from "react";
+import Modal from "react-modal";
 
-function ExerciseDetails({ name, description, sets, reps, image }) {
-
+const ExerciseModal = ({ isOpen, exercise, onRequestClose }) => {
   return (
-    <div className='card'>
-      <h2 className='card-title'>{name}</h2>
-      <p className='card-description'>{description}</p>
-      <p>Sets: {sets}</p>
-      <p>Reps: {reps}</p>
-      {image && <img src={image} alt={name} className='card__img' />}
-    </div>
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={onRequestClose}
+      contentLabel='Exercise Details'
+    >
+      <h2>Exercise Details</h2>
+      <div>
+        <p>Name: {exercise.name}</p>
+        <p>Description: {exercise.description}</p>
+        <p>Reps: {exercise.reps}</p>
+        <p>Sets: {exercise.sets}</p>
+        <p>Duration: {exercise.duration}</p>
+        <p>Completed: {exercise.completed ? "Yes" : "No"}</p>
+        <p>Notes: {exercise.notes}</p>
+        {exercise.image && <img src={exercise.image} alt='Exercise' />}
+        {/* {exercise.video && <video controls src={exercise.video} />} */}
+      </div>
+      <button onClick={onRequestClose}>Close</button>
+    </Modal>
   );
-}
-//TODO: option to add video
-export default ExerciseDetails
+};
+
+export default ExerciseModal;
