@@ -106,9 +106,9 @@ function AddExercise() {
          <div>
            <input className='btn' type='submit' value='Create' />
          </div>
-         {/* <Link to='/' className='btn'>
-           Back
-         </Link> */}
+         <Link to='/' className='btn'>
+           <i class='fa-solid fa-arrow-left-long'></i>
+         </Link>
        </form>
      </div>
    );

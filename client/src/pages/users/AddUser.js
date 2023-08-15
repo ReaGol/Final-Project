@@ -1,6 +1,6 @@
 import axios from "axios";
 import { React, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./AddUser.css";
 
 
@@ -33,7 +33,7 @@ function AddUser() {
           <label htmlFor=''>Enter First Name</label>
           <br />
           <input
-            onChange={(e) => setUser({...user, firstName:e.target.value})}
+            onChange={(e) => setUser({ ...user, firstName: e.target.value })}
             type='text'
             placeholder='First Name'
           />
@@ -43,7 +43,7 @@ function AddUser() {
           <br />
           <input
             // value={user.email}
-            onChange={(e) => setUser({...user, email: e.target.value})}
+            onChange={(e) => setUser({ ...user, email: e.target.value })}
             type='text'
             placeholder='email'
           />
@@ -53,7 +53,7 @@ function AddUser() {
           <br />
           <input
             // value={user.password}
-            onChange={(e) => setUser({...user, password: e.target.value})}
+            onChange={(e) => setUser({ ...user, password: e.target.value })}
             type='text'
             placeholder='password'
           />
@@ -63,7 +63,7 @@ function AddUser() {
           <br />
           <input
             value={user.diagnosis}
-            onChange={(e) => setUser({...user, diagnosis: e.target.value})}
+            onChange={(e) => setUser({ ...user, diagnosis: e.target.value })}
             type='text'
             placeholder='diagnosis'
           />
@@ -73,7 +73,7 @@ function AddUser() {
           <br />
           <input
             value={user.plan}
-            onChange={(e) => setUser({...user, plan: e.target.value})}
+            onChange={(e) => setUser({ ...user, plan: e.target.value })}
             type='text'
             placeholder='plan'
           />
@@ -82,6 +82,9 @@ function AddUser() {
           <input className='btn' type='submit' value='Create' />
         </div>
       </form>
+      <Link to='/' className='btn'>
+        <i class='fa-solid fa-arrow-left-long'></i>
+      </Link>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ExerciseCard from "./ExerciseCard";
 import './ExerciseList.css'
 
@@ -19,22 +20,11 @@ function ExerciseList({ exercises }) {
           image={exercise.image}
         />
       ))}
-     
+      <Link to='/'>
+        <button>Back</button>
+      </Link>
     </div>
   );
 }
 
 export default ExerciseList;
-
-
-
-  // const [exercise, setExercise] = useState([]);
-
-  // useEffect(() => {
-  //   const getExerciseList = async () => {
-  //     const res = await axios.get("http://localhost:8000/exercises");
-  //     setExercise(res.data);
-  //   };
-
-  //   getExerciseList();
-  // }, []);
