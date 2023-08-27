@@ -6,7 +6,7 @@ export const createPatient = async (req, res) => {
 
   try {
     await patient.save();
-    const token = await Patient.generateAuthToken();
+    const token = await patient.generateAuthToken();
     res.status(201).send({ patient, token });
   } catch (e) {
     console.log(e);
@@ -52,28 +52,32 @@ export const getProfile = async (req, res) => {
 
 //-------------edit a patient as admin---------------------
 export const editPatient = async (req, res) => {
-  const updates = Object.keys(req.body);
-  const allowedUpdates = [
-    "firstName",
-    "email",
-    "diagnosis",
-    "plan",
-    "age",
-    "exerciseArray",
-  ];
-  const isValidOperation = updates.every((update) =>
-    allowedUpdates.includes(update)
-  );
+  //const updates = Object.keys(req.body);
+  // const allowedUpdates = [
+  //   "firstName",
+  //   "email",
+  //   "diagnosis",
+  //   "plan",
+  //   "age",
+  //   "exercises",
+  // ];
+  // const isValidOperation = updates.every((update) =>
+  //   allowedUpdates.includes(update)
+  // );
 
-  if (!isValidOperation) {
-    return res.status(400).send({ error: "Invalid Update" });
-  }
+  // if (!isValidOperation) {
+  //   return res.status(400).send({ error: "Invalid Update" });
+  // }
   try {
-    const patient = await Patient.findById(req.params.id);
+    const patient = await Patient.findByIdAndUpdate(
+      { _id: req.params.id },
+      { $set: req.body },
+      { new: true }
+    );
 
-    updates.forEach((update) => (patient[update] = req.body[update]));
+    //updates.forEach((update) => (patient[update] = req.body[update]));
     console.log(patient);
-    await Patient.save();
+    //await Patient.save();
 
     if (!patient) {
       return res.status(404).send();

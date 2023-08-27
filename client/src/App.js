@@ -15,6 +15,8 @@ import Homepage from "./pages/homepage/Homepage";
 //import ExerciseChart from "./pages/ExerciseChart";
 import UserExercises from "./pages/users/UserExercises";
 import ExerciseDetails from "./pages/exercises/ExerciseDetails";
+import Modal from 'react-modal'
+Modal.setAppElement('#root')
 
 function App() {
   const [exercises, setExercises] = useState([]);

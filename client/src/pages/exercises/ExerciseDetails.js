@@ -6,6 +6,14 @@ const ExerciseModal = ({ isOpen, exercise, onRequestClose }) => {
     <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
+      style={{
+        overlay: {
+          backgroundColor: "grey",
+        },
+        content: {
+          color: "light-pink",
+        },
+      }}
       contentLabel='Exercise Details'
     >
       <h2>Exercise Details</h2>

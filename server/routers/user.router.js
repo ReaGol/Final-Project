@@ -8,13 +8,13 @@ export const router = new express.Router();
 //----------------patient actions----------------------
 router.post("/patients/login", patientLogin)
 router.post("/patients/logout", auth, patientLogout)
-router.get("/patients/me", auth, getProfile);
+//router.get("/patients/me", auth, getProfile);
 router.patch("/patient/me", auth, editProfile)
 
 //---------------therapist actions---------------------
 router.post("/therapist/patients/new", createPatient);
 
-router.patch("/therapist/patients/:id", editProfile);
+//router.patch("/therapist/patients/:id", editProfile);
 
 router.post("/therapist/patients/logoutAll", auth, LogoutAllPatients)
 

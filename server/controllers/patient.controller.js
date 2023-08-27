@@ -7,7 +7,7 @@ export const patientLogin = async (req, res) => {
       req.body.email,
       req.body.password
     );
-    const token = await Patient.generateAuthToken();
+    const token = await patient.generateAuthToken();
     res.send({ patient, token });
   } catch (error) {
     res.status(400).send();

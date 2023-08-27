@@ -32,6 +32,7 @@ function ExerciseCard({ name, description, sets, reps, image, id }) {
           image,
         }}
         onRequestClose={closeModal}
+ 
       />
     </div>
   );

@@ -11,6 +11,7 @@ import jwt from "jsonwebtoken";
    },
    email: {
      type: String,
+     unique: true,
      required: true,
      trim: true,
      lowercase: true,
@@ -61,37 +62,36 @@ import jwt from "jsonwebtoken";
      // minlength: 5,
    },
 
-   perform: {
-     type: Number,
-     default: 1,
-     validate(value) {
-       if (value < 0) {
-         throw new Error("Must be a positive number");
+  //  perform: {
+  //    type: Number,
+  //    default: 1,
+  //    validate(value) {
+  //      if (value < 0) {
+  //        throw new Error("Must be a positive number");
+  //      }
+  //    },
+  //  },
+   exercises: [
+    {
+      exercise: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Exercise", 
+      },
+      setsCompleted: {
+        type: Number,
+      },
+      repsCompleted: {
+        type: Number,
+      },
+      streak: {
+         type: Number,
+       },
+       notes: {
+         type: String,
        }
-     },
-   },
-   exerciseArray: [
-     {
-       exercise: {
-         type: String,
-       },
-       sets: {
-         type: Number,
-       },
-       reps: {
-         type: Number,
-       },
-       streak: {
-         type: Number,
-       },
-       note: {
-         type: String,
-       },
-     },
-   ],
+    },
+  ],
  });
-
-
 
 
 
@@ -119,7 +119,7 @@ patientSchema.methods.generateAuthToken = async function () {
 };
 
 patientSchema.statics.findByCredentials = async (email, password) => {
-  const patient = await patient.findOne({ email });
+  const patient = await Patient.findOne({ email });
 
   if (!patient) {
     throw new Error("Unable to login");

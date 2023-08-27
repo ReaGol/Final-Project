@@ -28,24 +28,32 @@ const therapistSchema = new mongoose.Schema({
       }
     },
   },
-  patientsArray: [],
-  exercisesArray: [
+  patientsArray: [
     {
-      exercise: {
-        type: String,
+      patient: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Patient", 
       },
-      sets: {
-        type: Number,
-      },
-      reps: {
-        type: Number,
-      },
-      streak: {
-        type: Number,
-      },
-      note: {
-        type: String,
-      },
+      exercises: [
+        {
+          exercise: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Exercise", 
+          },
+          sets: {
+            type: Number,
+          },
+          reps: {
+            type: Number,
+          },
+          streak: {
+            type: Number,
+          },
+          note: {
+            type: String,
+          },
+        },
+      ],
     },
   ],
 });

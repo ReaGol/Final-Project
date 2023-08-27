@@ -21,15 +21,20 @@ const EditUser = () => {
   }, []);
 
   const getUserById = async () => {
-    const response = await axios.get(`http://localhost:8000/users/${id}`);
+    const response = await axios.get(`http://localhost:8000/therapist/patients/${id}`);
     setUser(response.data);
-    console.log('id', id);
+    console.log('user id: ', id);
   };
 
   const updateUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`http://localhost:8000/users/edit/${id}`, {firstName: user.firstName, email: user.email, diagnosis: user.diagnosis, plan: user.plan});
+      await axios.patch(`http://localhost:8000/therapist/patients/edit/${id}`, {
+        firstName: user.firstName,
+        email: user.email,
+        diagnosis: user.diagnosis,
+        plan: user.plan,
+      });
       navigate("/users");
     } catch (error) {
       console.log(error);
@@ -90,14 +95,22 @@ const EditUser = () => {
           />
         </div>
         <div>
-          <Link to={`/users/edit/${id}/exercises`} id={id} className='link-btn'>
+          <Link to={`/users/edit/${id}/exercises`} exercises={user.exercises} id={id} className='link-btn'>
             Add Exercises To Client
+          </Link>
+        </div>
+        <div>
+          <Link to={`/users/${id}`}>
+            Review Client Exercises
           </Link>
         </div>
         <div>
           <input className='btn' type='submit' value='Save Changes' />
         </div>
       </form>
+      <Link to='/' className='btn'>
+        <i class='fa-solid fa-arrow-left-long'></i>
+      </Link>
     </div>
   );
 };

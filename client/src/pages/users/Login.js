@@ -1,8 +1,9 @@
 import React from "react";
 import Cookies from "js-cookie";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link} from "react-router-dom";
 import axios from "axios";
+import './Login.css'
 
 export default function Login() {
   const navigate = useNavigate();
@@ -31,11 +32,16 @@ export default function Login() {
   }
   return (
     <div className='form-container'>
+      <Link to='/'>
+        <i class='fa-solid fa-arrow-left-long'></i>
+      </Link>
       <div>
+        {/* <img src="../../images/moran-logo.png" alt="logo" /> */}
         <h3>Login</h3>
         <form onSubmit={loginUser}>
           <div className='input-container'>
             <label htmlFor='email'>email</label>
+            <br />
             <input
               type='email'
               name='email'
@@ -45,6 +51,7 @@ export default function Login() {
           </div>
           <div className='input-container'>
             <label htmlFor='password'>password</label>
+            <br />
             <input
               type='password'
               name='password'
@@ -52,7 +59,9 @@ export default function Login() {
               onChange={(e) => setPassword(e.target.value)}
             ></input>
           </div>
-          <button type='submit'>Login</button>
+          <button className='login-btn' type='submit'>
+            Login
+          </button>
         </form>
       </div>
     </div>
