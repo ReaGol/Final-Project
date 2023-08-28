@@ -12,7 +12,6 @@ import Login from "./pages/users/Login.js";
 import EditUser from "./pages/users/EditUser";
 import AddExercisePerClient from "./pages/exercises/AddExercisePerClient";
 import Homepage from "./pages/homepage/Homepage";
-//import ExerciseChart from "./pages/ExerciseChart";
 import UserExercises from "./pages/users/UserExercises";
 import ExerciseDetails from "./pages/exercises/ExerciseDetails";
 import Modal from 'react-modal'
