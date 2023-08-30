@@ -53,13 +53,13 @@ const UserList = () => {
 
                 <td>
                   <Link to={`edit/${user._id}`} className='btn'>
-                    <i class='fa-regular fa-pen-to-square'></i>
+                    <i className='fa-regular fa-pen-to-square'></i>
                   </Link>
                   <button
                     onClick={() => deleteUser(user._id)}
                     className='btn-delete'
                   >
-                    <i class='fa-regular fa-trash-can'></i>
+                    <i className='fa-regular fa-trash-can'></i>
                   </button>
                 </td>
               </tr>

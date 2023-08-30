@@ -12,6 +12,7 @@ function ExerciseList({ exercises }) {
     <div className='wrapper2'>
       {exercises?.map((exercise) => (
         <ExerciseCard
+          key={exercise._id}
           id={exercise._id}
           name={exercise.name}
           description={exercise.description}

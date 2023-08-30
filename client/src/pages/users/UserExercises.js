@@ -43,20 +43,16 @@ function UserExercises({ exercises, users }) {
   //     }
   //   });
   // };
-const handleCheckboxChange = (exercise) => {
-  const isSelected = completedExercises.includes(exercise._id);
-
-  if (isSelected) {
-    setCompletedExercises((prevCompletedExercises) =>
-      prevCompletedExercises.filter((id) => id !== exercise._id)
-    );
-  } else {
-    setCompletedExercises((prevCompletedExercises) => [
-      ...prevCompletedExercises,
-      exercise._id,
-    ]);
-  }
+const handleCheckboxChange = (exerciseId) => {
+  setCompletedExercises((prevExercises) => {
+    if (prevExercises.includes(exerciseId)) {
+      return prevExercises.filter((id) => id !== exerciseId);
+    } else {
+      return [...prevExercises, exerciseId];
+    }
+  });
 };
+
 
 
   // useEffect(() => {
@@ -84,6 +80,17 @@ const handleCheckboxChange = (exercise) => {
   //   });
   // }
 
+    const handleSetRepsChange = (exerciseId, field, value) => {
+      setAssignedExercises((prevExercises) => {
+        const updatedExercises = prevExercises.map((exercise) =>
+          exercise._id === exerciseId
+            ? { ...exercise, [field]: value }
+            : exercise
+        );
+        return updatedExercises;
+      });
+    };
+
   const handleSave = async () => {
     try {
       // const validatedSets = parseInt(setsCompletedInput);
@@ -94,9 +101,13 @@ const handleCheckboxChange = (exercise) => {
       //   return;
       // }
       const response = await axios.patch(
-        `http://localhost:8000/therapist/patients/${id}`,
+        `http://localhost:8000/therapist/patients/edit/${id}`,
         {
-          exercises: completedExercises,
+          exercises: assignedExercises.map((exercise) => ({
+            _id: exercise._id,
+            sets: exercise.sets,
+            reps: exercise.reps,
+          })),
           daysTrained: [...daysTrained, new Date()],
           setsCompleted: [...setsCompleted, setsCompletedInput],
           repsCompleted: [...repsCompleted, repsCompletedInput],
@@ -130,27 +141,34 @@ const handleCheckboxChange = (exercise) => {
                 type='checkbox'
                 value={exercise._id}
                 id={`checkbox-${exercise._id}`}
-                onChange={(e) => handleCheckboxChange(e, exercise._id)}
+                onChange={() => handleCheckboxChange(exercise._id)}
                 checked={completedExercises.includes(exercise._id)}
               />
+              {completedExercises.includes(exercise._id)
+                ? "Exercise Completed"
+                : "Mark as Completed"}
             </label>
+            <div>
+              <label>Sets</label>
+              <input
+                type='number'
+                name='sets'
+                value={setsCompletedInput}
+                onChange={(e) => setSetsCompletedInput(e.target.value)}
+              />
+
+              <label>Reps</label>
+              <input
+                type='number'
+                name='reps'
+                value={repsCompletedInput}
+                onChange={(e) => setRepsCompletedInput(e.target.value)}
+              />
+            </div>
           </div>
         ))}
       </form>
-      <label>Sets</label>
-      <input
-        type='number'
-        name='sets'
-        value={setsCompletedInput}
-        onChange={(e) => setSetsCompletedInput(e.target.value)}
-      />
-      <label>Reps</label>
-      <input
-        type='number'
-        name='reps'
-        value={repsCompletedInput}
-        onChange={(e) => setRepsCompletedInput(e.target.value)}
-      />
+
       <button onClick={handleSave}>Save</button>
       <Link to='/'>
         <button>Back</button>
