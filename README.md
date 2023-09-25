@@ -1,10 +1,15 @@
 # PhysioApp
 
 Table of Contents:
+
 Description
+
 Features
+
 Technologies Used
+
 Demo
+
 Screenshots
 
 
