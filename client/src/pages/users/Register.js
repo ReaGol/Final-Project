@@ -1,5 +1,6 @@
 import axios from "axios";
 import Cookies from "js-cookie";
+import "./Login.css";
 import React, { useState } from "react";
 import { useNavigate, Link} from "react-router-dom";
 
@@ -43,15 +44,7 @@ export default function Register() {
           Authorization: `Bearer ${jwt}`,
         },
       };
-      // var config = {
-      //   method: "post",
-      //   url: `${apiUrl}/exercises`,
-      // headers: {
-      //   Authorization: `Bearer ${jwt}`,
-      //   "Content-Type": "application/json",
-      // },
-      //   data: body,
-      // };
+  
 
       axios(exercisesOptions)
         .then(function (response) {
@@ -61,16 +54,7 @@ export default function Register() {
         .catch(function (error) {
           console.log(error);
         });
-      // axios(config)
-      //   .then(function (response) {
-      //     console.log(JSON.stringify(response.data._id));
-      //     localStorage.setItem("_id", JSON.stringify(response.data._id));
-      //   })
-      //   .catch(function (error) {
-      //     console.log(error);
-      //   });
 
-      // }
       navigate("/users");
     } catch (error) {
       console.error(error);
@@ -78,11 +62,11 @@ export default function Register() {
   }
 
   return (
-    <div className='form-container'>
+    <div className='login-form-container'>
       <div>
         <h3>Register</h3>
         <form onSubmit={registerUser}>
-          <div className='input-container'>
+          <div className='login-input-container'>
             <label htmlFor='name'>name</label>
             <input
               type='string'
@@ -91,7 +75,7 @@ export default function Register() {
               onChange={(e) => setName(e.target.value)}
             ></input>
           </div>
-          <div className='input-container'>
+          <div className='login-input-container'>
             <label htmlFor='email'>email</label>
             <input
               type='email'
@@ -100,7 +84,7 @@ export default function Register() {
               onChange={(e) => setEmail(e.target.value)}
             ></input>
           </div>
-          <div className='input-container'>
+          <div className='login-input-container'>
             <label htmlFor='password'>password</label>
             <input
               type='password'
@@ -109,10 +93,12 @@ export default function Register() {
               onChange={(e) => setPassword(e.target.value)}
             ></input>
           </div>
-          <button type='submit'>Register</button>
+          <button className='login-btn' type='submit'>
+            Register
+          </button>
         </form>
       </div>
-      <Link to='/' className='btn'>
+      <Link to='/' className='login-btn'>
         <i class='fa-solid fa-arrow-left-long'></i>
       </Link>
     </div>

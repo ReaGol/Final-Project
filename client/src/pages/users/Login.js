@@ -31,7 +31,7 @@ export default function Login() {
     }
   }
   return (
-    <div className='form-container'>
+    <div className='login-form-container'>
       <Link to='/'>
         <i class='fa-solid fa-arrow-left-long'></i>
       </Link>
@@ -39,7 +39,7 @@ export default function Login() {
         {/* <img src="../../images/moran-logo.png" alt="logo" /> */}
         <h3>Login</h3>
         <form onSubmit={loginUser}>
-          <div className='input-container'>
+          <div className='login-input-container'>
             <label htmlFor='email'>email</label>
             <br />
             <input
@@ -49,7 +49,7 @@ export default function Login() {
               onChange={(e) => setEmail(e.target.value)}
             ></input>
           </div>
-          <div className='input-container'>
+          <div className='login-input-container'>
             <label htmlFor='password'>password</label>
             <br />
             <input
