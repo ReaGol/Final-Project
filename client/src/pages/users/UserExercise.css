@@ -1,13 +1,24 @@
 div>main {
   margin: auto;
 }
-
-form {
+.container-own-excersices {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  flex-wrap: wrap;
+
+}
+.container-own-excersices > form {
+  display: flex;
+  flex-wrap: wrap;
+  
 }
 
+.container-own-excersices > form > div {
+    border :1px black solid;
+    margin: 1%;
+    border-radius: 1rem;
+    padding: 1%;
+}
 h3 {
   margin-bottom: 10px;
 }

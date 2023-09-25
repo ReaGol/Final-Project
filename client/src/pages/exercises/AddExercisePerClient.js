@@ -9,27 +9,43 @@ function AddExercisePerClient({ exercises, users }) {
   const navigate = useNavigate();
   const [selectedExercises, setSelectedExercises] = useState([]);
   const { id } = useParams();
-
   const handleCheckboxChange = (exercise) => {
     const isSelected = selectedExercises.some((ex) => ex._id === exercise._id);
-
+    
     if (isSelected) {
       setSelectedExercises(
         selectedExercises.filter((ex) => ex._id !== exercise._id)
-      );
-    } else {
-      setSelectedExercises([...selectedExercises, exercise]);
-    }
-  };
+        );
+      } else {
+        setSelectedExercises(prev=>[...prev, exercise]);
+      }
+    };
+    
+    const handleSave = async () => {
+      
+      console.log("selected: ", selectedExercises);
+      
+     const currentUser = users.filter(user=>user._id === id)
 
-  const handleSave = async () => {
-    console.log("selected: ", selectedExercises);
+     const newExercises = currentUser[0].exercises.concat(selectedExercises)
+     const uniqueIds = [];
 
+     const unique = newExercises.filter((element) => {
+       const isDuplicate = uniqueIds.includes(element._id);
+
+       if (!isDuplicate) {
+         uniqueIds.push(element._id);
+
+         return true;
+       }
+
+       return false;
+     });
     try {
       const response = await axios.patch(
         `http://localhost:8000/therapist/patients/edit/${id}`,
         {
-          exercises: selectedExercises,
+          exercises: unique,
         }
       );
 

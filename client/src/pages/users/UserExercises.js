@@ -123,7 +123,7 @@ const handleCheckboxChange = (exerciseId) => {
 
 
   return (
-    <div className='container'>
+    <div className='container-own-excersices'>
       <h3>Your Exercises</h3>
       <form>
         {assignedExercises.map((exercise) => (

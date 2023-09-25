@@ -18,14 +18,15 @@ body {
 
 .card {
   box-shadow: 0 2px 20px lightgray;
-  border-radius: 0.2rem;
+  /* border-radius: 0.1rem; */
   display: flex;
-  width: 30%;
-  margin: 1%;
+  width: 100%;
+  
+  margin: 3%;
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
-  border-radius: 2rem;
+  border-radius: 1rem;
   transition: transform 200ms ease-in;
 }
 
