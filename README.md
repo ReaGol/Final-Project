@@ -1,4 +1,4 @@
-#PhysioApp
+# PhysioApp
 
 Table of Contents:
 Description
@@ -8,11 +8,11 @@ Demo
 Screenshots
 
 
-##Description:
+## Description:
 
 PhysioApp is a comprehensive and user-friendly physical therapy management application. It is specifically designed to streamline and enhance the physical therapy experience for both therapists and patients. Whether you're a licensed physical therapist or an individual seeking rehabilitation, PhysioApp is there to help ease the process of physical therapy by providing an easy-to-use platform where every aspect of care is managed seamlessly. 
 
-##Key Features:
+## Key Features:
 
 Therapist-Patient Collaboration: PhysioApp enables seamless collaboration between therapists and patients. Therapists can create tailored exercise routines and treatment plans, which patients can access and follow from the comfort of their homes.
 
@@ -26,12 +26,12 @@ Pain Level Monitoring: Patients can record their pain levels on a scale of 1 to 
 
 Secure and Private: We prioritize data security and patient privacy. All user data is encrypted and stored securely.
 
-##Technologies Used:
+## Technologies Used:
 
 PhysioApp is built using React.js for the frontend, Node.js and Express for the backend, MongoDB as the database and Authentication with JSON Web Tokens (JWT). This technology stack ensures a responsive and reliable user experience.
 
-##Demo
+## Demo
 TODO
 
-##Screenshots
+## Screenshots
 TODO
