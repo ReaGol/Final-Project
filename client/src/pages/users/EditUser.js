@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import "./UserList.css";
+import "./AddUser.css";
 
 const EditUser = () => {
   const [user, setUser] = useState({
@@ -42,9 +42,9 @@ const EditUser = () => {
   };
 
   return (
-    <div className='form-container'>
+    <div className='user-form-container'>
       <form onSubmit={updateUser} action='submit'>
-        <div className='input-container'>
+        <div className='user-input-container'>
           <label htmlFor=''>Enter First Name</label>
           <br />
           <input
@@ -54,7 +54,7 @@ const EditUser = () => {
             placeholder='First Name'
           />
         </div>
-        <div className='input-container'>
+        <div className='user-input-container'>
           <label htmlFor=''>Enter Email</label>
           <br />
           <input
@@ -64,17 +64,8 @@ const EditUser = () => {
             placeholder='email'
           />
         </div>
-        {/* <div className='input-container'>
-          <label htmlFor=''>Enter Password</label>
-          <br />
-          <input
-            value={user.password}
-            onChange={(e) => setUser({...user, password: e.target.value})}
-            type='text'
-            placeholder='password'
-          />
-        </div> */}
-        <div className='input-container'>
+
+        <div className='user-input-container'>
           <label htmlFor=''>Enter Diagnosis</label>
           <br />
           <input
@@ -84,7 +75,7 @@ const EditUser = () => {
             placeholder='diagnosis'
           />
         </div>
-        <div className='input-container'>
+        <div className='user-input-container'>
           <label htmlFor=''>Enter Treatment Plan</label>
           <br />
           <input
@@ -95,20 +86,26 @@ const EditUser = () => {
           />
         </div>
         <div>
-          <Link to={`/users/edit/${id}/exercises`} exercises={user.exercises} id={id} className='link-btn'>
+          <Link
+            to={`/users/edit/${id}/exercises`}
+            exercises={user.exercises}
+            id={id}
+            className='link-user-btn'
+          >
             Add Exercises To Client
           </Link>
         </div>
+        <br />  
         <div>
-          <Link to={`/users/${id}`}>
+          <Link to={`/users/${id}`} className='link-user-btn'>
             Review Client Exercises
           </Link>
         </div>
         <div>
-          <input className='btn' type='submit' value='Save Changes' />
+          <input className='user-btn' type='submit' value='Save Changes' />
         </div>
       </form>
-      <Link to='/' className='btn'>
+      <Link to='/' className='user-btn'>
         <i class='fa-solid fa-arrow-left-long'></i>
       </Link>
     </div>

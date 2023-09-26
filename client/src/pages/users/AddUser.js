@@ -27,10 +27,10 @@ function AddUser() {
     }
   };
   return (
-    <div className='form-container'>
+    <div className='user-form-container'>
       <form onSubmit={saveUser} action='submit'>
-        <div className='input-container'>
-          <label htmlFor=''>Enter First Name</label>
+        <div className='user-input-container'>
+          <label htmlFor=''>Enter Patient Name</label>
           <br />
           <input
             onChange={(e) => setUser({ ...user, firstName: e.target.value })}
@@ -38,7 +38,7 @@ function AddUser() {
             placeholder='First Name'
           />
         </div>
-        <div className='input-container'>
+        <div className='user-input-container'>
           <label htmlFor=''>Enter Email</label>
           <br />
           <input
@@ -48,7 +48,7 @@ function AddUser() {
             placeholder='email'
           />
         </div>
-        <div className='input-container'>
+        <div className='user-input-container'>
           <label htmlFor=''>Enter Password</label>
           <br />
           <input
@@ -58,7 +58,7 @@ function AddUser() {
             placeholder='password'
           />
         </div>
-        <div className='input-container'>
+        <div className='user-input-container'>
           <label htmlFor=''>Enter Diagnosis</label>
           <br />
           <input
@@ -68,7 +68,7 @@ function AddUser() {
             placeholder='diagnosis'
           />
         </div>
-        <div className='input-container'>
+        <div className='user-input-container'>
           <label htmlFor=''>Enter Treatment Plan</label>
           <br />
           <input
@@ -79,10 +79,10 @@ function AddUser() {
           />
         </div>
         <div>
-          <input className='btn' type='submit' value='Create' />
+          <input className='user-btn' type='submit' value='Create' />
         </div>
       </form>
-      <Link to='/' className='btn'>
+      <Link to='/' className='user-btn'>
         <i class='fa-solid fa-arrow-left-long'></i>
       </Link>
     </div>

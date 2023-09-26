@@ -1,6 +1,6 @@
-.form-container {
+.user-form-container {
     width: 500px;
-    height: 350px;
+    height: 400px;
     margin: 100px auto;
     padding: 10px;
     display: flex;
@@ -12,18 +12,27 @@
 }
 
 
-.input-container{
+.user-input-container{
     padding: 10px;
 }
 
-.btn {
-  padding: 0 20px;
+.user-btn {
+  padding: 5px 15px;
   background-color: dodgerblue;
   color: azure;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease 0s;
-  margin: 5px;
+  margin: 12px;
   margin-left: 10px;
+}
+
+.link-user-btn {
+  background-color: rgb(17, 157, 157);
+  border-radius: 2rem;
+  padding: 4px 15px;
+  cursor: pointer;
+  margin: 2em 0;
+  font-size: 14px;
 }
