@@ -2,7 +2,7 @@ import axios from "axios";
 import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import './exercises.css'
+import './AddExercise.css'
 
 function AddExercise() {
      const [exercise, setExercise] = useState({
@@ -30,9 +30,9 @@ function AddExercise() {
          };
 
    return (
-     <div className='form-container'>
+     <div className='add-exercise-form-container'>
        <form onSubmit={saveExercise} action='submit'>
-         <div className='input-container'>
+         <div className='add-exercise-input-container'>
            <label htmlFor=''>Enter Exercise Name</label>
            <br />
            <input
@@ -43,7 +43,7 @@ function AddExercise() {
              placeholder='exercise name'
            />
          </div>
-         <div className='input-container'>
+         <div className='add-exercise-input-container'>
            <label htmlFor=''>Enter Description</label>
            <br />
            <input
@@ -55,7 +55,7 @@ function AddExercise() {
              placeholder='description'
            />
          </div>
-         <div className='input-container'>
+         <div className='add-exercise-input-container'>
            <label htmlFor=''>Enter Reps</label>
            <br />
            <input
@@ -67,7 +67,7 @@ function AddExercise() {
              placeholder='reps'
            />
          </div>
-         <div className='input-container'>
+         <div className='add-exercise-input-container'>
            <label htmlFor=''>Enter Sets</label>
            <br />
            <input
@@ -79,7 +79,7 @@ function AddExercise() {
              placeholder='sets'
            />
          </div>
-         <div className='input-container'>
+         <div className='add-exercise-input-container'>
            <label htmlFor=''>Enter Duration</label>
            <br />
            <input
@@ -91,10 +91,11 @@ function AddExercise() {
              placeholder='duration'
            />
          </div>
-         <div className='input-container'>
+         <div className='add-exercise-input-container'>
            <label htmlFor=''>Notes</label>
            <br />
            <textarea
+             className='add-exercise-textarea'
              value={exercise.notes}
              onChange={(e) =>
                setExercise({ ...exercise, notes: e.target.value })
@@ -104,9 +105,9 @@ function AddExercise() {
            />
          </div>
          <div>
-           <input className='btn' type='submit' value='Create' />
+           <input className='add-exercise-btn' type='submit' value='Create' />
          </div>
-         <Link to='/' className='btn'>
+         <Link to='/' className='add-exercise-btn'>
            <i class='fa-solid fa-arrow-left-long'></i>
          </Link>
        </form>
