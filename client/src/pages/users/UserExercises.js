@@ -169,7 +169,7 @@ const handleCheckboxChange = (exerciseId) => {
         ))}
       </form>
 
-      <button onClick={handleSave}>Save</button>
+      <button className="save-btn" onClick={handleSave}>Save</button>
       <Link to='/'>
         <button>Back</button>
       </Link>

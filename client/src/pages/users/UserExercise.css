@@ -1,5 +1,6 @@
 div>main {
   margin: auto;
+  outline: solid 1px red;
 }
 .container-own-excersices {
   display: flex;
@@ -38,6 +39,17 @@ button {
   margin: 10px;
 }
 
+.save-btn {
+  background-color: #4CAF50;
+  width: 5%;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 18px;
+  margin: 10px;
+  
+}
 /* button:hover {
   background-color: #45a049;
 } */

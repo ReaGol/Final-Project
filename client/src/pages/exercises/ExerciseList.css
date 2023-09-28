@@ -19,13 +19,15 @@ body {
 .card {
   box-shadow: 0 2px 20px lightgray;
   display: flex;
-  width: 30%;
+  width: 60%;
   margin: 3%;
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
   border-radius: 1rem;
   transition: transform 200ms ease-in;
+    border: solid 1px red;
+
 }
 
 .card__img {
