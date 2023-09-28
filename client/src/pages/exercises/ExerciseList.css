@@ -18,10 +18,8 @@ body {
 
 .card {
   box-shadow: 0 2px 20px lightgray;
-  /* border-radius: 0.1rem; */
   display: flex;
-  width: 100%;
-  
+  width: 30%;
   margin: 3%;
   flex-direction: column;
   justify-content: space-between;
@@ -32,19 +30,26 @@ body {
 
 .card__img {
   height: 12rem;
-  width: 100%;
+  width: 90%;
+  border-radius: 4px;
+  align-self: center;
   object-fit: cover;
 }
 
 .card-title {
+  align-self: center;
   padding: 1rem;
 }
 
 .card-description, p {
   padding: 0 1rem;
+  width: 60%;
+  display: inline-block;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
 }
 
-.card-btn {
+.exercise-card-btn {
   padding: 1rem;
   font-family: inherit;
   font-weight: bold;

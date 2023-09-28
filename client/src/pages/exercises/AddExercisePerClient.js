@@ -68,7 +68,7 @@ function AddExercisePerClient({ exercises, users }) {
             exercise={exercise}
           />
           <button
-            className='card-btn'
+            className='exercise-card-btn'
             onClick={() => handleCheckboxChange(exercise)}
           >
             {!selectedExercises.some((ex) => ex._id === exercise._id)
@@ -81,7 +81,7 @@ function AddExercisePerClient({ exercises, users }) {
         <button onClick={handleSave}>Save</button>
       </div>
       <Link to='/'>
-        <button>Back</button>
+        <button className="back-btn">Back</button>
       </Link>
     </div>
   );

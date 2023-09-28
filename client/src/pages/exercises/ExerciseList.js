@@ -9,22 +9,24 @@ function ExerciseList({ exercises }) {
     return <p>No exercises to display</p>;
   }
   return (
-    <div className='wrapper2'>
-      {exercises?.map((exercise) => (
-        <ExerciseCard
-          key={exercise._id}
-          id={exercise._id}
-          name={exercise.name}
-          description={exercise.description}
-          sets={exercise.sets}
-          reps={exercise.reps}
-          image={exercise.image}
-        />
-      ))}
+    <>
+      <div className='wrapper2'>
+        {exercises?.map((exercise) => (
+          <ExerciseCard
+            key={exercise._id}
+            id={exercise._id}
+            name={exercise.name}
+            description={exercise.description}
+            sets={exercise.sets}
+            reps={exercise.reps}
+            image={exercise.image}
+          />
+        ))}
+      </div>
       <Link to='/'>
-        <button>Back</button>
+        <button className='back-btn'>Back</button>
       </Link>
-    </div>
+    </>
   );
 }
 

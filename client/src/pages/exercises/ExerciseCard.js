@@ -20,7 +20,9 @@ function ExerciseCard({ name, description, sets, reps, image, id }) {
       <p>Reps: {reps}</p>
       {image && <img src={image} alt={name} className='card__img' />}
 
-      <button onClick={openModal}>Exercise Details</button>
+      <button className='exercise-card-btn' onClick={openModal}>
+        Exercise Details
+      </button>
 
       <ExerciseModal
         isOpen={modalIsOpen}
@@ -32,7 +34,6 @@ function ExerciseCard({ name, description, sets, reps, image, id }) {
           image,
         }}
         onRequestClose={closeModal}
- 
       />
     </div>
   );
