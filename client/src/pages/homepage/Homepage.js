@@ -1,47 +1,51 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import './homepage.css'
+import React from "react";
+import { Link } from "react-router-dom";
+import "../../App.css";
+import "./homepage.css";
+import logo from "../../images/PhysioTrack-logos_transparent.png";
 import { FaChartLine, FaCheckSquare, FaEnvelope } from "react-icons/fa";
 
-
-
 function Homepage() {
-    return (
-      <div className='HomePage'>
-        <div className='image-bg'>
+  return (
+    <div className='HomePage'>
+      <div className='image-bg'>
+        <div className='logo'>
           <Link to='/'>
-            <h1>PhysioTrack</h1>
+            <img src={logo} alt='' />
           </Link>
-          <p>
-            Welcome physios!
-            <br />
-            This website was developed by and for physiotherapists,
-            <br />
-            so that they can create and upload an exercise plan for their
-            patients quickly and easily.
-            <br />
-            No more sending your patients exercises on WhatsApp, <br />
-            no more wondering whether they did them or not. <br />
-            From now on you can interact with your patients and help them
-            recover or achieve their goals faster.
-          </p>
         </div>
+        <p>
+          Welcome physios!
+          
+          This website was developed by and for physiotherapists,
+          
+          so that they can create and upload an exercise plan for their patients
+          quickly and easily.
+          
+          No more sending your patients exercises on WhatsApp, 
+          no more wondering whether they did them or not. 
+          From now on you can interact with your patients and help them recover
+          or achieve their goals faster.
+        </p>
+      </div>
+      <section>
         <div className='icons-div'>
           <div className='card'>
-            <FaChartLine style={{ color: "magenta", alignSelf: "center" }} />
-            <p>Track your patients progress</p>
+            <FaChartLine />
+            <p>Track progress</p>
           </div>
           <div className='card'>
-            <FaEnvelope style={{ color: "magenta", alignSelf: "center" }} />
+            <FaEnvelope />
             <p>Send reminders</p>
           </div>
           <div className='card'>
-            <FaCheckSquare style={{ color: "magenta", alignSelf: "center" }} />
-            <p>Lorem ipsum dolor sit</p>
+            <FaCheckSquare />
+            <p>Upload Exercises</p>
           </div>
         </div>
-      </div>
-    );
+      </section>
+    </div>
+  );
 }
 
-export default Homepage
+export default Homepage;
