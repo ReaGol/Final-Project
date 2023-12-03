@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--clr-primary-400);
+  background: linear-gradient(0deg, #e5c0d1 0%, #94aa95 100%);;
 }
 
 /* .image-bg {
@@ -50,7 +50,7 @@ margin: 0 auto;
   top: calc(40% + 100px);
   left: 20vw; */
   text-align: center;
-  color: var(--clr-accent-400);
+  color: var(--clr-neutral-100);
   font-size: 18px;
   margin: 0;
   width: 60vw;
@@ -77,12 +77,12 @@ margin: 0 auto;
   min-width: 200px;
   padding: 1rem;
   align-items: center;
-  color: var(--clr-accent-400);
+  color: var(--clr-neutral-100);
   text-align: center;
 }
 
 svg {
-  color: var(--clr-accent-400);
+  color: var(--clr-neutral-100);
 }
 
 @media (max-width: 1000px) and (min-width: 700px) {
