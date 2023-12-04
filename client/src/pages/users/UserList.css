@@ -31,8 +31,8 @@
 }
 
 td {
- padding: 1% 0;
- width: 15%;
+  padding: 1% 0;
+  width: 15%;
 }
 
 thead {
@@ -48,4 +48,16 @@ tbody {
 table {
   width: 70%;
   padding: 20px;
+}
+
+@media (max-width: 50em) {
+  .hidden-column {
+    display: none;
+  }
+  td {
+    padding: var(--size-200), 0;
+  }
+  th {
+    text-align: center;
+  }
 }

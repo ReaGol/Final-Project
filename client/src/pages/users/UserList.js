@@ -37,19 +37,19 @@ const UserList = () => {
         <table>
           <thead>
             <tr>
-              <th>User</th>
+              <th className='hidden-column'>User</th>
               <th>First Name</th>
               <th>Email</th>
-              <th>Diagnosis</th>
+              <th className='hidden-column'>Diagnosis</th>
             </tr>
           </thead>
           <tbody>
             {users.map((user, index) => (
               <tr key={user._id}>
-                <td>{index + 1}</td>
+                <td className='hidden-column'>{index + 1}</td>
                 <td>{user.firstName}</td>
                 <td>{user.email}</td>
-                <td>{user.diagnosis}</td>
+                <td className='hidden-column'>{user.diagnosis}</td>
 
                 <td>
                   <Link to={`edit/${user._id}`} className='btn'>

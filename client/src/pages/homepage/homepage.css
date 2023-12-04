@@ -131,7 +131,9 @@ svg {
   }
   .icons-div {
     flex-direction: column;
-    height: 120vh;
+    margin: var(--size-600);
+    gap: var(--size-600);
+    /* height: 120vh; */
     justify-content: space-evenly;
     align-items: center;
   }
