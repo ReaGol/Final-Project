@@ -10,7 +10,7 @@ function ExerciseList({ exercises }) {
   }
   return (
     <>
-      <div className='wrapper2'>
+      <div className='exercises-wrapper'>
         {exercises?.map((exercise) => (
           <ExerciseCard
             key={exercise._id}

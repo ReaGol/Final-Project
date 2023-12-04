@@ -1,33 +1,25 @@
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.wrapper2 {
+.exercises-wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin: 2rem;
+  overflow: hidden;
 }
 
 .card {
   box-shadow: 0 2px 20px lightgray;
   display: flex;
-  width: 60%;
+  width: 20%;
   margin: 3%;
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
   border-radius: 1rem;
   transition: transform 200ms ease-in;
-    /* border: solid 1px red; */
-
 }
 
 .card__img {
@@ -43,9 +35,10 @@ body {
   padding: 1rem;
 }
 
-.card-description, p {
+.card-description,
+p {
   padding: 0 1rem;
-  width: 60%;
+  min-width: 60%;
   display: inline-block;
   margin-left: 1rem;
   margin-bottom: 1rem;
@@ -61,7 +54,6 @@ body {
   background: transparent;
   color: palevioletred;
   border-radius: 1rem;
-  line-height: normal;
   transition: background 200ms ease-in, color 200ms ease-in;
 }
 
@@ -69,3 +61,17 @@ body {
   transform: scale(1.02);
 }
 
+@media (max-width: 60em) {
+  .exercises-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .card {
+    box-shadow: 0 2px 20px lightgray;
+    display: flex;
+    min-width: 90%;
+    cursor: pointer;
+    border-radius: 1rem;
+    transition: transform 200ms ease-in;
+  }
+}

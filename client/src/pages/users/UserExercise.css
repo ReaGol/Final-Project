@@ -32,11 +32,16 @@ input[type="number"] {
 button {
   background-color: #4CAF50;
   color: white;
-  border: none;
+  border: 100vh;
   padding: 10px 20px;
   cursor: pointer;
   font-size: 18px;
   margin: 10px;
+}
+
+.back-btn {
+  background-color: var(--clr-accent-400);
+  border-radius: 100vh;
 }
 
 .save-btn {

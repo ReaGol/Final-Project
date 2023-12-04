@@ -1,5 +1,11 @@
+.table-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .btn {
-  background-color: dodgerblue;
+  background-color: var(--clr-primary-400);
   color: azure;
   border: none;
   border-radius: 5px;
@@ -8,11 +14,11 @@
   margin: 5px;
   margin-left: 10px;
   margin-top: 10px;
-  padding: 4px 8px;
+  padding: 7px 8px;
 }
 
 .btn-delete {
-  background-color: red;
+  background-color: var(--clr-accent-400);
   color: azure;
   border: none;
   border-radius: 5px;
@@ -31,6 +37,7 @@ td {
 
 thead {
   text-align: left;
+  font-weight: 600;
 }
 
 tbody {
@@ -40,7 +47,5 @@ tbody {
 
 table {
   width: 70%;
-  border: 2px #ad95ef solid;
-  border-radius: 10px;
   padding: 20px;
 }

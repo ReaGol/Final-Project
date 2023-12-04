@@ -30,7 +30,7 @@ const UserList = () => {
 
   return (
     <div>
-      <div className='container'>
+      <div className='table-container'>
         <Link to='/addUser' className='btn'>
           <i class='fa-solid fa-folder-plus'></i>
         </Link>
