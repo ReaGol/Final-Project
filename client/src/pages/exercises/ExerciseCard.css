@@ -1,38 +1,17 @@
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* .wrapper {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 16rem));
-  gap: 2rem;
-  justify-content: center;
-  margin: 2rem;
-} */
-
-/* .exercise-card{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(12rem, 16rem));
-    gap: 2rem;
-    justify-content: center;
-    outline: red solid 1px;
-} */
-
 .card {
   overflow: hidden;
-  box-shadow: 0 2px 20px lightgray;
+  max-width: var(--size-200);
   border-radius: 0.2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
+  box-shadow: 0 2px 20px lightgray;
   transition: transform 200ms ease-in;
 }
 

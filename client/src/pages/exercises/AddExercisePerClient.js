@@ -56,7 +56,7 @@ function AddExercisePerClient({ exercises, users }) {
   };
 
   return (
-    <div className='exercises-container'>
+    <div className='added-exercises-container'>
       {exercises.map((exercise) => (
         <div className='wrapper' key={exercise._id}>
           <ExerciseCard
