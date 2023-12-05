@@ -16,16 +16,23 @@ function Homepage() {
         </div>
         <p>
           Welcome physios!
-          
-          This website was developed by and for physiotherapists,
-          
-          so that they can create and upload an exercise plan for their patients
-          quickly and easily.
-          
-          No more sending your patients exercises on WhatsApp, 
-          no more wondering whether they did them or not. 
-          From now on you can interact with your patients and help them recover
-          or achieve their goals faster.
+          <br />
+          This website was developed by and for physiotherapists, so that they
+          can create and upload an exercise plan for their patients quickly and
+          easily. No more sending your patients exercises on WhatsApp, no more
+          wondering whether they did them or not. From now on you can interact
+          with your patients and help them recover or achieve their goals
+          faster.
+        </p>
+      </div>
+      <div className='register'>
+        <button className='register-button'>Create Your Account</button>
+        <p>
+          Already have an account?
+          <br />
+          <span>
+            <Link>Sign in Here</Link>
+          </span>
         </p>
       </div>
       <section>

@@ -78,13 +78,13 @@ function AddUser() {
             placeholder='plan'
           />
         </div>
-        <div>
+        <div className="buttons">
           <input className='user-btn' type='submit' value='Create' />
+          <Link to='/' className='user-btn'>
+            <i class='fa-solid fa-arrow-left-long'></i>
+          </Link>
         </div>
       </form>
-      <Link to='/' className='user-btn'>
-        <i class='fa-solid fa-arrow-left-long'></i>
-      </Link>
     </div>
   );
 }

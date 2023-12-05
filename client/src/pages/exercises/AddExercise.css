@@ -1,27 +1,32 @@
+/* body {
+  background: linear-gradient(0deg, #e5c0d1 0%, #94aa95 100%);
+} */
+
 .add-exercise-form-container {
-    width: 500px;
-    height: 500px;
-    margin: 100px auto;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    background-color: lightgrey;
-    border: 1px solid gainsboro;
-    border-radius: 10px;
-    align-items: center;
+  width: 500px;
+  height: fit-content;
+  margin: 100px auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(0deg, #e5c0d1 0%, #94aa95 100%);
+  border: 1px solid gainsboro;
+  border-radius: 10px;
+  align-items: center;
+  box-shadow: 2px 1px 5px 4px gainsboro;
 }
 
-
-.add-exercise-input-container{
-    padding: 10px;
+.add-exercise-input-container {
+  padding: 10px;
+  
 }
 
 .add-exercise-btn {
   padding: 4px 10px;
-  background-color: dodgerblue;
+  background-color: var(--clr-primary-400);
   color: azure;
   border: none;
-  border-radius: 5px;
+  border-radius: 100vh;
   cursor: pointer;
   transition: all 0.3s ease 0s;
   margin: 0 10px 10px;
@@ -29,6 +34,6 @@
 }
 
 .add-exercise-textarea {
-    height: 100px;
-    width: 175px;
+  height: 100px;
+  width: 175px;
 }

@@ -104,12 +104,12 @@ function AddExercise() {
              placeholder='notes'
            />
          </div>
-         <div>
+         <div className="buttons">
            <input className='add-exercise-btn' type='submit' value='Create' />
+           <Link to='/' className='add-exercise-btn'>
+             <i class='fa-solid fa-arrow-left-long'></i>
+           </Link>
          </div>
-         <Link to='/' className='add-exercise-btn'>
-           <i class='fa-solid fa-arrow-left-long'></i>
-         </Link>
        </form>
      </div>
    );
