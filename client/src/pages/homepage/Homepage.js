@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../../App.css";
 import "./homepage.css";
 import logo from "../../images/PhysioTrack-logos_transparent.png";
-import { FaChartLine, FaCheckSquare, FaEnvelope } from "react-icons/fa";
+// import { FaChartLine, FaCheckSquare, FaEnvelope } from "react-icons/fa";
 
 function Homepage() {
   return (
@@ -14,15 +14,17 @@ function Homepage() {
             <img src={logo} alt='' />
           </Link>
         </div>
-        <p>
-          Welcome physios!
-          <br />
+        <h1 className='moto'>Healing Through Movement</h1>
+        <h3>Welcome physios!</h3>
+        <p className='short-p'>
           This website was developed by and for physiotherapists, so that they
           can create and upload an exercise plan for their patients quickly and
-          easily. No more sending your patients exercises on WhatsApp, no more
-          wondering whether they did them or not. From now on you can interact
-          with your patients and help them recover or achieve their goals
-          faster.
+          easily.
+        </p>
+        <p className="long-p">
+          No more sending your patients exercises on WhatsApp, no more wondering
+          whether they did them or not. From now on you can interact with your
+          patients and help them recover or achieve their goals faster.
         </p>
       </div>
       <div className='register'>
@@ -35,7 +37,7 @@ function Homepage() {
           </span>
         </p>
       </div>
-      <section>
+      {/* <section>
         <div className='icons-div'>
           <div className='card'>
             <FaChartLine />
@@ -50,7 +52,17 @@ function Homepage() {
             <p>Upload Exercises</p>
           </div>
         </div>
-      </section>
+      </section> */}
+      <footer className='copyright'>
+        Photo by{" "}
+        <a href='https://unsplash.com/@joshduke10?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash'>
+          Josh Duke
+        </a>{" "}
+        on{" "}
+        <a href='https://unsplash.com/photos/a-woman-is-doing-exercises-on-a-yoga-mat-_PInKGPLPCA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash'>
+          Unsplash
+        </a>
+      </footer>
     </div>
   );
 }
