@@ -5,7 +5,7 @@
   padding: 10px;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(0deg, #e5c0d1 0%, #94aa95 100%);
+  background: linear-gradient(0deg, var(--clr-neutral-800) 0%, var(--clr-primary-400) 100%);
   border: 1px solid gainsboro;
   border-radius: 10px;
   align-items: center;

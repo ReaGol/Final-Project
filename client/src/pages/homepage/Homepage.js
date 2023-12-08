@@ -34,12 +34,14 @@ function Homepage() {
       </div>
 
       <div className='register'>
-        <button className='register-button'>Create Your Account</button>
+        <Link to='/users/new' className='register-button'>
+          Create Your Account
+        </Link>
         <p>
           Already have an account?
           <br />
           <span>
-            <Link>Sign in Here</Link>
+            <Link to='/users/login'>Sign in Here</Link>
           </span>
         </p>
       </div>

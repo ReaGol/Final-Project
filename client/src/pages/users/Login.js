@@ -32,7 +32,7 @@ export default function Login() {
   }
   return (
     <div className='login-form-container'>
-      <Link to='/'>
+      <Link to='/homepage'>
         <i class='fa-solid fa-arrow-left-long'></i>
       </Link>
       <div>

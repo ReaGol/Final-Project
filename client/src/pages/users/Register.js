@@ -98,7 +98,7 @@ export default function Register() {
           </button>
         </form>
       </div>
-      <Link to='/' className='login-btn'>
+      <Link to='/homepage' className='login-btn'>
         <i class='fa-solid fa-arrow-left-long'></i>
       </Link>
     </div>

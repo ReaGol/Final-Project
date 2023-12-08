@@ -22,8 +22,9 @@
 .register-button {
   border-radius: 100vh;
   margin: 10rem var(--size-300) auto;
+  padding: var(--size-200) var(--size-500);
   background: linear-gradient(50deg, var(--clr-primary-400) 0%, var(--clr-neutral-900) 110%);
-  color: var(--clr-neutral-100);
+  color: var(--clr-neutral-100) !important;
 }
 
 .register-button:hover {
