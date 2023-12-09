@@ -5,6 +5,14 @@
   --white: #ffffff;
 }
 
+/* .register-form-wrapper {
+    background-image: url("../../images/bg-photo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+} */
+
 .login-form-container {
   margin: 0 auto;
   margin-top: 2rem;

@@ -30,8 +30,8 @@ function Homepage() {
             faster.
           </p>
         </div>
-        <div className='img-div'></div>
       </div>
+      <div className='img-div'></div>
 
       <div className='register'>
         <Link to='/users/new' className='register-button'>

@@ -1,4 +1,3 @@
-
 .register {
   display: flex;
   flex-direction: column;
@@ -23,12 +22,20 @@
   border-radius: 100vh;
   margin: 10rem var(--size-300) auto;
   padding: var(--size-200) var(--size-500);
-  background: linear-gradient(50deg, var(--clr-primary-400) 0%, var(--clr-neutral-900) 110%);
+  background: linear-gradient(
+    50deg,
+    var(--clr-primary-400) 0%,
+    var(--clr-neutral-900) 110%
+  );
   color: var(--clr-neutral-100) !important;
 }
 
 .register-button:hover {
-    background: linear-gradient(50deg, var(--clr-neutral-900) 0%, var(--clr-primary-400) 110%);
+  background: linear-gradient(
+    50deg,
+    var(--clr-neutral-900) 0%,
+    var(--clr-primary-400) 110%
+  );
 }
 
 .copyright {
@@ -121,7 +128,11 @@
   .register-button {
     border-radius: 100vh;
     margin: 10rem auto var(--size-300);
-    background: linear-gradient(50deg, var(--clr-primary-400) 0%, var(--clr-neutral-900) 110%);
+    background: linear-gradient(
+      50deg,
+      var(--clr-primary-400) 0%,
+      var(--clr-neutral-900) 110%
+    );
     color: var(--clr-neutral-100);
   }
 
@@ -129,8 +140,8 @@
     display: none;
   }
 
-   .register p {
-     margin-bottom: var(--size-300);
+  .register p {
+    margin-bottom: var(--size-300);
   }
 
   .copyright {
@@ -146,23 +157,21 @@
 }
 
 /* medium screen */
-@media (min-width: 590px) and (max-width: 980px) {
-
-   .HomePage {
-    
+@media (min-width: 590px) {
+  .HomePage {
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: 0 auto;
   }
 
-    .logo {
+  .logo {
     margin: 0 auto;
     background: transparent;
   }
 
-  .slogan{
-      margin: 2px auto;
+  .slogan {
+    margin: 2px auto;
     text-align: center;
     font-size: var(--size-500);
     font-weight: 600;
@@ -193,17 +202,21 @@
   .register-button {
     border-radius: 100vh;
     margin: 1rem auto var(--size-300);
-    background: linear-gradient(50deg, var(--clr-primary-400) 0%, var(--clr-neutral-900) 110%);
+    background: linear-gradient(
+      50deg,
+      var(--clr-primary-400) 0%,
+      var(--clr-neutral-900) 110%
+    );
     color: var(--clr-neutral-100);
   }
 
   .icons-div {
     display: flex;
+    justify-content: center;
     align-items: center;
     text-align: center;
-    margin: 0 auto;
   }
-  
+
   .icons-div p {
     margin-top: 2vw;
     min-width: 100px;
@@ -214,12 +227,9 @@
     display: flex;
     flex-direction: column;
     width: 303px;
-    /* padding: 1rem; */
     align-items: center;
     color: var(--clr-accent-400);
     text-align: center;
-    /* box-shadow: 2px 1px 5px 4px gainsboro; */
-
   }
 
   svg {
@@ -227,27 +237,29 @@
   }
 }
 
-/* large screen */
-@media (min-width: 950px) {
+/* large screen */ 
+@media (min-width: 1900px) {
   .HomePage {
     display: flex;
     flex-direction: column;
-
+    align-items: flex-start;
+    width: 100vw;
   }
 
   .logo {
-    margin: 0 auto;
+    margin: auto 36rem;
   }
 
-.main-content {
-  display: flex;
-  justify-content: space-around;
-}
+  .main-content {
+    display: flex;
+    
+  }
 
   .slogan {
-    margin: 0 auto;
+    margin: auto 32rem;
     text-align: center;
-    font-size: var(--size-500);
+    font-style: italic;
+    font-size: var(--size-600);
     font-weight: 600;
     color: #94aa95;
   }
@@ -265,57 +277,61 @@
   }
 
   .main-text {
-   width: 600px;
-   font-size: var(--size-500);
-   margin: var(--size-900);
+    width: 54%;
+    font-size: var(--size-500);
+    margin: var(--size-900) 10rem;
   }
 
   .img-div {
-    background-image: url("../../images/short-image.png");
+    background-image: url("../../images/full-img.jpg");
     background-repeat: no-repeat;
-    background-size: contain;
-    width: 600px;
-    height: 600px;
+    background-size: cover;
+    width: 682px;
+    min-height: 100vh;
+    position: absolute;
+    bottom: 40px;
+    left: calc(100% - 684px);
   }
 
   .register {
     display: flex;
-    margin: var(--size-400);
+    width: 50%;
+    margin: auto 12%;
+    margin: 3rem 9% var(--size-700);
   }
   .register-button {
     border-radius: 100vh;
     margin: 1rem auto var(--size-300);
     background-color: var(--clr-primary-400);
-    background: linear-gradient(50deg, var(--clr-primary-400) 0%, var(--clr-neutral-900) 110%);
+    background: linear-gradient(
+      50deg,
+      var(--clr-primary-400) 0%,
+      var(--clr-neutral-900) 110%
+    );
     color: var(--clr-neutral-100);
   }
-  
+
   .icons-div {
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    text-align: center;
+    gap: 8rem;
+    margin: var(--size-700) 18rem 0;
   }
-  
+
   .icons-div p {
     margin-top: var(--size-200);
     min-width: 100px;
-    /* max-height: 2rem; */
   }
-  
+
   .icons-div .icons-card {
     display: flex;
     flex-direction: column;
     max-width: 200px;
     min-height: 90px;
-    /* padding: 1rem; */
     align-items: center;
     text-align: center;
     font-weight: 600;
     color: var(--clr-primary-400);
     background: transparent;
-    /* border-radius: var(--size-200);
-    box-shadow: 2px 1px 5px 4px gainsboro; */
   }
 
   svg {
@@ -324,8 +340,19 @@
   }
 
   .copyright {
-    color: #e5c0d1;
+    color: var(--clr-accent-300);
     font-size: var(--size-200);
-    margin: 0 auto;
+    margin: 0 auto;    
+  }
+  
+  footer {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    height: var(--size-700);
+    background-color: var(--clr-primary-400);
+    align-items: center;
+    justify-content: center;
   }
 }

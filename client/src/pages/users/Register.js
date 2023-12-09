@@ -62,45 +62,47 @@ export default function Register() {
   }
 
   return (
-    <div className='login-form-container'>
-      <div>
-        <h3>Register</h3>
-        <form onSubmit={registerUser}>
-          <div className='login-input-container'>
-            <label htmlFor='name'>name</label>
-            <input
-              type='string'
-              name='name'
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            ></input>
-          </div>
-          <div className='login-input-container'>
-            <label htmlFor='email'>email</label>
-            <input
-              type='email'
-              name='email'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            ></input>
-          </div>
-          <div className='login-input-container'>
-            <label htmlFor='password'>password</label>
-            <input
-              type='password'
-              name='password'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            ></input>
-          </div>
-          <button className='login-btn' type='submit'>
-            Register
-          </button>
-        </form>
+    <div className='register-form-wrapper'>
+      <div className='login-form-container'>
+        <div>
+          <h3>Register</h3>
+          <form onSubmit={registerUser}>
+            <div className='login-input-container'>
+              <label htmlFor='name'>name</label>
+              <input
+                type='string'
+                name='name'
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              ></input>
+            </div>
+            <div className='login-input-container'>
+              <label htmlFor='email'>email</label>
+              <input
+                type='email'
+                name='email'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              ></input>
+            </div>
+            <div className='login-input-container'>
+              <label htmlFor='password'>password</label>
+              <input
+                type='password'
+                name='password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              ></input>
+            </div>
+            <button className='login-btn' type='submit'>
+              Register
+            </button>
+          </form>
+        </div>
+        <Link to='/homepage' className='login-btn'>
+          <i class='fa-solid fa-arrow-left-long'></i>
+        </Link>
       </div>
-      <Link to='/homepage' className='login-btn'>
-        <i class='fa-solid fa-arrow-left-long'></i>
-      </Link>
     </div>
   );
 }
