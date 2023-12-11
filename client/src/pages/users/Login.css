@@ -1,45 +1,71 @@
-:root {
-  --green: #94aa95;
-  --light-pink: #e5c0d1;
-  --dark-pink: #dc92b5;
-  --white: #ffffff;
+.register-form-wrapper {
+  /* background-image: url("../../images/short-image.png"); */
+  /* z-index: auto;
+  background-repeat: no-repeat;
+  background-size: cover; */
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
-/* .register-form-wrapper {
-    background-image: url("../../images/bg-photo.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100vw;
-    height: 100vh;
-} */
+.form-bg-img {
+  z-index: auto;
+  width: max-content;
+  height: 100vh;
+  aspect-ratio: 1;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+    opacity: 0.5;
+}
 
 .login-form-container {
   margin: 0 auto;
   margin-top: 2rem;
   position: relative;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
   width: 300px;
   height: 500px;
-  color: var(--white);
-  background: linear-gradient(0deg, #94aa95 0%, #e5c0d1 100%);
+  color: var(--clr-neutral-700);
+  background: var(--clr-neutral-100);
   padding: 10px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  border-radius: var(--size-400);
+  box-shadow: 0 0 30px var(--clr-neutral-700);
 }
 
 .login-btn {
-  margin-top: 1rem;
-  background-color: #ffffff;
-  color: #94aa95;
-  border-radius: 20px;
+  margin: var(--size-400) var(--size-900);
+  background:linear-gradient(0deg, var(--clr-neutral-800) 0%, var(--clr-primary-400) 100%);;
+  color: var(--clr-neutral-100);
+  border-radius: 100vh;
   cursor: pointer;
+  font-weight: 600;
+}
+
+.back-arrow {
+  margin: var(--size-400) var(--size-900);
+  background-color: var(--clr-neutral-100);
+  color: var(--clr-neutral-700);
+  border-radius: 100vh;
+  cursor: pointer;
+  font-weight: 600;
+  padding: var(--size-200) var(--size-300);
 }
 
 .login-btn:hover {
-  background-color: var(--light-pink);
+  background-color: var(--clr-neutral-200);
+  color: var(--clr-accent-900);
 }
 
 h3 {
   text-align: center;
-  margin: 1rem;
+  margin: var(--size-400) 6rem;
   padding: 1rem;
 }
 
@@ -47,7 +73,7 @@ h3 {
   position: relative;
   width: 100%;
   height: 50px;
-  border-bottom: #ffffff 2px solid;
+  border-bottom: var(--clr-neutral-700) 2px solid;
   margin: 30px 0;
 }
 .login-input-container label {
@@ -57,7 +83,7 @@ h3 {
   left: 5px;
   transform: translateY(-50%);
   font-size: 1em;
-  color: #ffffff;
+  color: var(--clr-neutral-700);
   font-weight: 500;
   pointer-events: none;
   transition: 0.5s;

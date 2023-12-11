@@ -8,7 +8,9 @@
 
   --clr-neutral-900: hsl(145, 15%, 15%);
   --clr-neutral-800: hsl(141, 11%, 30%);
-  --clr-neutral-200: hsl(0, 0%, 97%);
+  --clr-neutral-700: hsl(201, 63%, 17%);
+  --clr-neutral-600: hsl(10, 12%, 72%);
+  --clr-neutral-200: hsl(0, 8%, 93%);
   --clr-neutral-100: hsl(0, 0%, 100%);
 
   --ff-primary: "Be Vietnam Pro", sans-serif;

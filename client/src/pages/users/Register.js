@@ -3,6 +3,7 @@ import Cookies from "js-cookie";
 import "./Login.css";
 import React, { useState } from "react";
 import { useNavigate, Link} from "react-router-dom";
+import img from "../../images/short-image.png";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -63,6 +64,7 @@ export default function Register() {
 
   return (
     <div className='register-form-wrapper'>
+      <img className='form-bg-img' src={img} alt="background" />
       <div className='login-form-container'>
         <div>
           <h3>Register</h3>
@@ -99,7 +101,7 @@ export default function Register() {
             </button>
           </form>
         </div>
-        <Link to='/homepage' className='login-btn'>
+        <Link to='/homepage' className='back-arrow'>
           <i class='fa-solid fa-arrow-left-long'></i>
         </Link>
       </div>
