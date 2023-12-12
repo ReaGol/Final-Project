@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 import "./Login.css";
 import React, { useState } from "react";
 import { useNavigate, Link} from "react-router-dom";
-import img from "../../images/short-image.png";
+import img from "../../images/form-bg-image.png";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -68,13 +68,15 @@ export default function Register() {
       <div className='login-form-container'>
         <div>
           <h3>Register</h3>
-          <form onSubmit={registerUser}>
+          <form className="register-form" onSubmit={registerUser}>
             <div className='login-input-container'>
-              <label htmlFor='name'>name</label>
+              <label className="__label" htmlFor='name'>name</label>
               <input
+                className="__input"
                 type='string'
                 name='name'
                 value={name}
+                placeholder={''}
                 onChange={(e) => setName(e.target.value)}
               ></input>
             </div>

@@ -2,7 +2,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.dashboardContent {
+/* .dashboardContent {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 200px);
@@ -16,21 +16,20 @@
 }
 
 .dashboardContent > div {
-    background-color: palevioletred;
+    background-color: var(--clr-accent-400);
     height: 150px;
     width: 150px;
     display: flex;
     justify-content: center;
-    align-items: center;
     border: 1px solid gainsboro;
-    border-radius: 55%;
     font-size: 2em;
     cursor: pointer;
+    color: var(--clr-neutral-100);
 }
 
 .dashboardContent > div:hover {
-    background-color: rgb(143, 4, 37);
-    color: white;
+    background-color: var(--clr-neutral-100);
+    color: var(--clr-accent-400);
  
-}
+} */
 

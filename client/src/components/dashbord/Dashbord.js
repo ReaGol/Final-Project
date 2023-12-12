@@ -1,10 +1,14 @@
 import React from "react";
+import Sidebar from "../../components/sidebar/Sidebar.js";
+// import { FiSetting } from "react-icons/fi";
+
 import styles from "./dashboard.module.css";
 import Header from "../navbar/Header";
 import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
   const navigate = useNavigate();
+  const activeMenu = true;
 
   return (
     <>
@@ -12,11 +16,21 @@ function Dashboard() {
         <Header />
       </div>
       <div className={styles.dashboardContent}>
-        <div onClick={() => navigate("/users")}>Users</div>
+        {activeMenu ? (
+          <div className='sidebar'>
+            <Sidebar />
+          </div>
+        ) : (
+          <div className='sidebar hidden'>
+            <Sidebar />
+          </div>
+        )}
+        <div></div>
+        {/* <div onClick={() => navigate("/users")}>Users</div>
         <div onClick={() => navigate("/adduser")}>Add User</div>
         <div onClick={() => navigate("/exercises")}>Exercises</div>
         <div onClick={() => navigate("/addexercise")}>Add Exercise</div>
-        <div onClick={() => navigate("/users/:id")}>User Exercises</div>
+        <div onClick={() => navigate("/users/:id")}>User Exercises</div> */}
       </div>
     </>
   );

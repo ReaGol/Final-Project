@@ -1,0 +1,27 @@
+.sidebar-left {
+    overflow: hidden;
+    background-color: var(--clr-accent-400);
+    width: 200px;
+    height: 100vh;
+}
+
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: var(--size-600);
+    width: fit-content;
+    height: 200px;
+}
+
+/* .sidebar-button {
+    background-color: aliceblue;
+    width: fit-content;
+    border-radius: 50px;
+    align-self: flex-end;
+} */
+
+.hidden {
+    display: none;
+}
+

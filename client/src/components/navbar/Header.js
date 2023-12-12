@@ -8,7 +8,7 @@ function Header() {
       <Link to='/'>{/* <img className='logo' src={} alt='logo' /> */}</Link>
 
       <nav>
-        <ul>
+        {/* <ul>
           <li></li>
           <li>
             <Link to='/homepage'>Homepage</Link>
@@ -19,7 +19,7 @@ function Header() {
           <li>
             <Link to='/users/new'>Register</Link>
           </li>
-        </ul>
+        </ul> */}
       </nav>
     </header>
   );

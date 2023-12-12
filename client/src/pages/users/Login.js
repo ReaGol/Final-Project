@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
-import img from "../../images/short-image.png"
+import img from "../../images/form-bg-image.png"
 
 export default function Login() {
   const navigate = useNavigate();

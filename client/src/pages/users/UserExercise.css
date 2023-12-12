@@ -30,7 +30,7 @@ input[type="number"] {
 }
 
 button {
-  background-color: #4CAF50;
+  background-color: var(--clr-accent-400);
   color: white;
   border: 100vh;
   padding: 10px 20px;
@@ -45,7 +45,7 @@ button {
 }
 
 .save-btn {
-  background-color: #4CAF50;
+  background-color: var(--clr-accent-400);
   width: 5%;
   color: white;
   border: none;
