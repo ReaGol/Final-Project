@@ -1,14 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
+// import logo from '../../images/PhysioTrack-logos_black.png'
 
 function Header() {
   return (
     <header className='header'>
-      <Link to='/'>{/* <img className='logo' src={} alt='logo' /> */}</Link>
+      {/* <Link to='/'><img id='sidebar-logo' src={logo} alt='logo' /></Link> */}
 
       <nav>
-        {/* <ul>
+        <ul>
           <li></li>
           <li>
             <Link to='/homepage'>Homepage</Link>
@@ -19,7 +20,7 @@ function Header() {
           <li>
             <Link to='/users/new'>Register</Link>
           </li>
-        </ul> */}
+        </ul>
       </nav>
     </header>
   );

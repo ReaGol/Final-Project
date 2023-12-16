@@ -14,6 +14,7 @@
   --clr-neutral-100: hsl(0, 0%, 100%);
 
   --ff-primary: "Be Vietnam Pro", sans-serif;
+  --ff-secondary: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
   --ff-body: var(--ff-primary);
   --ff-heading: var(--ff-primary);

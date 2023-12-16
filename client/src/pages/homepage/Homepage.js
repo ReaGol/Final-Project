@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../../App.css";
 import "./homepage.css";
-import logo from "../../images/PhysioTrack-logos_transparent.png";
+import logo from "../../images/PhysioTrack-logo.png";
 import { FaChartLine, FaCheckSquare, FaEnvelope } from "react-icons/fa";
 
 function Homepage() {
