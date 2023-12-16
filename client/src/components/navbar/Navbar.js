@@ -4,6 +4,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import avatar from '../../images/avatar.jpg'
 import { useStateContext } from "../../contexts/ContextProvider";
 import './Navbar.css'
+import UserProfile from "../UserProfile";
 
 const NavButton = ({ customFunc, icon }) => (
     <button
@@ -21,27 +22,30 @@ function Navbar() {
     setActiveMenu,
     handleClick,
     isClicked,
+    setIsClicked,
     setScreenSize,
     screenSize,
   } = useStateContext();
 
-//   useEffect(() => {
-//     const handleResize = () => setScreenSize(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => setScreenSize(window.innerWidth);
 
-//     window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", handleResize);
 
-//     handleResize();
+    handleResize();
 
-//     return () => window.removeEventListener("resize", handleResize);
-//   }, []);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
-    if (screenSize <= 900) {
+    if (screenSize <= 800) {
       setActiveMenu(false);
     } else {
       setActiveMenu(true);
     }
   }, [screenSize]);
+
+//   const handleActiveMenu = () => setActiveMenu(!activeMenu);
 
   return (
     <div className='main'>
@@ -63,7 +67,7 @@ function Navbar() {
         <MdKeyboardArrowDown className="arrow-down" />
         </p>
       </div>
-      {/* {isClicked.userProfile && <UserProfile />} */}
+      {isClicked.userProfile && <UserProfile />}
     </div>
   );
 }

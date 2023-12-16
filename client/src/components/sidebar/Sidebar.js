@@ -1,9 +1,9 @@
 // import { Link, NavLink } from 'react-router-dom';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./Sidebar.css";
 import { SidebarData } from "./SidebarData.js";
 import {MdOutlineCancel} from 'react-icons/md'
-import {FaHome} from 'react-icons/fa'
+// import {FaHome} from 'react-icons/fa'
 import { useStateContext } from "../../contexts/ContextProvider";
 
 function Sidebar() {
