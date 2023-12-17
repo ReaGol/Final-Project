@@ -2,7 +2,6 @@ import React from "react";
 import Sidebar from "../../components/sidebar/Sidebar.js";
 // import { FiSetting } from "react-icons/fi";
 import { useStateContext } from "../../contexts/ContextProvider";
-
 import styles from "./dashboard.module.css";
 import Header from "../navbar/Header";
 import Navbar from "../navbar/Navbar.js";
@@ -28,11 +27,6 @@ function Dashboard() {
           </div>
         )}
         <div></div>
-        {/* <div onClick={() => navigate("/users")}>Users</div>
-        <div onClick={() => navigate("/adduser")}>Add User</div>
-        <div onClick={() => navigate("/exercises")}>Exercises</div>
-        <div onClick={() => navigate("/addexercise")}>Add Exercise</div>
-        <div onClick={() => navigate("/users/:id")}>User Exercises</div> */}
       </div>
     </>
   );

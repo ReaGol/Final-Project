@@ -1,0 +1,10 @@
+// export { default as Searchbar } from "./Searchbar";
+// export { default as LineChart } from "./Charts/LineChart";
+// export { default as Stacked } from "./Charts/Stacked";
+// export { default as Doughnut } from "./Charts/Doughnut";
+// export { default as ChartsHeader } from "./ChartsHeader";
+// export { default as Calendar } from "./Calendar";
+// export { default as Footer } from "./Footer";
+// export { default as Kanban } from "./Kanban";
+// export { default as Patients } from "./Patients";
+// export { default as Button } from "./Button";

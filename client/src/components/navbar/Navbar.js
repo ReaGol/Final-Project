@@ -59,7 +59,7 @@ function Navbar() {
 
       </div>
       <div className='user-profile' onClick={() => handleClick("userProfile")}>
-        <img className='user-avatar' src={avatar} alt='user-profile' />
+        <img className='user-avatar hide-avatar' src={avatar} alt='user-profile' />
         <p className="user-name">
           <span>Hi</span>
           {' '} 

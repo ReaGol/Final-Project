@@ -1,10 +1,12 @@
 import React from 'react'
 import { FaHome, FaUser, FaDumbbell, FaChartLine, FaCalendarDay } from "react-icons/fa";
+import { FaPerson } from "react-icons/fa6";
+
 
 
 export const SidebarData = [
   {
-    title: "Home",
+    title: "Homepage",
     icon: <FaHome />,
     link: "/homepage",
   },
@@ -12,6 +14,11 @@ export const SidebarData = [
     title: "Users",
     icon: <FaUser />,
     link: "/users",
+  },
+  {
+    title: "Patients",
+    icon: <FaPerson />,
+    link: "/patients",
   },
   {
     title: "Exercises",

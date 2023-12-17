@@ -15,9 +15,10 @@ import AddExercisePerClient from "./pages/exercises/AddExercisePerClient";
 import Homepage from "./pages/homepage/Homepage";
 import UserExercises from "./pages/users/UserExercises";
 import ExerciseDetails from "./pages/exercises/ExerciseDetails";
-// import ExerciseChart from "./pages/ExerciseChart";
 import { useStateContext } from "./contexts/ContextProvider";
 import Modal from 'react-modal'
+import Patients from "./pages/Patients";
+import {LineChart, BarChart, PieChart} from './components'
 Modal.setAppElement('#root')
 
 function App() {
@@ -49,9 +50,11 @@ function App() {
 
   return (
     <div className='app'>
+      <Dashboard></Dashboard>
       <Routes>
-        <Route path='/' element={<Dashboard />} />
+        {/* <Route path='/' element={<Dashboard />} /> */}
         <Route path='/homepage' element={<Homepage />} />
+        <Route path='/patients' element={<Patients />} />
         <Route path='/users' element={<UserList />} />
         <Route path='/addUser' element={<AddUser />} />
         <Route path='/users/login' element={<Login />} />
@@ -76,6 +79,10 @@ function App() {
           element={<AddExercisePerClient exercises={exercises} users={users} />}
         />
         <Route path='/addexercise' element={<AddExercise />} />
+        {/*CHARTS*/}
+        <Route path='/bar' element={<BarChart />} />
+        <Route path='/pie' element={<PieChart />} />
+        <Route path='/line' element={<LineChart />} />
       </Routes>
     </div>
   );
