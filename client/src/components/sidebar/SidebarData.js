@@ -1,6 +1,7 @@
 import React from 'react'
 import { FaHome, FaUser, FaDumbbell, FaChartLine, FaCalendarDay } from "react-icons/fa";
 import { FaPerson } from "react-icons/fa6";
+import { PiKanbanFill } from "react-icons/pi";
 
 
 
@@ -32,7 +33,12 @@ export const SidebarData = [
   },
   {
     title: "Calendar",
-    icon: <FaCalendarDay/>,
+    icon: <FaCalendarDay />,
     link: "/calendar",
-  }
+  },
+  {
+    title: "Kanban",
+    icon: <PiKanbanFill />,
+    link: "/kanban",
+  },
 ];

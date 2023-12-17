@@ -1,4 +1,3 @@
-import React from 'react'
 
 function BarChart() {
   return (
@@ -6,4 +5,4 @@ function BarChart() {
   )
 }
 
-export default BarChart
+export default BarChart;

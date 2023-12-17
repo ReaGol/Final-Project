@@ -15,10 +15,12 @@ import AddExercisePerClient from "./pages/exercises/AddExercisePerClient";
 import Homepage from "./pages/homepage/Homepage";
 import UserExercises from "./pages/users/UserExercises";
 import ExerciseDetails from "./pages/exercises/ExerciseDetails";
+import BarChart  from './pages/BarChart'
+import Calendar from './pages/Calendar'
+import Kanban from "./pages/Kanban";
 import { useStateContext } from "./contexts/ContextProvider";
 import Modal from 'react-modal'
 import Patients from "./pages/Patients";
-import {LineChart, BarChart, PieChart} from './components'
 Modal.setAppElement('#root')
 
 function App() {
@@ -55,21 +57,19 @@ function App() {
         {/* <Route path='/' element={<Dashboard />} /> */}
         <Route path='/homepage' element={<Homepage />} />
         <Route path='/patients' element={<Patients />} />
+        <Route path='/calendar' element={<Calendar />} />
+        <Route path='/kanban' element={<Kanban />} />
+        <Route path='/charts' element={<BarChart />} />
         <Route path='/users' element={<UserList />} />
         <Route path='/addUser' element={<AddUser />} />
         <Route path='/users/login' element={<Login />} />
         <Route path='/users/new' element={<Register />} />
         <Route path='/users/edit/:id' element={<EditUser />} />
         <Route path='/exercises/exercise/:id' element={<ExerciseDetails />} />
-        {/* <Route path='/charts' element={<ExerciseChart />} /> */}
         <Route
           path='/users/:id'
           element={<UserExercises exercises={exercises} users={users} />}
         />
-        {/* <Route
-          path='/userexercises'
-          element={<UserExercises exercises={exercises} users={users} />}
-        /> */}
         <Route
           path='/exercises'
           element={<ExerciseList exercises={exercises} />}
@@ -79,10 +79,6 @@ function App() {
           element={<AddExercisePerClient exercises={exercises} users={users} />}
         />
         <Route path='/addexercise' element={<AddExercise />} />
-        {/*CHARTS*/}
-        <Route path='/bar' element={<BarChart />} />
-        <Route path='/pie' element={<PieChart />} />
-        <Route path='/line' element={<LineChart />} />
       </Routes>
     </div>
   );
