@@ -3,7 +3,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.card {
+.exercise-card {
   overflow: hidden;
   max-width: var(--size-200);
   border-radius: 0.2rem;

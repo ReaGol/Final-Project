@@ -24,6 +24,6 @@ router.get("/therapist/patients/:id", getPatient);
 
 router.patch("/therapist/patients/edit/:id", editPatient);
 
-router.delete("/therapist/patients/:id", deletePatient);
+router.delete("/therapist/patients/:id", auth, deletePatient);
 
 

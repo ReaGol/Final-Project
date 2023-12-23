@@ -33,16 +33,7 @@ function UserExercises({ exercises, users }) {
     fetchAssignedExercises();
   }, [id]);
 
-  // const handleCheckboxChange = (exerciseId) => {
-  //   // Toggle completion status
-  //   setCompletedExercises((prevExercises) => {
-  //     if (prevExercises.includes(exerciseId)) {
-  //       return prevExercises.filter((id) => id !== exerciseId);
-  //     } else {
-  //       return [...prevExercises, exerciseId];
-  //     }
-  //   });
-  // };
+
 const handleCheckboxChange = (exerciseId) => {
   setCompletedExercises((prevExercises) => {
     if (prevExercises.includes(exerciseId)) {
@@ -93,13 +84,6 @@ const handleCheckboxChange = (exerciseId) => {
 
   const handleSave = async () => {
     try {
-      // const validatedSets = parseInt(setsCompletedInput);
-      // const validatedReps = parseInt(repsCompletedInput);
-
-      // if (isNaN(validatedSets) || isNaN(validatedReps)) {
-      //   console.log("Invalid input for sets or reps.");
-      //   return;
-      // }
       const response = await axios.patch(
         `http://localhost:8000/therapist/patients/edit/${id}`,
         {
@@ -125,7 +109,7 @@ const handleCheckboxChange = (exerciseId) => {
   return (
     <div className='container-own-excersices'>
       <h3>Your Exercises</h3>
-      <form>
+      <form className='exercise-wrapper'>
         {assignedExercises.map((exercise) => (
           <div key={exercise._id}>
             <ExerciseCard
@@ -136,18 +120,6 @@ const handleCheckboxChange = (exerciseId) => {
               reps={exercise.reps}
               image={exercise.image}
             />
-            <label htmlFor={exercise._id}>
-              <input
-                type='checkbox'
-                value={exercise._id}
-                id={`checkbox-${exercise._id}`}
-                onChange={() => handleCheckboxChange(exercise._id)}
-                checked={completedExercises.includes(exercise._id)}
-              />
-              {completedExercises.includes(exercise._id)
-                ? "Exercise Completed"
-                : "Mark as Completed"}
-            </label>
             <div>
               <label>Sets</label>
               <input
@@ -165,11 +137,25 @@ const handleCheckboxChange = (exerciseId) => {
                 onChange={(e) => setRepsCompletedInput(e.target.value)}
               />
             </div>
+            <label htmlFor={exercise._id}>
+              <input
+                type='checkbox'
+                value={exercise._id}
+                id={`checkbox-${exercise._id}`}
+                onChange={() => handleCheckboxChange(exercise._id)}
+                checked={completedExercises.includes(exercise._id)}
+              />
+              {completedExercises.includes(exercise._id)
+                ? "Exercise Completed"
+                : "Mark as Completed"}
+            </label>
           </div>
         ))}
       </form>
 
-      <button className="save-btn" onClick={handleSave}>Save</button>
+      <button className='save-btn' onClick={handleSave}>
+        Save
+      </button>
       <Link to='/'>
         <button>Back</button>
       </Link>

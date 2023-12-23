@@ -14,10 +14,9 @@ import {
   Resize,
   DragAndDrop,
 } from "@syncfusion/ej2-react-schedule";
-import { DatePickerComponent } from "@syncfusion/ej2-react-calendars";
+// import { DatePickerComponent } from "@syncfusion/ej2-react-calendars";
 import { scheduleData } from "../data/dummy";
-// import {Header} from "../components";
-const PropertyPane = (props) => <div className='mt-5'>{props.children}</div>;
+const PropertyPane = (props) => <div>{props.children}</div>;
 
 function Calendar() {
     const [scheduleObj, setScheduleObj] = useState();
@@ -32,11 +31,10 @@ function Calendar() {
       };
   return (
     <div className='calendar-div'>
-      {/* <Header category='App' title='Calendar' />{" "} */}
       <ScheduleComponent
         height='650px'
         ref={(schedule) => setScheduleObj(schedule)}
-        selectedDate={new Date(2021, 0, 10)}
+        selectedDate={new Date()}
         eventSettings={{ dataSource: scheduleData }}
         dragStart={onDragStart}
       >

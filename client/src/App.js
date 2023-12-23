@@ -20,7 +20,7 @@ import Calendar from './pages/Calendar'
 import Kanban from "./pages/Kanban";
 import { useStateContext } from "./contexts/ContextProvider";
 import Modal from 'react-modal'
-import Patients from "./pages/Patients";
+import Workouts from "./pages/Workouts";
 Modal.setAppElement('#root')
 
 function App() {
@@ -56,7 +56,7 @@ function App() {
       <Routes>
         {/* <Route path='/' element={<Dashboard />} /> */}
         <Route path='/homepage' element={<Homepage />} />
-        <Route path='/patients' element={<Patients />} />
+        <Route path='/workouts' element={<Workouts />} />
         <Route path='/calendar' element={<Calendar />} />
         <Route path='/kanban' element={<Kanban />} />
         <Route path='/charts' element={<BarChart />} />

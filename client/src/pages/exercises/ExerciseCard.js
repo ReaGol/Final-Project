@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import ExerciseModal from "./ExerciseDetails.js";
 
+
 function ExerciseCard({ name, description, sets, reps, image, id }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+
 
   const openModal = () => {
     setModalIsOpen(true);

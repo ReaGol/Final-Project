@@ -62,35 +62,39 @@ import jwt from "jsonwebtoken";
      // minlength: 5,
    },
 
-  //  perform: {
-  //    type: Number,
-  //    default: 1,
-  //    validate(value) {
-  //      if (value < 0) {
-  //        throw new Error("Must be a positive number");
-  //      }
-  //    },
-  //  },
+   //  perform: {
+   //    type: Number,
+   //    default: 1,
+   //    validate(value) {
+   //      if (value < 0) {
+   //        throw new Error("Must be a positive number");
+   //      }
+   //    },
+   //  },
    exercises: [
-    {
-      exercise: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Exercise", 
-      },
-      setsCompleted: {
-        type: Number,
-      },
-      repsCompleted: {
-        type: Number,
-      },
-      streak: {
+     {
+       exercise: {
+         type: mongoose.Schema.Types.ObjectId,
+         ref: "Exercise",
+       },
+       setsCompleted: {
+         type: Number,
+       },
+       repsCompleted: {
+         type: Number,
+       },
+       streak: {
          type: Number,
        },
        notes: {
          type: String,
-       }
-    },
-  ],
+       },
+       date: {
+         type: Date,
+         default: Date.now,
+       },
+     },
+   ],
  });
 
 

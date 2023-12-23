@@ -1,27 +1,28 @@
-div>main {
+/* div>main {
   margin: auto;
   outline: solid 1px red;
-}
+} */
 .container-own-excersices {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-
-}
-.container-own-excersices > form {
-  display: flex;
-  flex-wrap: wrap;
-  
+  justify-content: center;
 }
 
 .container-own-excersices > form > div {
-    border :1px black solid;
-    margin: 1%;
-    border-radius: 1rem;
-    padding: 1%;
+  margin: 1%;
+  border-radius: 1rem;
+  padding: 1%;
+  max-width: 100vw;
+  height: max-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
+
 h3 {
   margin-bottom: 10px;
+  align-self: center;
 }
 
 input[type="number"] {
@@ -46,15 +47,16 @@ button {
 
 .save-btn {
   background-color: var(--clr-accent-400);
-  width: 5%;
   color: white;
   border: none;
+  border-radius: 100vh;
   padding: 10px 20px;
   cursor: pointer;
   font-size: 18px;
   margin: 10px;
-  
+  align-self: center;
 }
+
 button:hover {
   background-color: var(--clr-accent-300);
   color: var(--clr-accent-100);
