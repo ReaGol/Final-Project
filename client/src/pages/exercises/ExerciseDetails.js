@@ -12,6 +12,22 @@ const ExerciseModal = ({ isOpen, exercise, onRequestClose }) => {
         },
         content: {
           color: "light-pink",
+          position: "absolute",
+          top: "40px",
+          left: "40px",
+          right: "40px",
+          bottom: "40px",
+          border: "1px solid #ccc",
+          background: "#fff",
+          overflow: "auto",
+          WebkitOverflowScrolling: "touch",
+          borderRadius: "5px",
+          outline: "none",
+          padding: "20px",
+          margin: "0 auto",
+          width: "500px",
+          height: "fit-content",
+          image: "contain"
         },
       }}
       contentLabel='Exercise Details'

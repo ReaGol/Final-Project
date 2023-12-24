@@ -1,6 +1,11 @@
 import mongoose from "mongoose";
 
 export const Exercise = mongoose.model("Exercise", {
+  exerciseId: {
+    type: mongoose.Schema.Types.ObjectId,
+    default: mongoose.Types.ObjectId,
+    unique: true,
+  },
   name: {
     type: String,
     // required: true,
