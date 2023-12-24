@@ -37,7 +37,7 @@ const UserList = () => {
         <table>
           <thead>
             <tr>
-              <th className='hidden-column'>User</th>
+              <th className='hidden-column'>Patient</th>
               <th>First Name</th>
               <th>Email</th>
               <th className='hidden-column'>Diagnosis</th>

@@ -31,13 +31,13 @@ const therapistSchema = new mongoose.Schema({
   },
   patientsArray: [
     {
-      patient: {
+      patientId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Patient", 
       },
       exercises: [
         {
-          exercise: {
+          exerciseId: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Exercise", 
           },

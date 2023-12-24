@@ -1,8 +1,8 @@
 import React from 'react'
 import { FaHome, FaUser, FaDumbbell, FaChartLine, FaCalendarDay } from "react-icons/fa";
-import { FaPerson } from "react-icons/fa6";
+// import { FaPerson } from "react-icons/fa6";
 import { PiKanbanFill } from "react-icons/pi";
-import { GiWeightLiftingUp } from "react-icons/gi";
+// import { GiWeightLiftingUp } from "react-icons/gi";
 
 
 
@@ -14,15 +14,15 @@ export const SidebarData = [
     link: "/homepage",
   },
   {
-    title: "Users",
+    title: "Patients",
     icon: <FaUser />,
-    link: "/users",
+    link: "/patients",
   },
-  {
-    title: "Workouts",
-    icon: <GiWeightLiftingUp />,
-    link: "/workouts",
-  },
+  // {
+  //   title: "Workouts",
+  //   icon: <GiWeightLiftingUp />,
+  //   link: "/workouts",
+  // },
   {
     title: "Exercises",
     icon: <FaDumbbell />,

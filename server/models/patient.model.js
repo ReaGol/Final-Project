@@ -138,7 +138,6 @@ patientSchema.statics.findByCredentials = async (email, password) => {
   return patient;
 };
 
-// Hash the plain text password before saving
 patientSchema.pre("save", async function (next) {
   const patient = this;
 

@@ -1,17 +1,18 @@
 // import { Workout } from "../models/workout.model.js";
+// import { Patient } from "../models/patient.model.js";
 
-// // Get all workouts
-// export const getWorkouts = async (req, res) => {
-//   try {
-//     const workouts = await Workout.find({ patientId: req.params.patientId });
-//     if (!workouts) {
-//       return res.status(404).send("Workouts not found");
-//     }
-//     res.status(200).send(workouts);
-//   } catch (error) {
-//     res.status(500).send(error);
-//   }
-// };
+// // // Get all workouts
+// // export const getWorkouts = async (req, res) => {
+// //   try {
+// //     const workouts = await Workout.find({ patientId: req.params.patientId });
+// //     if (!workouts) {
+// //       return res.status(404).send("Workouts not found");
+// //     }
+// //     res.status(200).send(workouts);
+// //   } catch (error) {
+// //     res.status(500).send(error);
+// //   }
+// // };
 
 // // Get workout by ID
 // export const getWorkout = async (req, res) => {

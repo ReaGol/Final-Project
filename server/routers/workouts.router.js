@@ -3,19 +3,19 @@
 //   createWorkout,
 //   deleteWorkout,
 //   editWorkout,
-//   getWorkouts,
+// //   getWorkouts,
 //   getWorkout
 // } from "../controllers/workouts.controller.js";
-// // import { auth } from "../middleware/auth.js";
+// import { auth } from "../middleware/auth.js";
 
 // export const workoutRouter = new express.Router();
 
-// workoutRouter.post("/workouts", createWorkout);
+// workoutRouter.post("/patients/:id/workout", createWorkout);
 
 // workoutRouter.get("/workouts/:id", getWorkout);
 
-// workoutRouter.get("/workouts", getWorkouts);
+// // workoutRouter.get("/workouts", getWorkouts);
 
 // workoutRouter.patch("/workouts/:id", editWorkout);
 
-// workoutRouter.delete("/workouts/:id", deleteWorkout);
+// workoutRouter.delete("/workouts/:id", auth, deleteWorkout);

@@ -46,12 +46,12 @@ export const Exercise = mongoose.model("Exercise", {
     type: String,
   },
 
-  therapist: {
+  therapistId: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: "Therapist",
   },
-  patient: {
+  patientId: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: "Patient",

@@ -13,7 +13,7 @@ import Login from "./pages/users/Login.js";
 import EditUser from "./pages/users/EditUser";
 import AddExercisePerClient from "./pages/exercises/AddExercisePerClient";
 import Homepage from "./pages/homepage/Homepage";
-import UserExercises from "./pages/users/UserExercises";
+// import UserExercises from "./pages/users/UserExercises";
 import ExerciseDetails from "./pages/exercises/ExerciseDetails";
 import BarChart  from './pages/BarChart'
 import Calendar from './pages/Calendar'
@@ -56,26 +56,26 @@ function App() {
       <Routes>
         {/* <Route path='/' element={<Dashboard />} /> */}
         <Route path='/homepage' element={<Homepage />} />
-        <Route path='/workouts' element={<Workouts />} />
+        <Route path='/patients/:id/workout' element={<Workouts />} />
         <Route path='/calendar' element={<Calendar />} />
         <Route path='/kanban' element={<Kanban />} />
         <Route path='/charts' element={<BarChart />} />
-        <Route path='/users' element={<UserList />} />
+        <Route path='/patients' element={<UserList />} />
         <Route path='/addUser' element={<AddUser />} />
-        <Route path='/users/login' element={<Login />} />
-        <Route path='/users/new' element={<Register />} />
-        <Route path='/users/edit/:id' element={<EditUser />} />
+        <Route path='/patients/login' element={<Login />} />
+        <Route path='/patients/new' element={<Register />} />
+        <Route path='/patients/edit/:id' element={<EditUser />} />
         <Route path='/exercises/exercise/:id' element={<ExerciseDetails />} />
-        <Route
-          path='/users/:id'
+        {/* <Route
+          path='/patients/:id'
           element={<UserExercises exercises={exercises} users={users} />}
-        />
+        /> */}
         <Route
           path='/exercises'
           element={<ExerciseList exercises={exercises} />}
         />
         <Route
-          path='/users/edit/:id/exercises'
+          path='/patients/edit/:id/exercises'
           element={<AddExercisePerClient exercises={exercises} users={users} />}
         />
         <Route path='/addexercise' element={<AddExercise />} />

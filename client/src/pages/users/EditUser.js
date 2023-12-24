@@ -35,7 +35,7 @@ const EditUser = () => {
         diagnosis: user.diagnosis,
         plan: user.plan,
       });
-      navigate("/users");
+      navigate("/patients");
     } catch (error) {
       console.log(error);
     }
@@ -87,7 +87,7 @@ const EditUser = () => {
         </div>
         <div>
           <Link
-            to={`/users/edit/${id}/exercises`}
+            to={`/patients/edit/${id}/exercises`}
             exercises={user.exercises}
             id={id}
             className='link-user-btn'
@@ -95,10 +95,10 @@ const EditUser = () => {
             Add Exercises To Client
           </Link>
         </div>
-        <br />  
+        <br />
         <div>
-          <Link to={`/users/${id}`} className='link-user-btn'>
-            Review Client Exercises
+          <Link to={`/patients/${id}/workout`} className='link-user-btn'>
+            Review Workout
           </Link>
         </div>
         <div>
