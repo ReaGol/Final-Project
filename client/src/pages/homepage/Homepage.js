@@ -34,14 +34,14 @@ function Homepage() {
       <div className='img-div'></div>
 
       <div className='register'>
-        <Link to='/users/new' className='register-button'>
+        <Link to='/patients/new' className='register-button'>
           Create Your Account
         </Link>
         <p>
           Already have an account?
           <br />
           <span>
-            <Link to='/users/login'>Sign in Here</Link>
+            <Link to='/patients/login'>Sign in Here</Link>
           </span>
         </p>
       </div>

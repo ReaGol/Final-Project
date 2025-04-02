@@ -1,74 +1,57 @@
-import {useEffect, useState} from 'react'
-import axios from 'axios';
-import ExerciseCard from './exercises/ExerciseCard';
-import "./users/UserExercise.css";
-import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import ExerciseCard from "./exercises/ExerciseCard";
+import "./Workouts.css";
 
-function Workouts({ exercises, users }) {
+function Workouts() {
+  const { id: userId } = useParams(); 
+
   const [assignedExercises, setAssignedExercises] = useState([]);
-  const [completedExercises, setCompletedExercises] = useState([]);
-  const [daysTrained, setDaysTrained] = useState([]);
-  const [setsCompleted, setSetsCompleted] = useState([]);
-  const [repsCompleted, setRepsCompleted] = useState([]);
   const [setsCompletedInput, setSetsCompletedInput] = useState(0);
   const [repsCompletedInput, setRepsCompletedInput] = useState(0);
-  const { id } = useParams();
 
   useEffect(() => {
     const fetchAssignedExercises = async () => {
       try {
+        console.log("Fetching exercises for userId:", userId);
         const response = await axios.get(
-          `http://localhost:8000/therapist/patients/${id}`
+          `http://localhost:8000/patients/${userId}/workouts`
         );
-        const userExercises = response.data.exercises;
-        setAssignedExercises(userExercises);
-        console.log(userExercises);
+        console.log("API Response:", response.data);
+        setAssignedExercises(response.data.exercises);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
 
-    fetchAssignedExercises();
-  }, [id]);
-const handleCheckboxChange = (exerciseId) => {
-  setCompletedExercises((prevExercises) => {
-    if (prevExercises.includes(exerciseId)) {
-      return prevExercises.filter((id) => id !== exerciseId);
-    } else {
-      return [...prevExercises, exerciseId];
+    if (userId) {
+      fetchAssignedExercises();
     }
-  });
-};
+  }, [userId]);
 
-
-    const handleSetRepsChange = (exerciseId, field, value) => {
-      setAssignedExercises((prevExercises) => {
-        const updatedExercises = prevExercises.map((exercise) =>
-          exercise._id === exerciseId
-            ? { ...exercise, [field]: value }
-            : exercise
-        );
-        return updatedExercises;
-      });
-    };
-
-  const handleSave = async () => {
+  const handleAddRepsAndSets = async (exerciseId) => {
     try {
-      const response = await axios.patch(
-        `http://localhost:8000/therapist/patients/edit/${id}`,
+      const response = await axios.post(
+        `/api/patients/${userId}/workout/${exerciseId}`,
         {
-          exercises: assignedExercises.map((exercise) => ({
-            _id: exercise._id,
-            sets: exercise.sets,
-            reps: exercise.reps,
-          })),
-          daysTrained: [...daysTrained, new Date()],
-          setsCompleted: [...setsCompleted, setsCompletedInput],
-          repsCompleted: [...repsCompleted, repsCompletedInput],
+          setsCompleted: setsCompletedInput,
+          repsCompleted: repsCompletedInput,
         }
       );
-      console.log(response.data);
+      console.log("Update Response:", response.data);
+
+      setAssignedExercises((prevExercises) =>
+        prevExercises.map((exercise) =>
+          exercise._id === exerciseId
+            ? {
+                ...exercise,
+                setsCompleted: setsCompletedInput,
+                repsCompleted: repsCompletedInput,
+              }
+            : exercise
+        )
+      );
     } catch (error) {
       console.log(error);
     }
@@ -76,64 +59,51 @@ const handleCheckboxChange = (exerciseId) => {
     setRepsCompletedInput(0);
   };
 
+  console.log("Assigned Exercises:", assignedExercises);
 
   return (
-    <div className='container-own-excersices'>
+    <div className='container-own-exercises'>
       <h3>Your Exercises</h3>
       <form className='exercise-wrapper'>
-        {assignedExercises.map((exercise) => (
-          <div key={exercise._id}>
-            <ExerciseCard
-              id={exercise._id}
-              name={exercise.name}
-              description={exercise.description}
-              sets={exercise.sets}
-              reps={exercise.reps}
-              image={exercise.image}
-            />
-            <div>
-              <label>Sets</label>
-              <input
-                type='number'
-                name='sets'
-                value={setsCompletedInput}
-                onChange={(e) => setSetsCompletedInput(e.target.value)}
+        {assignedExercises.length > 0 ? (
+          assignedExercises.map((exercise) => (
+            <div key={exercise._id}>
+              <ExerciseCard
+                id={exercise._id}
+                name={exercise.name}
+                description={exercise.description}
+                sets={exercise.sets}
+                reps={exercise.reps}
+                image={exercise.image}
               />
-
-              <label>Reps</label>
-              <input
-                type='number'
-                name='reps'
-                value={repsCompletedInput}
-                onChange={(e) => setRepsCompletedInput(e.target.value)}
-              />
+              <div>
+                <label>Sets</label>
+                <input
+                  type='number'
+                  value={setsCompletedInput}
+                  onChange={(e) => setSetsCompletedInput(e.target.value)}
+                />
+                <label>Reps</label>
+                <input
+                  type='number'
+                  value={repsCompletedInput}
+                  onChange={(e) => setRepsCompletedInput(e.target.value)}
+                />
+                <button
+                  type='button'
+                  onClick={() => handleAddRepsAndSets(exercise._id)}
+                >
+                  Add Reps and Sets
+                </button>
+              </div>
             </div>
-            <label htmlFor={exercise._id}>
-              <input
-                type='checkbox'
-                value={exercise._id}
-                id={`checkbox-${exercise._id}`}
-                onChange={() => handleCheckboxChange(exercise._id)}
-                checked={completedExercises.includes(exercise._id)}
-              />
-              {completedExercises.includes(exercise._id)
-                ? "Exercise Completed"
-                : "Mark as Completed"}
-            </label>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p>No exercises assigned.</p>
+        )}
       </form>
-
-      <button className='save-btn' onClick={handleSave}>
-        Save
-      </button>
-      <Link to='/'>
-        <button>Back</button>
-      </Link>
     </div>
   );
 }
-  
 
-export default Workouts
-
+export default Workouts;

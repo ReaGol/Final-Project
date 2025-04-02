@@ -13,18 +13,20 @@ import Login from "./pages/users/Login.js";
 import EditUser from "./pages/users/EditUser";
 import AddExercisePerClient from "./pages/exercises/AddExercisePerClient";
 import Homepage from "./pages/homepage/Homepage";
-// import UserExercises from "./pages/users/UserExercises";
+import UserExercises from "./pages/users/UserExercises";
 import ExerciseDetails from "./pages/exercises/ExerciseDetails";
 import BarChart  from './pages/BarChart'
 import Calendar from './pages/Calendar'
+import TrainingCalendar from "./pages/TrainingCalendar";
 import Kanban from "./pages/Kanban";
-import { useStateContext } from "./contexts/ContextProvider";
+// import { useStateContext } from "./contexts/ContextProvider";
 import Modal from 'react-modal'
 import Workouts from "./pages/Workouts";
+import UserProfilePage from "./components/UserProfilePage";
 Modal.setAppElement('#root')
 
 function App() {
-  const { activeMenu } = useStateContext()
+  // const { activeMenu } = useStateContext()
   const [exercises, setExercises] = useState([]);
   const [users, setUsers] = useState([]);
 
@@ -57,19 +59,22 @@ function App() {
         {/* <Route path='/' element={<Dashboard />} /> */}
         <Route path='/homepage' element={<Homepage />} />
         <Route path='/patients/:id/workout' element={<Workouts />} />
+        <Route path='/userprofile/:id' element={<UserProfilePage />} />
         <Route path='/calendar' element={<Calendar />} />
+        <Route path='/userprofile/calendar' element={<TrainingCalendar />} />
+
         <Route path='/kanban' element={<Kanban />} />
         <Route path='/charts' element={<BarChart />} />
         <Route path='/patients' element={<UserList />} />
         <Route path='/addUser' element={<AddUser />} />
         <Route path='/patients/login' element={<Login />} />
-        <Route path='/patients/new' element={<Register />} />
+        <Route path='/therapist/patients/new' element={<Register />} />
         <Route path='/patients/edit/:id' element={<EditUser />} />
         <Route path='/exercises/exercise/:id' element={<ExerciseDetails />} />
-        {/* <Route
+        <Route
           path='/patients/:id'
           element={<UserExercises exercises={exercises} users={users} />}
-        /> */}
+        />
         <Route
           path='/exercises'
           element={<ExerciseList exercises={exercises} />}

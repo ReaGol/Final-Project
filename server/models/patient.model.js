@@ -122,14 +122,14 @@ patientSchema.methods.generateAuthToken = async function () {
   return token;
 };
 
-patientSchema.statics.findByCredentials = async (email, password) => {
-  const patient = await Patient.findOne({ email });
+patientSchema.statics.findByCredentials = async function (email, password) {
+  const patient = await this.findOne({ email });
 
   if (!patient) {
     throw new Error("Unable to login");
   }
 
-  const isMatch = await bcrypt.compare(password, patient.password);
+  const isMatch = await bcrypt.compare(password, Patient.password);
 
   if (!isMatch) {
     throw new Error("Unable to login");
@@ -149,4 +149,4 @@ patientSchema.pre("save", async function (next) {
 });
 
 
- export const Patient = mongoose.model("patient", patientSchema);
+ export const Patient = mongoose.model("Patient", patientSchema);

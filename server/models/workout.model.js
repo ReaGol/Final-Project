@@ -1,6 +1,4 @@
 import mongoose from "mongoose";
-import { Patient } from "./patient.model";
-import { Exercise } from "./exercise.model";
 
 const workoutSchema = new mongoose.Schema({
   patientId: {
@@ -10,14 +8,18 @@ const workoutSchema = new mongoose.Schema({
   },
   exercises: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Exercise",
-      required: true,
+      exercise: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Exercise",
+        required: true,
+      },
+      reps: { type: Number, required: true, default: 0 },
+      sets: { type: Number, required: true, default: 0 },
+      exertionLevel: { type: Number, min: 1, max: 10 },
+      painLevel: { type: Number, min: 1, max: 10 },
     },
   ],
   date: { type: Date, required: true, default: Date.now },
-  reps: { type: Number, required: true, default: 0 },
-  sets: { type: Number, required: true, default: 0 },
 });
 
 export const Workout = mongoose.model("Workout", workoutSchema);

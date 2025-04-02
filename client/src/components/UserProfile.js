@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { MdOutlineCancel } from "react-icons/md";
 import { useStateContext } from "../contexts/ContextProvider";
 import avatar from "../images/avatar.jpg";
@@ -6,20 +7,26 @@ import avatar from "../images/avatar.jpg";
 import "./UserProfile.css"
 
 const UserProfile = () => {
-  const { currentColor, isClicked, setIsClicked } =
+  const { isClicked, setIsClicked } =
     useStateContext();
 
   return (
     <div>
       <div>
-        <button className="close-user-profile" onClick={() => setIsClicked(isClicked => !isClicked)}>{<MdOutlineCancel />}</button>
+        <button
+          className='close-user-profile'
+          onClick={() => setIsClicked((isClicked) => !isClicked)}
+        >
+          {<MdOutlineCancel />}
+        </button>
       </div>
-      <div className="user-block">
-        <img className="user-photo" src={avatar} alt='user-profile' />
-        <div className="user-details">
-          <p> John Doe </p>
-          <p> Administrator </p>
-          <p> info@physio.com </p>
+      <div className='user-block'>
+        <img className='user-photo' src={avatar} alt='user-profile' />
+        <div className='user-details'>
+          <p className='user-name'> John Doe </p>
+          <Link to='/userprofile/:id' className='user-btn'>
+            Go to profile page
+          </Link>
         </div>
       </div>
     </div>

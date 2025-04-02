@@ -1,35 +1,51 @@
 .user-block {
-    position: relative;
-    z-index: 999;
-    border: 1px solid gray;
-    border-radius: var(--size-200);
-    margin: var(--size-200);
-    width: min-content;
-    background-color: var(--clr-neutral-200);
+  position: relative;
+  z-index: 999;
+  border: 1px solid gray;
+  border-radius: var(--size-200);
+  margin: var(--size-200);
+  width: 200px;
+  background-color: var(--clr-neutral-200);
 }
 
 .user-details {
-width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 200px;
+  margin-bottom: 1rem;
+}
+
+.user-name {
+  font-weight: 600;
 }
 
 .close-user-profile {
-border-radius: 50px;
-background-color: var(--clr-neutral-100);
-color: var(--clr-primary-400);
+  border-radius: 50px;
+  background-color: var(--clr-neutral-100);
+  color: var(--clr-primary-400);
 }
 
-.close-user-profile>svg {
-border-radius: 50px;
-background-color: var(--clr-neutral-100);
-color: var(--clr-primary-400);
-font-size: var(--size-500);
+.close-user-profile > svg {
+  border-radius: 50px;
+  background-color: var(--clr-neutral-100);
+  color: var(--clr-primary-400);
+  font-size: var(--size-500);
 }
 
 .user-photo {
- border-radius: var(--size-200) var(--size-200) 0 0;
- margin: 0  0 var(--size-200) 0;
+  border-radius: var(--size-200) var(--size-200) 0 0;
+  margin: 0 0 var(--size-200) 0;
 }
 
 .user-avatar .hide-avatar {
-    display: hidden;
+  display: hidden;
+}
+
+.test {
+  font-size: 1rem;
+  text-align: center;
+  font-size: 2rem;
+  color: var(--clr-primary-400);
 }

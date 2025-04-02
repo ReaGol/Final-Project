@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import avatar from '../../images/avatar.jpg'
 import { useStateContext } from "../../contexts/ContextProvider";
 import './Navbar.css'
@@ -22,7 +22,7 @@ function Navbar() {
     setActiveMenu,
     handleClick,
     isClicked,
-    setIsClicked,
+    // setIsClicked,
     setScreenSize,
     screenSize,
   } = useStateContext();
@@ -35,7 +35,7 @@ function Navbar() {
     handleResize();
 
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [setScreenSize]);
 
   useEffect(() => {
     if (screenSize <= 800) {
@@ -43,28 +43,27 @@ function Navbar() {
     } else {
       setActiveMenu(true);
     }
-  }, [screenSize]);
+  }, [screenSize, setActiveMenu]);
 
-//   const handleActiveMenu = () => setActiveMenu(!activeMenu);
+  // const handleActiveMenu = () => setActiveMenu(!activeMenu);
 
   return (
     <div className='main'>
       <NavButton
         title='Menu'
         customFunc={() => setActiveMenu((prevActiveMenu) => !prevActiveMenu)}
-        // color={currentColor}
-        icon={<AiOutlineMenu />}
+        icon={activeMenu ? <AiOutlineClose /> : <AiOutlineMenu />}
       />
-      <div className='menu'>
-
-      </div>
+      <div className='menu'></div>
       <div className='user-profile' onClick={() => handleClick("userProfile")}>
-        <img className='user-avatar hide-avatar' src={avatar} alt='user-profile' />
-        <p className="user-name">
-          <span>Hi</span>
-          {' '} 
-          <span>John</span>
-        <MdKeyboardArrowDown className="arrow-down" />
+        <img
+          className='user-avatar hide-avatar'
+          src={avatar}
+          alt='user-profile'
+        />
+        <p className='user-name'>
+          <span>Hi</span> <span>John</span>
+          <MdKeyboardArrowDown className='arrow-down' />
         </p>
       </div>
       {isClicked.userProfile && <UserProfile />}

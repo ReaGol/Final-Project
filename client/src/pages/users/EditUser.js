@@ -102,6 +102,11 @@ const EditUser = () => {
           </Link>
         </div>
         <div>
+          <Link to={`/userprofile/${user._id}`} className='link-user-btn'>
+            User Profile
+          </Link>
+        </div>
+        <div>
           <input className='user-btn' type='submit' value='Save Changes' />
         </div>
       </form>

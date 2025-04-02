@@ -14,21 +14,24 @@ export default function Login() {
   async function loginUser(event) {
     event.preventDefault();
     try {
-      const response = await axios.post("/users/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "http://localhost:8000/patients/login",
+        {
+          email,
+          password,
+        }
+      );
       const data = response.data;
       const token = data.token;
       Cookies.set("jwt", token, { expires: 7 });
       localStorage.setItem("firstName", JSON.stringify(data.user.name));
-      console.log(data.user.name);
+      console.log(data);
 
       if (data) {
-        navigate("/");
+        navigate("/userprofile");
       }
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   }
   return (

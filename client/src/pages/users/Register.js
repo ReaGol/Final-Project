@@ -18,10 +18,10 @@ export default function Register() {
   async function registerUser(e) {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8000/users/new", {
+      const response = await axios.post("http://localhost:8000/therapist/patients/new", {
         firstName: name,
-        email,
-        password,
+        email: email,
+        password: password,
       });
       const data = response.data;
       const token = data.token;
@@ -56,7 +56,7 @@ export default function Register() {
           console.log(error);
         });
 
-      navigate("/users");
+      navigate("/patients");
     } catch (error) {
       console.error(error);
     }
