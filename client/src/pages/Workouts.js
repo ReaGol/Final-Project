@@ -16,7 +16,7 @@ function Workouts() {
       try {
         console.log("Fetching exercises for userId:", userId);
         const response = await axios.get(
-          `http://localhost:8000/patients/${userId}/workouts`
+          `http://localhost:8000/therapist/patients/${userId}`
         );
         console.log("API Response:", response.data);
         setAssignedExercises(response.data.exercises);
@@ -58,8 +58,6 @@ function Workouts() {
     setSetsCompletedInput(0);
     setRepsCompletedInput(0);
   };
-
-  console.log("Assigned Exercises:", assignedExercises);
 
   return (
     <div className='container-own-exercises'>

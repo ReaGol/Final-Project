@@ -25,6 +25,12 @@ import Workouts from "./pages/Workouts";
 import UserProfilePage from "./components/UserProfilePage";
 Modal.setAppElement('#root')
 
+const dummyChartData = [
+  { dayOfWeek: "Sunday", reps: 10, sets: 3 },
+  { dayOfWeek: "Monday", reps: 12, sets: 4 },
+  { dayOfWeek: "Tuesday", reps: 8, sets: 2 },
+];
+
 function App() {
   // const { activeMenu } = useStateContext()
   const [exercises, setExercises] = useState([]);
@@ -64,7 +70,10 @@ function App() {
         <Route path='/userprofile/calendar' element={<TrainingCalendar />} />
 
         <Route path='/kanban' element={<Kanban />} />
-        <Route path='/charts' element={<BarChart />} />
+        <Route
+          path='/charts'
+          element={<BarChart chartData={dummyChartData} />}
+        />
         <Route path='/patients' element={<UserList />} />
         <Route path='/addUser' element={<AddUser />} />
         <Route path='/patients/login' element={<Login />} />

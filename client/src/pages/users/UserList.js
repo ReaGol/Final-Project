@@ -32,7 +32,7 @@ const UserList = () => {
     <div>
       <div className='table-container'>
         <Link to='/addUser' className='btn'>
-          <i class='fa-solid fa-folder-plus'></i>
+          <i className='fa-solid fa-folder-plus'></i>
         </Link>
         <table>
           <thead>
@@ -67,7 +67,7 @@ const UserList = () => {
           </tbody>
         </table>
         <Link to='/' className='btn'>
-          <i class='fa-solid fa-arrow-left-long'></i>
+          <i className='fa-solid fa-arrow-left-long'></i>
         </Link>
       </div>
     </div>

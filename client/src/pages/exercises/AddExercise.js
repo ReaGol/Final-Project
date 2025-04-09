@@ -107,7 +107,7 @@ function AddExercise() {
          <div className="buttons">
            <input className='add-exercise-btn' type='submit' value='Create' />
            <Link to='/' className='add-exercise-btn'>
-             <i class='fa-solid fa-arrow-left-long'></i>
+             <i className='fa-solid fa-arrow-left-long'></i>
            </Link>
          </div>
        </form>

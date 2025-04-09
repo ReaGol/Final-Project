@@ -33,7 +33,9 @@ console.log(error);
 //-------------get patient by id--------------------
 export const getPatient = async (req, res) => {
   try {
-    const patient = await Patient.findOne({ _id: req.params.id });
+    const patient = await Patient.findOne({ _id: req.params.id }).populate(
+      "exercises.exercise"
+    );
     console.log(patient);
     if (!patient) {
       return res.status(404).send("patient not found");
@@ -119,3 +121,35 @@ export const deletePatient = async (req, res) => {
     res.status(500).send();
   }
 };
+
+//------------------Patient Feedback---------------------
+
+export const updateExerciseFeedback = async (req, res) => {
+  const { id, exerciseId } = req.params;
+  const { setsCompleted, repsCompleted, notes } = req.body;
+
+  try {
+    const patient = await Patient.findById(id);
+    if (!patient) {
+      return res.status(404).send("Patient not found");
+    }
+
+    const exercise = patient.exercises.find((ex) => ex._id.toString() === exerciseId.toString());
+
+    if (!exercise) {
+      return res.status(404).send("Exercise not found");
+    }
+
+    if (setsCompleted !== undefined) exercise.setsCompleted = setsCompleted;
+    if (repsCompleted !== undefined) exercise.repsCompleted = repsCompleted;
+    if (notes !== undefined) exercise.notes = notes;
+
+    await patient.save();
+    res.status(200).send(patient);
+  } catch (error) {
+    console.error("Error updating exercise feedback:", error);
+    res.status(500).send("Server error");
+  }
+};
+
+

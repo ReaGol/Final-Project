@@ -4,6 +4,8 @@ import BarChart from "../pages/BarChart";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./UserProfile.css";
+import { getChartDataFromExercises } from "../services/workoutService";
+
 
 const fetchUserDetails = async (id) => {
   try {
@@ -12,12 +14,8 @@ const fetchUserDetails = async (id) => {
     );
     const user = response.data;
 
-    if (user) {
-      const workoutResponse = await axios.get(
-        `http://localhost:8000/therapist/patients/${id}/workouts`
-      );
-     
-      user.workouts = workoutResponse.data.exercises || workoutResponse.data;
+    if (user && user.exercises) {
+      user.workouts = user.exercises;  
     }
 
     return user;
@@ -26,6 +24,8 @@ const fetchUserDetails = async (id) => {
     return null;
   }
 };
+
+
 
 function UserProfilePage() {
   const { id } = useParams(); 
@@ -37,9 +37,10 @@ function UserProfilePage() {
       const userDetails = await fetchUserDetails(id);
       setUser(userDetails);
       
-      if (userDetails && userDetails.workouts) {
-        setWorkoutData(userDetails.workouts);
-      }
+   if (userDetails && userDetails.exercises) {
+     const chartData = getChartDataFromExercises(userDetails.exercises);
+     setWorkoutData(chartData);
+   }
     };
 
     getUserDetails();

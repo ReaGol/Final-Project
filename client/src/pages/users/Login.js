@@ -66,7 +66,7 @@ export default function Login() {
             </button>
           </form>
           <Link to='/homepage' className='back-arrow'>
-            <i class='fa-solid fa-arrow-left-long'></i>
+            <i className='fa-solid fa-arrow-left-long'></i>
           </Link>
         </div>
       </div>

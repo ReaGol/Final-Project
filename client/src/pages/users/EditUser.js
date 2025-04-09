@@ -16,15 +16,26 @@ const EditUser = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  useEffect(() => {
-    getUserById();
-  }, []);
+  const [loading, setLoading] = useState(true);
 
+useEffect(() => {
   const getUserById = async () => {
-    const response = await axios.get(`http://localhost:8000/therapist/patients/${id}`);
-    setUser(response.data);
-    console.log('user id: ', id);
+    try {
+      const response = await axios.get(
+        `http://localhost:8000/therapist/patients/${id}`
+      );
+      setUser(response.data);
+      setLoading(false);
+      console.log("user id: ", id);
+    } catch (err) {
+      console.error("שגיאה בקבלת פרטי משתמש", err);
+    }
   };
+
+  getUserById();
+}, [id]);
+
+if (loading) return <p>טוען נתונים...</p>;
 
   const updateUser = async (e) => {
     e.preventDefault();
@@ -48,7 +59,7 @@ const EditUser = () => {
           <label htmlFor=''>Enter First Name</label>
           <br />
           <input
-            value={user.firstName}
+            value={user.firstName || ""}
             onChange={(e) => setUser({ ...user, firstName: e.target.value })}
             type='text'
             placeholder='First Name'
@@ -58,7 +69,7 @@ const EditUser = () => {
           <label htmlFor=''>Enter Email</label>
           <br />
           <input
-            value={user.email}
+            value={user.email || ""}
             onChange={(e) => setUser({ ...user, email: e.target.value })}
             type='text'
             placeholder='email'
@@ -69,7 +80,7 @@ const EditUser = () => {
           <label htmlFor=''>Enter Diagnosis</label>
           <br />
           <input
-            value={user.diagnosis}
+            value={user.diagnosis || ""}
             onChange={(e) => setUser({ ...user, diagnosis: e.target.value })}
             type='text'
             placeholder='diagnosis'
@@ -79,7 +90,7 @@ const EditUser = () => {
           <label htmlFor=''>Enter Treatment Plan</label>
           <br />
           <input
-            value={user.plan}
+            value={user.plan || ""}
             onChange={(e) => setUser({ ...user, plan: e.target.value })}
             type='text'
             placeholder='plan'
@@ -111,7 +122,7 @@ const EditUser = () => {
         </div>
       </form>
       <Link to='/' className='user-btn'>
-        <i class='fa-solid fa-arrow-left-long'></i>
+        <i className='fa-solid fa-arrow-left-long'></i>
       </Link>
     </div>
   );

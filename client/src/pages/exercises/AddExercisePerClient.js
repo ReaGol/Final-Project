@@ -20,40 +20,61 @@ function AddExercisePerClient({ exercises, users }) {
         setSelectedExercises(prev=>[...prev, exercise]);
       }
     };
+
+
+const handleSave = async () => {
+  try {
+    const formattedExercises = selectedExercises.map((ex) => ({
+      exercise: ex._id, 
+      notes: ex.notes || "", 
+      date: new Date(), 
+    }));
+
+    await axios.patch(`http://localhost:8000/therapist/patients/edit/${id}`, {
+      exercises: formattedExercises,
+    });
+
+    navigate(`/patients/${id}`);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
     
-    const handleSave = async () => {
+  //   const handleSave = async () => {
       
-      console.log("selected: ", selectedExercises);
+  //     console.log("selected: ", selectedExercises);
       
-     const currentUser = users.filter(user=>user._id === id)
+  //    const currentUser = users.filter(user=>user._id === id)
 
-     const newExercises = currentUser[0].exercises.concat(selectedExercises)
-     const uniqueIds = [];
+  //    const newExercises = currentUser[0].exercises.concat(selectedExercises)
+  //    const uniqueIds = [];
 
-     const unique = newExercises.filter((element) => {
-       const isDuplicate = uniqueIds.includes(element._id);
+  //    const unique = newExercises.filter((element) => {
+  //      const isDuplicate = uniqueIds.includes(element._id);
 
-       if (!isDuplicate) {
-         uniqueIds.push(element._id);
+  //      if (!isDuplicate) {
+  //        uniqueIds.push(element._id);
 
-         return true;
-       }
+  //        return true;
+  //      }
 
-       return false;
-     });
-    try {
-      const response = await axios.patch(
-        `http://localhost:8000/therapist/patients/edit/${id}`,
-        {
-          exercises: unique,
-        }
-      );
+  //      return false;
+  //    });
+  //   try {
+  //     const response = await axios.patch(
+  //       `http://localhost:8000/therapist/patients/edit/${id}`,
+  //       {
+  //         exercises: unique,
+  //       }
+  //     );
 
-      navigate(`/users/${id}`);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //     navigate(`/patients/${id}`);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <div className='added-exercises-container'>

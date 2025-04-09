@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { saveWorkout } from "../services/workoutService";
 
 const StateContext = createContext();
 
@@ -27,8 +28,14 @@ export const ContextProvider = ({ children }) => {
     }));
   };
 
-  const handleSaveWorkout = (workout) => {
-    setWorkoutData((prev) => [...prev, workout]);
+  const handleSaveWorkout = async (userId, workout) => {
+    try{
+      await saveWorkout(userId, workout);
+         setWorkoutData((prev) => [...prev, workout]);
+    } catch (error) {
+      console.error("Error saving workout:", error);
+    }
+ 
   };
 
   return (

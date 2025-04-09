@@ -21,7 +21,7 @@ function AddUser() {
     try {
       console.log(`saving user ${JSON.stringify(user)}`)
       await axios.post("http://localhost:8000/therapist/patients/new", user);
-      navigate("/users");
+      navigate("/patients");
     } catch (error) {
       console.log(error);
     }
@@ -81,7 +81,7 @@ function AddUser() {
         <div className="buttons">
           <input className='user-btn' type='submit' value='Create' />
           <Link to='/' className='user-btn'>
-            <i class='fa-solid fa-arrow-left-long'></i>
+            <i className='fa-solid fa-arrow-left-long'></i>
           </Link>
         </div>
       </form>

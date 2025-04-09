@@ -1,6 +1,6 @@
 import express from "express";
 import { editProfile, patientLogin, patientLogout } from "../controllers/patient.controller.js";
-import { createPatient, LogoutAllPatients, getPatients, getPatient, getProfile, editPatient, deletePatient} from "../controllers/therapist.controller.js"
+import { createPatient, LogoutAllPatients, getPatients, getPatient, getProfile, editPatient, deletePatient, updateExerciseFeedback} from "../controllers/therapist.controller.js"
 import { auth } from "../middleware/auth.js";
 
 export const router = new express.Router();
@@ -10,6 +10,11 @@ router.post("/patients/login", patientLogin)
 router.post("/patients/logout", auth, patientLogout)
 //router.get("/patients/me", auth, getProfile);
 router.patch("/patient/me", auth, editProfile)
+router.patch(
+  "/therapist/patients/:id/exercises/:exerciseId",
+  updateExerciseFeedback
+);
+
 
 //---------------therapist actions---------------------
 router.post("/therapist/patients/new", createPatient);
