@@ -1,11 +1,9 @@
-/* div>main {
-  margin: auto;
-  outline: solid 1px red;
-} */
+
 .container-own-excersices {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  
 }
 
 .container-own-excersices > form > div {

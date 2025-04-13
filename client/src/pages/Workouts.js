@@ -1,24 +1,25 @@
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 import ExerciseCard from "./exercises/ExerciseCard";
 import "./Workouts.css";
 
 function Workouts() {
-  const { id: userId } = useParams(); 
-
+  const { id: userId } = useParams();
   const [assignedExercises, setAssignedExercises] = useState([]);
-  const [setsCompletedInput, setSetsCompletedInput] = useState(0);
-  const [repsCompletedInput, setRepsCompletedInput] = useState(0);
+  const [inputs, setInputs] = useState({});
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     const fetchAssignedExercises = async () => {
       try {
-        console.log("Fetching exercises for userId:", userId);
         const response = await axios.get(
           `http://localhost:8000/therapist/patients/${userId}`
         );
-        console.log("API Response:", response.data);
         setAssignedExercises(response.data.exercises);
       } catch (error) {
         console.error(error);
@@ -30,76 +31,90 @@ function Workouts() {
     }
   }, [userId]);
 
-  const handleAddRepsAndSets = async (exerciseId) => {
+  const handleInputChange = (exerciseId, field, value) => {
+    setInputs((prev) => ({
+      ...prev,
+      [exerciseId]: {
+        ...prev[exerciseId],
+        [field]: value,
+      },
+    }));
+  };
+
+  const handleSubmit = async (exerciseId) => {
     try {
-      const response = await axios.post(
-        `/api/patients/${userId}/workout/${exerciseId}`,
+      const feedback = inputs[exerciseId] || {};
+
+      await axios.patch(
+        `http://localhost:8000/therapist/patients/${userId}/exercises/${exerciseId}`,
         {
-          setsCompleted: setsCompletedInput,
-          repsCompleted: repsCompletedInput,
+          setsCompleted: Number(feedback.setsCompleted) || 0,
+          repsCompleted: Number(feedback.repsCompleted) || 0,
+          notes: feedback.notes || "",
         }
       );
-      console.log("Update Response:", response.data);
 
-      setAssignedExercises((prevExercises) =>
-        prevExercises.map((exercise) =>
-          exercise._id === exerciseId
-            ? {
-                ...exercise,
-                setsCompleted: setsCompletedInput,
-                repsCompleted: repsCompletedInput,
-              }
-            : exercise
-        )
-      );
+      alert("Feedback saved!");
     } catch (error) {
-      console.log(error);
+      console.error("Error updating exercise feedback:", error);
     }
-    setSetsCompletedInput(0);
-    setRepsCompletedInput(0);
   };
 
   return (
     <div className='container-own-exercises'>
-      <h3>Your Exercises</h3>
+      <h3>Update Your Exercise Feedback</h3>
       <form className='exercise-wrapper'>
-        {assignedExercises.length > 0 ? (
-          assignedExercises.map((exercise) => (
-            <div key={exercise._id}>
-              <ExerciseCard
-                id={exercise._id}
-                name={exercise.name}
-                description={exercise.description}
-                sets={exercise.sets}
-                reps={exercise.reps}
-                image={exercise.image}
+        {assignedExercises.map((ex) => (
+          <div key={ex._id} className='exercise-box'>
+            <ExerciseCard
+              id={ex.exercise?._id}
+              name={ex.exercise?.name}
+              description={ex.exercise?.description}
+              sets={ex.exercise?.sets}
+              reps={ex.exercise?.reps}
+              image={ex.exercise?.image}
+            />
+            <div className='feedback-inputs'>
+              <label>Sets Completed</label>
+              <input
+                type='number'
+                value={inputs[ex._id]?.setsCompleted || ""}
+                onChange={(e) =>
+                  handleInputChange(ex._id, "setsCompleted", e.target.value)
+                }
               />
-              <div>
-                <label>Sets</label>
-                <input
-                  type='number'
-                  value={setsCompletedInput}
-                  onChange={(e) => setSetsCompletedInput(e.target.value)}
-                />
-                <label>Reps</label>
-                <input
-                  type='number'
-                  value={repsCompletedInput}
-                  onChange={(e) => setRepsCompletedInput(e.target.value)}
-                />
-                <button
-                  type='button'
-                  onClick={() => handleAddRepsAndSets(exercise._id)}
-                >
-                  Add Reps and Sets
-                </button>
-              </div>
+
+          
+              <label>Reps Completed</label>
+              <input
+                type='number'
+                value={inputs[ex._id]?.repsCompleted || ""}
+                onChange={(e) =>
+                  handleInputChange(ex._id, "repsCompleted", e.target.value)
+                }
+              />
+
+              <label>Notes</label>
+              <textarea
+                value={inputs[ex._id]?.notes || ""}
+                onChange={(e) =>
+                  handleInputChange(ex._id, "notes", e.target.value)
+                }
+              />
+
+              <button type='button' onClick={() => handleSubmit(ex._id)}>
+                Save Feedback
+              </button>
             </div>
-          ))
-        ) : (
-          <p>No exercises assigned.</p>
-        )}
+          </div>
+        ))}
       </form>
+      <button
+        onClick={() => navigate(`/userprofile/${userId}`)}
+        className='go-back-btn'
+      >
+        Back to Profile
+      </button>
     </div>
   );
 }

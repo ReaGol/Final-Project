@@ -5,16 +5,16 @@ import './components/sidebar/Sidebar.css'
 import "./App.css";
 import Dashboard from "./components/dashbord/Dashbord";
 import ExerciseList from "./pages/exercises/ExerciseList.js";
-import AddUser from "./pages/users/AddUser";
-import AddExercise from "./pages/exercises/AddExercise";
-import UserList from "./pages/users/UserList";
+import AddUser from "./pages/users/AddUser.js";
+import AddExercise from "./pages/exercises/AddExercise.js";
+import UserList from "./pages/users/UserList.js";
 import Register from './pages/users/Register.js'
 import Login from "./pages/users/Login.js";
-import EditUser from "./pages/users/EditUser";
-import AddExercisePerClient from "./pages/exercises/AddExercisePerClient";
+import EditUser from "./pages/users/EditUser.js";
+import AddExercisePerClient from "./pages/exercises/AddExercisePerClient.js";
 import Homepage from "./pages/homepage/Homepage";
-import UserExercises from "./pages/users/UserExercises";
-import ExerciseDetails from "./pages/exercises/ExerciseDetails";
+import UserExercises from "./pages/users/UserExercises.js";
+import ExerciseDetails from "./pages/exercises/ExerciseDetails.js";
 import BarChart  from './pages/BarChart'
 import Calendar from './pages/Calendar'
 import TrainingCalendar from "./pages/TrainingCalendar";
@@ -44,7 +44,7 @@ function App() {
         );
         
         setUsers((prevUsers) => userData.data);
-        console.log(userData);
+        // console.log(userData);
       } catch (error) {
         console.log(error);
       }
@@ -62,7 +62,7 @@ function App() {
     <div className='app'>
       <Dashboard></Dashboard>
       <Routes>
-        {/* <Route path='/' element={<Dashboard />} /> */}
+        <Route path='/' element={<Homepage />} />
         <Route path='/homepage' element={<Homepage />} />
         <Route path='/patients/:id/workout' element={<Workouts />} />
         <Route path='/userprofile/:id' element={<UserProfilePage />} />

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import ExerciseModal from "./ExerciseDetails.js";
+import "./ExerciseCard.css";
+
 
 
 function ExerciseCard({ name, description, sets, reps, image, id }) {
@@ -15,7 +17,7 @@ function ExerciseCard({ name, description, sets, reps, image, id }) {
   };
 
   return (
-    <div className='card'>
+    <div className='exercise-card'>
       <h2 className='card-title'>{name}</h2>
       <p className='card-description'>{description}</p>
       <p>Sets: {sets}</p>

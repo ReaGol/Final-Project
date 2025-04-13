@@ -7,40 +7,51 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   margin: 2rem;
+  gap: 2rem;
+  align-items: stretch;
 }
 
 .card {
   box-shadow: 0 2px 20px lightgray;
   display: flex;
   width: 20%;
+  height: 18rem;
   margin: 3%;
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
   border-radius: 1rem;
   transition: transform 200ms ease-in;
+  overflow: hidden;
 }
 
 .card__img {
-  height: 12rem;
-  width: 90%;
+  height: 8rem;
+  width: 100%;
   border-radius: 4px;
   align-self: center;
   object-fit: cover;
 }
 
 .card-title {
-  align-self: center;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  flex-grow: 0;
 }
 
 .card-description,
 p {
-  padding: 0 1rem;
+  padding: 0.5rem 1rem;
   min-width: 60%;
-  display: inline-block;
+  flex-grow: 1;
   margin-left: 1rem;
   margin-bottom: 1rem;
+  font-size: 0.9rem;
+  overflow: hidden;
+  white-space: normal;
+  word-wrap: break-word;
 }
 
 .exercise-card-btn {
@@ -65,10 +76,11 @@ p {
     display: flex;
     flex-direction: column;
   }
+
   .card {
     box-shadow: 0 2px 20px lightgray;
     display: flex;
-    min-width: 90%;
+    width: 90%;
     cursor: pointer;
     border-radius: 1rem;
     transition: transform 200ms ease-in;

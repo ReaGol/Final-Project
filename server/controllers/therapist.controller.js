@@ -33,18 +33,21 @@ console.log(error);
 //-------------get patient by id--------------------
 export const getPatient = async (req, res) => {
   try {
-    const patient = await Patient.findOne({ _id: req.params.id }).populate(
+    const patient = await Patient.findById(req.params.id).populate(
       "exercises.exercise"
     );
-    console.log(patient);
+
     if (!patient) {
-      return res.status(404).send("patient not found");
+      return res.status(404).send("Patient not found");
     }
-    return res.status(200).send(patient);
+
+    res.status(200).send(patient);
   } catch (error) {
-    res.status(404).send(error);
+    console.error("Error in getting patient:", error);
+    res.status(500).send({ error: error.message });
   }
 };
+
 
 
 //---------------get patient with auth-------------------------
@@ -53,43 +56,84 @@ export const getProfile = async (req, res) => {
 };
 
 //-------------edit a patient as admin---------------------
+
 export const editPatient = async (req, res) => {
-  //const updates = Object.keys(req.body);
-  // const allowedUpdates = [
-  //   "firstName",
-  //   "email",
-  //   "diagnosis",
-  //   "plan",
-  //   "age",
-  //   "exercises",
-  // ];
-  // const isValidOperation = updates.every((update) =>
-  //   allowedUpdates.includes(update)
-  // );
-
-  // if (!isValidOperation) {
-  //   return res.status(400).send({ error: "Invalid Update" });
-  // }
   try {
-    const patient = await Patient.findByIdAndUpdate(
-      { _id: req.params.id },
-      { $set: req.body },
-      { new: true }
-    );
-
-    //updates.forEach((update) => (patient[update] = req.body[update]));
-    console.log(patient);
-    //await Patient.save();
-
+    const patient = await Patient.findById(req.params.id);
     if (!patient) {
-      return res.status(404).send();
+      return res.status(404).send({ error: "Patient not found" });
     }
 
-    res.send(patient);
+    const { firstName, email, diagnosis, plan, age, exercises } = req.body;
+    if (firstName) patient.firstName = firstName;
+    if (email) patient.email = email;
+    if (diagnosis) patient.diagnosis = diagnosis;
+    if (plan) patient.plan = plan;
+    if (age) patient.age = age;
+
+    if (exercises && Array.isArray(exercises)) {
+      patient.exercises = exercises.map((ex) => {
+        const exerciseId = ex._id || ex.exercise || ex;
+
+        return {
+          exercise: exerciseId,
+          setsCompleted: ex.setsCompleted || 0,
+          repsCompleted: ex.repsCompleted || 0,
+          notes: ex.notes || "",
+          date: ex.date ? new Date(ex.date) : new Date(),
+        };
+      });
+    }
+
+    await patient.save();
+    res.status(200).send(patient);
   } catch (error) {
-    res.status(400).send(error);
+    console.error("❌ Error updating patient:", error);
+    res.status(400).send({ error: error.message });
   }
 };
+
+
+
+
+
+// export const editPatient = async (req, res) => {
+//   //const updates = Object.keys(req.body);
+//   // const allowedUpdates = [
+//   //   "firstName",
+//   //   "email",
+//   //   "diagnosis",
+//   //   "plan",
+//   //   "age",
+//   //   "exercises",
+//   // ];
+//   // const isValidOperation = updates.every((update) =>
+//   //   allowedUpdates.includes(update)
+//   // );
+
+//   // if (!isValidOperation) {
+//   //   return res.status(400).send({ error: "Invalid Update" });
+//   // }
+//   try {
+//     const patient = await Patient.findByIdAndUpdate(
+//       { _id: req.params.id },
+//       { $set: req.body },
+//       { new: true }
+//     );
+
+//     //updates.forEach((update) => (patient[update] = req.body[update]));
+//     console.log(patient);
+//     //await Patient.save();
+
+//     if (!patient) {
+//       return res.status(404).send();
+//     }
+
+//     res.send(patient);
+//   } catch (error) {
+//     res.status(400).send(error);
+//   }
+// };
 
 //----------------------------------------------------------------------------//
 
