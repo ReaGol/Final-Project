@@ -1,0 +1,35 @@
+.therapist-profile {
+    padding-left: 220px;
+    /* padding: 2rem; */
+    background-color: #f9f9f9;
+    min-height: 100vh;
+    font-family: "Arial", sans-serif;
+}
+
+.therapist-profile h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.therapist-profile h2 {
+    font-size: 1.8rem;
+    color: #555;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.patients-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    padding: 2rem;
+}
+
+@media screen and (max-width: 800px) {
+    .therapist-profile {
+        padding-left: 0;
+    }
+}

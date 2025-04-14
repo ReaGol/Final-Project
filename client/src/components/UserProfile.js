@@ -24,7 +24,7 @@ const UserProfile = () => {
         <img className='user-photo' src={avatar} alt='user-profile' />
         <div className='user-details'>
           <p className='user-name'> John Doe </p>
-          <Link to='/userprofile/:id' className='user-btn'>
+          <Link to='/' className='user-btn'>
             Go to profile page
           </Link>
         </div>

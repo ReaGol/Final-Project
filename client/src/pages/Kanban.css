@@ -2,14 +2,21 @@
     display: flex;
     background-color: var(--clr-neutral-200);
     width: 70%;
-    height: 100%;
+    max-width: 70%;
+    height: auto;
     margin: var(--size-200) auto;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 #kanban {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
     justify-content: space-between;
     gap: var(--size-200);
     padding: var(--size-200);
+    box-sizing: border-box;
 }
 
 @media (max-width: 800px) {
@@ -18,3 +25,4 @@
         align-items: center;
     }
 }
+

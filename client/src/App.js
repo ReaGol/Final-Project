@@ -23,6 +23,7 @@ import Kanban from "./pages/Kanban.js";
 import Modal from 'react-modal'
 import Workouts from "./pages/Workouts.js";
 import UserProfilePage from "./components/UserProfilePage.js";
+import TherapistProfile from "./pages/therapist/TherapistProfile.js";
 Modal.setAppElement('#root')
 
 const dummyChartData = [
@@ -64,6 +65,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Homepage />} />
         <Route path='/homepage' element={<Homepage />} />
+        <Route path='/therapist' element={<TherapistProfile />} />
         <Route path='/patients/:id/workout' element={<Workouts />} />
         <Route path='/userprofile/:id' element={<UserProfilePage />} />
         <Route path='/calendar' element={<Calendar />} />
