@@ -41,6 +41,13 @@
   border-radius: var(--size-200) var(--size-200) 0 0;
   margin: 0 0 var(--size-200) 0;
 }
+@media (max-width: 600px) {
+  .user-photo {
+    max-width: 50%;
+    height: auto;
+    margin: 0 auto var(--size-100) auto;
+  }
+}
 
 .user-avatar .hide-avatar {
   display: hidden;
