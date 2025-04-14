@@ -6,7 +6,7 @@ const calendarSchema = new mongoose.Schema({
     ref: "Patient",
     required: true,
   },
-  dayOfWeek: { type: Number, required: true }, // 0 for Sunday, 1 for Monday, etc.
+  dayOfWeek: { type: Number, required: true }, 
   workoutId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Workout",

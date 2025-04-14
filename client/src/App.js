@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import './components/sidebar/Sidebar.css'
 import "./App.css";
-import Dashboard from "./components/dashbord/Dashbord";
+import Dashboard from "./components/dashbord/Dashbord.js";
 import ExerciseList from "./pages/exercises/ExerciseList.js";
 import AddUser from "./pages/users/AddUser.js";
 import AddExercise from "./pages/exercises/AddExercise.js";
@@ -12,17 +12,17 @@ import Register from './pages/users/Register.js'
 import Login from "./pages/users/Login.js";
 import EditUser from "./pages/users/EditUser.js";
 import AddExercisePerClient from "./pages/exercises/AddExercisePerClient.js";
-import Homepage from "./pages/homepage/Homepage";
+import Homepage from "./pages/homepage/Homepage.js";
 import UserExercises from "./pages/users/UserExercises.js";
 import ExerciseDetails from "./pages/exercises/ExerciseDetails.js";
-import BarChart  from './pages/BarChart'
-import Calendar from './pages/Calendar'
-import TrainingCalendar from "./pages/TrainingCalendar";
-import Kanban from "./pages/Kanban";
+import BarChart  from './pages/BarChart.js'
+import Calendar from './pages/Calendar.js'
+import TrainingCalendar from "./pages/TrainingCalendar.js";
+import Kanban from "./pages/Kanban.js";
 // import { useStateContext } from "./contexts/ContextProvider";
 import Modal from 'react-modal'
-import Workouts from "./pages/Workouts";
-import UserProfilePage from "./components/UserProfilePage";
+import Workouts from "./pages/Workouts.js";
+import UserProfilePage from "./components/UserProfilePage.js";
 Modal.setAppElement('#root')
 
 const dummyChartData = [

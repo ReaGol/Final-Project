@@ -3,15 +3,16 @@ import { Calendar } from "../models/calendar.model.js";
 // Get all events from the calendar
 export const getCalendarEvents = async (req, res) => {
   try {
-    const events = await Calendar.find({});
-    if (!events) {
-      return res.status(404).send("Calendar events not found");
+    const events = await Calendar.find({}).populate("patientId workoutId");
+    if (!events || events.length === 0) {
+      return res.status(404).send("No calendar events found.");
     }
     res.status(200).send(events);
   } catch (error) {
     res.status(500).send(error);
   }
 };
+
 
 // Get events for a specific user by userId
 export const getEventsByUser = async (req, res) => {
