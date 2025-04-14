@@ -1,9 +1,11 @@
 import { Calendar } from "../models/calendar.model.js";
 
-// Get all events from the calendar
+// Get all events (admin/general view)
 export const getCalendarEvents = async (req, res) => {
   try {
-    const events = await Calendar.find({}).populate("patientId workoutId");
+    const events = await Calendar.find({})
+      .populate("patientId")
+      .populate("therapistId");
     if (!events || events.length === 0) {
       return res.status(404).send("No calendar events found.");
     }
@@ -13,14 +15,16 @@ export const getCalendarEvents = async (req, res) => {
   }
 };
 
-
-// Get events for a specific user by userId
-export const getEventsByUser = async (req, res) => {
+// Get events created by a specific patient
+export const getEventsByPatient = async (req, res) => {
   try {
-    const userId = req.params.userId;
-    const events = await Calendar.find({ userId });
-    if (!events) {
-      return res.status(404).send("Calendar events not found for the user");
+    const { patientId } = req.params;
+    const events = await Calendar.find({
+      patientId,
+      createdByRole: "patient",
+    }).populate("therapistId");
+    if (!events || events.length === 0) {
+      return res.status(404).send("No patient events found.");
     }
     res.status(200).send(events);
   } catch (error) {
@@ -28,14 +32,39 @@ export const getEventsByUser = async (req, res) => {
   }
 };
 
-// Create a new event in the calendar
-export const createCalendarEvent = async (req, res) => {
-    const userId = req.body.userId;
-    const event = new Calendar({
-      ...req.body,
-      userId,    
-    });
+// Get events created by a specific therapist
+export const getEventsByTherapist = async (req, res) => {
   try {
+    const { therapistId } = req.params;
+    const events = await Calendar.find({
+      therapistId,
+      createdByRole: "therapist",
+    }).populate("patientId");
+    if (!events || events.length === 0) {
+      return res.status(404).send("No therapist events found.");
+    }
+    res.status(200).send(events);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
+// Create event by patient
+export const createCalendarEventForPatient = async (req, res) => {
+  try {
+    const { patientId } = req.params;
+    const { date } = req.body;
+
+    if (!date) {
+      return res.status(400).send("Missing date for patient event.");
+    }
+
+    const event = new Calendar({
+      patientId,
+      date,
+      createdByRole: "patient",
+    });
+
     await event.save();
     res.status(201).send(event);
   } catch (error) {
@@ -43,50 +72,71 @@ export const createCalendarEvent = async (req, res) => {
   }
 };
 
-// Edit an event in the calendar
-export const editCalendarEvent = async (req, res) => {
-  const updates = Object.keys(req.body);
-  const allowedUpdates = ["title", "start", "end"];
-  const isValidOperation = updates.every((update) =>
-    allowedUpdates.includes(update)
-  );
-
-  if (!isValidOperation) {
-    return res.status(400).send({ error: "Invalid Update" });
-  }
-
+// Create event by therapist
+export const createCalendarEventForTherapist = async (req, res) => {
   try {
-    const event = await Calendar.findByIdAndUpdate(
-      { _id: req.params.id, userId: req.body.userId }, 
-      { $set: req.body },
-      { new: true, runValidators: true }
-    );
+    const { therapistId } = req.params;
+    const { patientId, start, end, title } = req.body;
 
-    updates.forEach((update) => (event[update] = req.body[update]));
-    await event.save();
-
-    if (!event) {
-      return res.status(404).send();
+    if (!start || !end || !title) {
+      return res
+        .status(400)
+        .send("Missing required fields for therapist event.");
     }
 
-    res.send(event);
+    const event = new Calendar({
+      therapistId,
+      patientId,
+      start,
+      end,
+      title,
+      createdByRole: "therapist",
+    });
+
+    await event.save();
+    res.status(201).send(event);
   } catch (error) {
     res.status(400).send(error);
   }
 };
 
-// Delete an event from the calendar
+// Edit an event
+export const editCalendarEvent = async (req, res) => {
+  const allowedUpdates = ["title", "date", "start", "end"];
+  const updates = Object.keys(req.body);
+  const isValid = updates.every((update) => allowedUpdates.includes(update));
+
+  if (!isValid) {
+    return res.status(400).send({ error: "Invalid update fields." });
+  }
+
+  try {
+    const updatedEvent = await Calendar.findByIdAndUpdate(
+      req.params.id,
+      { $set: req.body },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedEvent) {
+      return res.status(404).send("Event not found.");
+    }
+
+    res.send(updatedEvent);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+};
+
+// Delete an event
 export const deleteCalendarEvent = async (req, res) => {
   try {
-    const event = await Calendar.findByIdAndDelete({
-      _id: req.params.id,
-      userId: req.body.userId,
-    });
+    const deleted = await Calendar.findByIdAndDelete(req.params.id);
 
-    if (!event) {
-      res.status(404).send();
+    if (!deleted) {
+      return res.status(404).send("Event not found.");
     }
-    res.send(event);
+
+    res.send(deleted);
   } catch (error) {
     res.status(500).send(error);
   }

@@ -1,3 +1,4 @@
+import { Therapist } from "../models/therapist.model.js";
 import { Patient } from "../models/patient.model.js";
 
 //--------------create a new patient-----------------
@@ -195,5 +196,19 @@ export const updateExerciseFeedback = async (req, res) => {
     res.status(500).send("Server error");
   }
 };
+
+//------------------Add a new therapist---------------------
+
+
+export const createTherapist = async (req, res) => {
+  try {
+    const therapist = new Therapist(req.body);
+    await therapist.save();
+    res.status(201).send(therapist);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+};
+
 
 

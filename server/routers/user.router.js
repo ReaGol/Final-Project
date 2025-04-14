@@ -1,6 +1,6 @@
 import express from "express";
 import { editProfile, patientLogin, patientLogout } from "../controllers/patient.controller.js";
-import { createPatient, LogoutAllPatients, getPatients, getPatient, getProfile, editPatient, deletePatient, updateExerciseFeedback} from "../controllers/therapist.controller.js"
+import { createPatient, LogoutAllPatients, getPatients, getPatient, getProfile, editPatient, deletePatient, updateExerciseFeedback, createTherapist} from "../controllers/therapist.controller.js"
 import { auth } from "../middleware/auth.js";
 
 export const router = new express.Router();
@@ -17,6 +17,8 @@ router.patch(
 
 
 //---------------therapist actions---------------------
+router.post("/therapists/new", createTherapist); 
+
 router.post("/therapist/patients/new", createPatient);
 
 //router.patch("/therapist/patients/:id", editProfile);

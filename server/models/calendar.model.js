@@ -4,14 +4,21 @@ const calendarSchema = new mongoose.Schema({
   patientId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Patient",
-    required: true,
   },
-  dayOfWeek: { type: Number, required: true }, 
-  workoutId: {
+  therapistId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Workout",
+    ref: "Therapist",
+  },
+  date: { type: Date },
+  start: { type: Date },
+  end: { type: Date },
+  title: { type: String },
+  createdByRole: {
+    type: String,
+    enum: ["patient", "therapist"],
     required: true,
   },
 });
+
 
 export const Calendar = mongoose.model("Calendar", calendarSchema);

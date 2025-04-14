@@ -1,21 +1,34 @@
 import express from "express";
 import {
-  createCalendarEvent,
-  deleteCalendarEvent,
+  createCalendarEventForPatient,
+  createCalendarEventForTherapist,
+  getEventsByPatient,
+  getEventsByTherapist,
   editCalendarEvent,
+  deleteCalendarEvent,
   getCalendarEvents,
-  getEventsByUser,
 } from "../controllers/calendar.controller.js";
 import { auth } from "../middleware/auth.js";
 
-export const calendarRouter = new express.Router();
+export const calendarRouter = express.Router();
 
-calendarRouter.post("/events", createCalendarEvent);
-
+// General route 
 calendarRouter.get("/events", getCalendarEvents);
 
-calendarRouter.get("/events/:userId", getEventsByUser);
+// ------- PATIENT routes -------
+calendarRouter.get("/events/patient/:patientId", getEventsByPatient);
+calendarRouter.post(
+  "/events/patient/:patientId",
+  createCalendarEventForPatient
+);
 
+// ------- THERAPIST routes -------
+calendarRouter.get("/events/therapist/:therapistId", getEventsByTherapist);
+calendarRouter.post(
+  "/events/therapist/:therapistId",
+  createCalendarEventForTherapist
+);
+
+// ------- SHARED -------
 calendarRouter.patch("/events/:id", editCalendarEvent);
-
 calendarRouter.delete("/events/:id", auth, deleteCalendarEvent);
