@@ -41,7 +41,7 @@ function Homepage() {
           Already have an account?
           <br />
           <span>
-            <Link to='/patients/login'>Sign in Here</Link>
+            <Link to='/patients/login'>Login Here</Link>
           </span>
         </p>
       </div>
